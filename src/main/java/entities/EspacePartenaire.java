@@ -119,5 +119,4 @@ public class EspacePartenaire {
                 ", description='" + description + '\'' +
                 ", photos=" + photos +
                 '}';
-    }
-}
+    } }
