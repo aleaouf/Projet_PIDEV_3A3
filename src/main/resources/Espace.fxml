@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Espace">
+   <children>
+      <Label layoutX="87.0" layoutY="5.0" text="Nom" />
+      <Label layoutX="94.0" layoutY="181.0" text="Photos" />
+      <Button layoutX="486.0" layoutY="323.0" mnemonicParsing="false" onAction="#Ajouter" text="Ajouter" />
+      <Label layoutX="88.0" layoutY="93.0" text="type" />
+      <Label layoutX="87.0" layoutY="49.0" text="Localisation" />
+      <Label layoutX="88.0" layoutY="137.0" text="Description" />
+      <TextField fx:id="nomTextField" layoutX="88.0" layoutY="23.0" />
+      <TextField fx:id="localisationTextField" layoutX="87.0" layoutY="67.0" />
+      <TextField fx:id="descriptionTextField" layoutX="88.0" layoutY="155.0" />
+      <TextField fx:id="photosTextField" layoutX="87.0" layoutY="200.0" />
+      <Label layoutX="86.0" layoutY="233.0" text="Categorie" />
+      <RadioButton fx:id="idCouvert" layoutX="149.0" layoutY="251.0" mnemonicParsing="false" text="Espace couvert" />
+      <RadioButton fx:id="idFumeur" layoutX="300.0" layoutY="294.0" mnemonicParsing="false" text="Espace Fumeur" />
+      <RadioButton fx:id="idEnfant" layoutX="300.0" layoutY="251.0" mnemonicParsing="false" text="Espace Enfants" />
+      <RadioButton fx:id="idService" layoutX="149.0" layoutY="294.0" mnemonicParsing="false" text="Service Restauration" />
+      <ChoiceBox fx:id="idType" layoutX="87.0" layoutY="111.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>
