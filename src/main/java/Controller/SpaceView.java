@@ -1,14 +1,15 @@
 package Controller;
-
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,17 +19,12 @@ import java.util.*;
 
 import entities.Categorie;
 import entities.EspacePartenaire;
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.MyConnection;
@@ -42,6 +38,8 @@ public class SpaceView {
 
     @FXML
     private URL location;
+    @FXML
+    private ImageView viewMoreIcon;
 
     @FXML
     private Label CatAf;
@@ -60,16 +58,30 @@ public class SpaceView {
 
     @FXML
     void initialize() {
-        AfficherEspace();
         imageView.setOnMouseClicked(event -> showAllImages(event));
+        // Add event handler for mouse hover
+        viewMoreIcon.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                viewMoreIcon.setRotate(45); // Rotate the icon on hover
+            }
+        });
 
+        // Add event handler for mouse exit
+        viewMoreIcon.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                viewMoreIcon.setRotate(0); // Reset rotation when mouse exits
+            }
+        });
     }
+
 
     @FXML
     public void showAllImages(MouseEvent mouseEvent) {
         // Get the selected EspacePartenaire object
         EspacePartenaire selectedEspace = getSelectedEspace();
-        if (selectedEspace != null && selectedEspace.getId_espace() == 26) {
+        if (selectedEspace != null) {
             // Create a new stage to display all images
             Stage stage = new Stage();
 
@@ -159,15 +171,17 @@ public class SpaceView {
         return null;
     }
 
-    public void AfficherEspace() {
+
+    public void AfficherEspace(EspacePartenaire espacePartenaire) {
+        // Use the passed espacePartenaire directly instead of calling getSelectedEspace()
+        int id_espace = espacePartenaire.getId_espace();
+
         ObservableList<EspacePartenaire> espaces = getEspace();
 
-        // Filter the list to include only the object with id_espace = 25
         Optional<EspacePartenaire> optionalEspace = espaces.stream()
-                .filter(espace -> espace.getId_espace() == 26)
+                .filter(espace -> espace.getId_espace() == id_espace)
                 .findFirst();
 
-        // Check if the object with id_espace = 25 exists
         if (optionalEspace.isPresent()) {
             EspacePartenaire selectedEspace = optionalEspace.get();
 
@@ -250,29 +264,6 @@ public class SpaceView {
                 categorie.setEspaceFumeur(rs.getBoolean("espaceFumeur"));
                 categorie.setServiceRestauration(rs.getBoolean("serviceRestauration"));
                 data.add(categorie);
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return data;
-    }
-    public ObservableList<EspacePartenaire> getEspaceById(int id) {
-        ObservableList<EspacePartenaire> data = FXCollections.observableArrayList();
-        String requete = "SELECT * FROM espacepartenaire WHERE id_espace = ?";
-        try {
-            PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete);
-            pst.setInt(1, id);
-            ResultSet rs = pst.executeQuery();
-            while (rs.next()) {
-                EspacePartenaire espacePartenaire = new EspacePartenaire();
-                espacePartenaire.setId_categorie(rs.getInt("id_categorie"));
-                espacePartenaire.setId_espace(rs.getInt("id_espace"));
-                espacePartenaire.setNom(rs.getString("nom"));
-                espacePartenaire.setLocalisation(rs.getString("localisation"));
-                espacePartenaire.setType(rs.getString("type"));
-                espacePartenaire.setDescription(rs.getString("description"));
-                espacePartenaire.setPhotos(Collections.singletonList(rs.getString("photos")));
-                data.add(espacePartenaire);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());

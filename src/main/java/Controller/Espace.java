@@ -100,22 +100,22 @@ public class Espace {
         CategorieServices categorieService = new CategorieServices();
         EspacePartenaire espacePartenaire = new EspacePartenaire(nomTextField.getText(), localisationTextField.getText(), idType.getValue(), descriptionTextField.getText(), this.imagePaths);
         EspaceServices espaceService = new EspaceServices();
-        try {
-            categorieService.addEntity(categorie);
-            espaceService.addEntity(espacePartenaire);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("l'esapce a ete ajoute");
-            alert.show();
-        } catch (Exception e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText(e.getMessage());
-            alert.show();
-        }
+            try {
+                categorieService.addEntity(categorie);
+                espaceService.addEntity(espacePartenaire);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("l'esapce a ete ajoute");
+                alert.show();
+            } catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText(e.getMessage());
+                alert.show();
+            }
 
 
         StageManager stageManager = StageManager.getInstance();
         stageManager.closeCurrentStage();
-        stageManager.switchScene("/Afficher.fxml");
+        stageManager.switchScene("/Afficher_espace.fxml");
     }
 
     private void updateImageLinksLabel() {
@@ -139,7 +139,7 @@ public class Espace {
     {
         StageManager stageManager = StageManager.getInstance();
         stageManager.closeCurrentStage();
-        stageManager.switchScene("/Afficher.fxml");
+        stageManager.switchScene("/Afficher_espace.fxml");
 
     }
 }

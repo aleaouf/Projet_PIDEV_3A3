@@ -15,6 +15,10 @@ public class EspacePartenaire {
 
     }
 
+    public EspacePartenaire(int id_espace) {
+        this.id_espace = id_espace;
+    }
+
     public EspacePartenaire(String nom, String localisation, String type, String description, List<String> photos, int id_categorie) {
         this.nom = nom;
         this.localisation = localisation;

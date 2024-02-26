@@ -84,7 +84,7 @@ public class Modifier {
 
         StageManager stageManager = StageManager.getInstance();
         stageManager.closeCurrentStage();
-        stageManager.switchScene("/Afficher.fxml");
+        stageManager.switchScene("/Afficher_espace.fxml");
     }
     public void setEspacePartenaireToUpdate(EspacePartenaire espacePartenaire) {
         // Populate the form fields with the data from the EspacePartenaire object
@@ -166,7 +166,7 @@ public class Modifier {
 
         StageManager stageManager = StageManager.getInstance();
         stageManager.closeCurrentStage();
-        stageManager.switchScene("/Afficher.fxml");
+        stageManager.switchScene("/Afficher_espace.fxml");
     }
 
     // Méthode appelée lors du clic sur le bouton "Uploader"

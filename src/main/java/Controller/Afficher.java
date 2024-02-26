@@ -10,7 +10,6 @@ import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableView;
@@ -23,7 +22,6 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import services.EspaceServices;
 import utils.MyConnection;
@@ -238,5 +236,28 @@ public class Afficher {
         return data;
     }
 
+    public ObservableList<EspacePartenaire> getEspaceById(int id) {
+        ObservableList<EspacePartenaire> data = FXCollections.observableArrayList();
+        String requete = "SELECT * FROM espacepartenaire WHERE id_espace = ?";
+        try {
+            PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete);
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                EspacePartenaire espacePartenaire = new EspacePartenaire();
+                espacePartenaire.setId_categorie(rs.getInt("id_categorie"));
+                espacePartenaire.setId_espace(rs.getInt("id_espace"));
+                espacePartenaire.setNom(rs.getString("nom"));
+                espacePartenaire.setLocalisation(rs.getString("localisation"));
+                espacePartenaire.setType(rs.getString("type"));
+                espacePartenaire.setDescription(rs.getString("description"));
+                espacePartenaire.setPhotos(Collections.singletonList(rs.getString("photos")));
+                data.add(espacePartenaire);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return data;
+    }
 
 }
