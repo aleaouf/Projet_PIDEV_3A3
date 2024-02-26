@@ -1,0 +1,6 @@
+Controller\StageManager.class
+Controller\SpaceView.class
+Controller\ImageViewerController.class
+Controller\Modifier.class
+Controller\Afficher.class
+Controller\Main.class

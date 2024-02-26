@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="517.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Espace">
+   <children>
+      <Label layoutX="105.0" layoutY="25.0" text="Nom" AnchorPane.bottomAnchor="474.4" />
+      <Label layoutX="105.0" layoutY="207.0" text="Photos" />
+      <Button layoutX="468.0" layoutY="450.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="26.0" prefWidth="202.0" text="Ajouter votre espace partenaire" />
+      <Label layoutX="105.0" layoutY="113.0" prefHeight="18.0" prefWidth="37.0" text="type" />
+      <Label layoutX="105.0" layoutY="69.0" text="Localisation" />
+      <Label layoutX="105.0" layoutY="157.0" text="Description" />
+      <TextField fx:id="nomTextField" layoutX="93.0" layoutY="43.0" />
+      <TextField fx:id="localisationTextField" layoutX="93.0" layoutY="87.0" />
+      <TextField fx:id="descriptionTextField" layoutX="93.0" layoutY="175.0" />
+      <Label layoutX="105.0" layoutY="327.0" text="Categorie" />
+      <RadioButton fx:id="idCouvert" layoutX="193.0" layoutY="397.0" mnemonicParsing="false" text="Espace couvert" />
+      <RadioButton fx:id="idFumeur" layoutX="451.0" layoutY="358.0" mnemonicParsing="false" text="Espace Fumeur" />
+      <RadioButton fx:id="idEnfant" layoutX="452.0" layoutY="397.0" mnemonicParsing="false" text="Espace Enfants" />
+      <RadioButton fx:id="idService" layoutX="194.0" layoutY="358.0" mnemonicParsing="false" text="Service Restauration" />
+      <ChoiceBox fx:id="idType" layoutX="93.0" layoutY="131.0" prefWidth="150.0" />
+      <Button fx:id="uploadImgBtn" layoutX="93.0" layoutY="225.0" mnemonicParsing="false" onAction="#onUploadButtonClick" prefHeight="25.0" prefWidth="150.0" text="upload" />
+      <Label fx:id="imageLinksLabel" layoutX="91.0" layoutY="259.0" prefHeight="62.0" prefWidth="535.0" wrapText="true" AnchorPane.leftAnchor="91.0" AnchorPane.topAnchor="259.0" />
+      <ImageView fx:id="imageloc" fitHeight="217.0" fitWidth="422.0" layoutX="300.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/map.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="AfficherBtn" layoutX="79.0" layoutY="450.0" mnemonicParsing="false" onAction="#AfficherListe" text="Consevoir votre liste d'espace" />
+
+   </children>
+</AnchorPane>
