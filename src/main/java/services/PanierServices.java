@@ -83,6 +83,25 @@ public class PanierServices implements Iservices<Panier> {
         }
         return data;
     }
+    public List<Panier> getPanierByUser(int idUser){
+        List<Panier> paniers = new ArrayList<>();
+        String requete = "SELECT * FROM PANIER WHERE id_user = ?";
+        try{
+            PreparedStatement stm = myconnection.getInstance().getCnx().prepareStatement(requete);
+            stm.setInt(1,idUser);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()){
+                Panier panier = new Panier(rs.getInt("id_panier"),rs.getInt("id_user")
+                ,rs.getInt("nbr_article"),rs.getInt("id_article"));
+                paniers.add(panier);
+            }
+            stm.close();
+            return paniers;
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return paniers;
+    }
 
 }
 

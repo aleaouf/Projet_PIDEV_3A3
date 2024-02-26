@@ -8,6 +8,21 @@
     -fx-font-size: 18;
     -fx-text-fill: #000000;
 }
+.logo-title{
+    -fx-font-weight: bold;
+    -fx-font-size: 32;
+    -fx-text-fill: #000000;
+}
+.delete-btn{
+    -fx-background-color: red;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+}
+.delete-btn:hover{
+    -fx-opacity: 0.6;
+}
 .article-btn{
     -fx-background-color: #000000;
     -fx-border-radius: 20;
@@ -24,7 +39,7 @@
 .title-detail{
     -fx-text-fill: #000000;
     -fx-font-weight: bold;
-    -fx-font-size: 24;
+    -fx-font-size: 38;
 }
 .text-produit{
     -fx-text-fill: #000000;
@@ -32,7 +47,7 @@
     -fx-font-size: 24;
 }
 .recherche{
-    -fx-fill: #D9D9D9;
+    -fx-fill: #2350d9;
     -fx-border-radius: 56px;
     -fx-arc-width: 30;
     -fx-arc-height: 30;
@@ -41,5 +56,50 @@
 .recherche-input{
     -fx-background-color: transparent;
     -fx-font-size: 12;
+    -fx-text-fill: #ffffff;
+}
+.panier-container{
+    -fx-background-color: #ffffff;
+}
+.panier-btn{
+    -fx-cursor: hand;
+}
+.panier-btn:hover{
+    -fx-opacity: 0.6;
+}
+.top-menu-btn{
+    -fx-background-color: transparent;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
     -fx-text-fill: #000000;
+    -fx-cursor: hand;
+}
+.article-detail-container{
+    -fx-background-color: #ffffff;
+}
+.text-produit-detail{
+    -fx-text-fill: #000000;
+    -fx-font-weight: normal;
+    -fx-font-size: 32;
+}
+.scrollPane{
+    -fx-background-color: #ffffff;
+}
+.scrollPane .scroll-bar:vertical{
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 2px;
+}
+.scrollPane .scroll-bar:vertical .thumb{
+    -fx-background-color: #000000;
+}
+.scrollPane .scroll-bar:vertical .thumb:hover{
+    -fx-background-color: rgba(0,0,0,0.68);
+}
+.scrollPane .scroll-bar:vertical .decrement-button,
+.scrollPane .scroll-bar:vertical .increment-button{
+    -fx-background-color: transparent;
+}
+.vbox-container{
+    -fx-background-color: #ffffff;
 }

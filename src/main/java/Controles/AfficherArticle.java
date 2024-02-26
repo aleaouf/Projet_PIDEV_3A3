@@ -85,7 +85,7 @@ public class AfficherArticle implements Initializable {
     @FXML
     private TableView<Articles> table;
 
-
+    private Articles currentArticle;
 
     private List<String> imagePaths = new ArrayList<>();
 
@@ -115,7 +115,7 @@ public class AfficherArticle implements Initializable {
             while (rs.next()) {
                 Articles article = new Articles();
 
-
+                article.setId(rs.getInt("id"));
                 article.setImage(rs.getString("image"));
                 article.setNom(rs.getString("nom"));
                 article.setDescription(rs.getString("description"));
@@ -155,7 +155,8 @@ public class AfficherArticle implements Initializable {
         try {
             int articleID = table.getSelectionModel().getSelectedItem().getId();
             PreparedStatement ps = myconnection.getInstance().getCnx().prepareStatement(query);
-            ps.setInt(1, articleID);
+            ps.setInt(1, currentArticle.getId());
+            System.out.println(currentArticle.getId());
             int deletedRows = ps.executeUpdate();
             if (deletedRows > 0) {
                 System.out.println("Article supprimé avec succès.");
@@ -175,8 +176,10 @@ public class AfficherArticle implements Initializable {
             PreparedStatement ps = myconnection.getInstance().getCnx().prepareStatement(query);
             ps.setString(1, Nomfield.getText());
             ps.setString(2, Descriptionfield.getText());
+            ps.setString(3, Prixfield.getText());
             ps.setString(4, contactfield.getText());
-            ps.setString(6, quantitefield.getText());
+            ps.setString(5, quantitefield.getText());
+            ps.setInt(6, currentArticle.getId());
 
             String prixText = Prixfield.getText();
             if (!prixText.isEmpty()) {
@@ -206,14 +209,14 @@ public class AfficherArticle implements Initializable {
     }
 
     public void getData(javafx.scene.input.MouseEvent mouseEvent) {
-        Articles article = table.getSelectionModel().getSelectedItem();
-        if (article != null) {
-            IDfield.setText(String.valueOf(article.getId()));
-            Nomfield.setText(article.getNom());
-            Descriptionfield.setText(article.getDescription());
-            Prixfield.setText(String.valueOf(article.getPrix()));
-            contactfield.setText(String.valueOf(article.getContact()));
-            quantitefield.setText(String.valueOf(article.getQuantite()));
+         currentArticle = table.getSelectionModel().getSelectedItem();
+        if (currentArticle != null) {
+            //IDfield.setText(String.valueOf(article.getId()));
+            Nomfield.setText(currentArticle.getNom());
+            Descriptionfield.setText(currentArticle.getDescription());
+            Prixfield.setText(String.valueOf(currentArticle.getPrix()));
+            contactfield.setText(String.valueOf(currentArticle.getContact()));
+            quantitefield.setText(String.valueOf(currentArticle.getQuantite()));
 
         }
     }
@@ -252,6 +255,7 @@ public class AfficherArticle implements Initializable {
         } catch (NumberFormatException e) {
             throw new RuntimeException(e);
         }
+        this.imagePaths.clear();
     }
 
         private void clearFields() {

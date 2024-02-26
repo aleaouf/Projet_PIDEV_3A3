@@ -46,11 +46,16 @@ public class Marketplace implements Initializable {
     private Circle imgDetailContainer;
     @FXML
     private AnchorPane detailsContainer;
+    @FXML
+    private AnchorPane panierContainer;
+    @FXML
+    private VBox panierVBox;
     private List<Articles> articles;
     private Articles currentArticle;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        panierContainer.setVisible(false);
         detailsContainer.setVisible(false);
         ArticlesServices articlesServices = new ArticlesServices();
         articles = articlesServices.getAllData();
@@ -64,7 +69,7 @@ public class Marketplace implements Initializable {
                 fxmlLoader.setLocation(getClass().getResource("/articleCardView.fxml"));
                 Parent root = fxmlLoader.load();
                 ArticleCardViewController controller = fxmlLoader.getController();
-                controller.setData(a,this);
+              controller.setData(a,this);
                 articlesVBox.getChildren().add(root);
             }catch (IOException e){
                 System.out.println(e.getMessage());
@@ -82,6 +87,8 @@ public class Marketplace implements Initializable {
     }
     @FXML
     public void goBack(MouseEvent event){
+
+        panierContainer.setVisible(false);
         detailsContainer.setVisible(false);
     }
     @FXML
@@ -100,5 +107,24 @@ public class Marketplace implements Initializable {
             showArticles(articles.stream().filter( a -> a.getNom().contains(searchInput)).collect(Collectors.toList()));
         } else
             showArticles(articles);
+    }
+    @FXML
+    public void panierBtnClicked(MouseEvent event){
+        panierVBox.getChildren().clear();
+        PanierServices panierServices = new PanierServices();
+        List<Panier> paniers = panierServices.getPanierByUser(1);
+        for(Panier p : paniers){
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/panierCardView.fxml"));
+                Parent root = fxmlLoader.load();
+                PanierCardViewController controller = fxmlLoader.getController();
+                controller.setData(p,this);
+                panierVBox.getChildren().add(root);
+            }catch (IOException e){
+                System.out.println(e.getMessage());
+            }
+        }
+        panierContainer.setVisible(true);
     }
 }

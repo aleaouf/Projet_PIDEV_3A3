@@ -119,5 +119,50 @@ public class ArticlesServices implements Iservices<Articles> {
         }
 
     }
+    public void updatequantite1(int idArticle){
+        String requete = "SELECT quantite from articles where id = ?";
+        try{
+            PreparedStatement st = myconnection.getInstance().getCnx().prepareStatement(requete);
+            st.setInt(1,idArticle);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()){
+                int oldNbr = rs.getInt("quantite");
+                int newNbr = oldNbr + 1;
+                if(newNbr >= 0){
+                    String requete2 = "UPDATE articles set quantite = ? where id = ?";
+                    PreparedStatement st2 = myconnection.getInstance().getCnx().prepareStatement(requete2);
+                    st2.setInt(1,newNbr);
+                    st2.setInt(2,idArticle);
+                    st2.executeUpdate();
+                }
+
+            }
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+
+    }
+    public Articles getByID(int id) {
+        String requete = "SELECT * FROM ARTICLES WHERE id = ?";
+        try {
+            PreparedStatement stm = myconnection.getInstance().getCnx().prepareStatement(requete);
+            stm.setInt(1,id);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()){
+                int idA = rs.getInt("id");
+                String nom = rs.getString("nom");
+                String description = rs.getString("description");
+                int prix = rs.getInt("prix");
+                int contact = rs.getInt("contact");
+                String image = rs.getString("image");
+                int quantite = rs.getInt("quantite");
+                // Créer un objet Articles à partir des données récupérées
+                return new Articles(idA, nom, description, prix, contact, image,quantite);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return new Articles();
+    }
 
 }
