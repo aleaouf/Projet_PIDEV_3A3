@@ -1,3 +1,85 @@
 .list-cell {
     -fx-font-size: 16px;
 }
+.container{
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 24;
+    -fx-background-radius: 24;
+}
+/* CSS for ListView */
+.list-view {
+    -fx-background-color: #ffffff; /* Background color */
+    -fx-border-radius: 24; /* Border radius */
+    -fx-background-radius: 24; /* Background radius */
+}
+
+.container{
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 24;
+    -fx-background-radius: 24;
+}
+/* CSS for setting background gradient for the window */
+.root {
+    -fx-background-color: linear-gradient(to bottom right, #ffffff 0%, #0267C1 100%);
+}
+/* CSS for ListView items */
+.list-cell {
+    -fx-background-color: #f0f0f0; /* Background color */
+    -fx-background-radius: 5; /* Rounded corners */
+    -fx-padding: 10px; /* Padding around the text */
+    -fx-wrap-text: true; /* Enable text wrapping */
+}
+
+/* Hover effect */
+.list-cell:hover {
+    -fx-background-color: #e0e0e0; /* Background color on hover */
+}
+
+/* Selected item effect */
+.list-cell:selected {
+    -fx-background-color: #c0c0c0; /* Background color when selected */
+}
+
+/* Text color and font */
+.list-cell .text {
+    -fx-fill: #333333; /* Text color */
+    -fx-font-size: 14px; /* Font size */
+    -fx-font-weight: bold; /* Font weight */
+}
+/* CSS for buttons with dark blue color scheme */
+.button {
+    -fx-background-color: #1e90ff; /* Dark blue background color */
+    -fx-text-fill: white; /* Text color */
+    -fx-font-size: 14px; /* Font size */
+    -fx-padding: 10px 20px; /* Padding */
+    -fx-background-radius: 5; /* Rounded corners */
+    -fx-border-radius: 5; /* Rounded corners for border */
+    -fx-border-color: transparent; /* Transparent border color */
+}
+
+/* Hover effect */
+.button:hover {
+    -fx-background-color: #0e78c0; /* Darker blue background color on hover */
+}
+
+/* Pressed effect */
+.button:pressed {
+    -fx-background-color: #0a5d91; /* Even darker blue background color when pressed */
+}
+
+/* Disabled effect */
+.button:disabled {
+    -fx-opacity: 0.5; /* Reduced opacity */
+}
+
+/* CSS for Label with text wrapping */
+.label {
+    -fx-font-family: "Arial"; /* Font family */
+    -fx-text-fill: #333333; /* Text color */
+    -fx-alignment: center-left; /* Text alignment */
+    -fx-wrap-text: true; /* Enable text wrapping */
+}
+.image-view {
+    -fx-fit-width: 300px;
+    -fx-fit-height: 300px;
+}

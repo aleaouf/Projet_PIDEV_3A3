@@ -6,22 +6,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AfficherEspace">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AfficherEspace">
     <children>
         <ListView fx:id="listViewEspace" editable="true" layoutX="144.0" layoutY="123.0" prefHeight="433.0" prefWidth="712.0" stylesheets="@styles.css" />
-        <Button fx:id="buttonConsulter" layoutX="772.0" layoutY="571.0" onAction="#Consulter" prefHeight="40.0" prefWidth="83.0" text="Consulter">
+        <Button fx:id="buttonConsulter" layoutX="740.0" layoutY="571.0" onAction="#Consulter" prefHeight="42.0" prefWidth="115.0" text="Consulter">
          <font>
             <Font size="14.0" />
          </font></Button>
-        <Button fx:id="buttonAjouter" layoutX="432.0" layoutY="571.0" onAction="#Ajouter" prefHeight="40.0" prefWidth="83.0" text="Ajouter">
+        <Button fx:id="buttonAjouter" layoutX="432.0" layoutY="571.0" onAction="#Ajouter" prefHeight="42.0" prefWidth="115.0" text="Ajouter">
          <font>
             <Font size="14.0" />
          </font></Button>
-        <Button fx:id="buttonModifier" layoutX="144.0" layoutY="571.0" onAction="#Modifier" prefHeight="40.0" prefWidth="83.0" text="Modifier">
+        <Button fx:id="buttonModifier" layoutX="144.0" layoutY="571.0" onAction="#Modifier" prefHeight="42.0" prefWidth="104.0" text="Modifier">
          <font>
             <Font size="14.0" />
          </font></Button>
-        <Button fx:id="buttonSupprimer" layoutX="283.0" layoutY="571.0" onAction="#Supprimer" prefHeight="40.0" prefWidth="94.0" text="Supprimer">
+        <Button fx:id="buttonSupprimer" layoutX="283.0" layoutY="571.0" onAction="#Supprimer" prefHeight="42.0" prefWidth="115.0" text="Supprimer">
          <font>
             <Font size="14.0" />
          </font></Button>

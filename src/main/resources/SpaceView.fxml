@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -7,10 +9,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="374.0" prefWidth="826.0" stylesheets="@spaceView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SpaceView">
+<AnchorPane prefHeight="374.0" prefWidth="826.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SpaceView">
    <children>
       <Accordion layoutX="41.0" layoutY="33.0" />
-      <ImageView fx:id="imageView" fitHeight="277.0" fitWidth="290.0" layoutX="434.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView" fitHeight="300.0" fitWidth="300.0" layoutX="420.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" styleClass="image-view">
+         <viewport>
+            <Rectangle2D height="300.0" width="300.0" />
+         </viewport></ImageView>
       <Label layoutX="45.0" layoutY="20.0" prefHeight="18.0" prefWidth="191.0" text="Nom d'espace partenaire :">
          <font>
             <Font name="Arial Bold" size="14.0" />
@@ -43,7 +48,7 @@
          <font>
             <Font size="14.0" />
          </font></Label>
-      <Label fx:id="DescAf" layoutX="48.0" layoutY="185.0" prefHeight="78.0" prefWidth="367.0">
+      <Label fx:id="DescAf" layoutX="48.0" layoutY="185.0" prefHeight="78.0" prefWidth="367.0" wrapText="true">
          <font>
             <Font size="14.0" />
          </font></Label>
@@ -57,4 +62,8 @@
          </image>
       </ImageView>
    </children>
+   <stylesheets>
+      <URL value="@spaceView.css" />
+      <URL value="@styles.css" />
+   </stylesheets>
 </AnchorPane>

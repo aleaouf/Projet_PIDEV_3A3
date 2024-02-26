@@ -36,12 +36,13 @@ public class Espace {
     @FXML
     private URL location;
 
-    @FXML
-    private TextField descriptionTextField;
+   // @FXML
+    //private TextField descriptionTextField;
 
     @FXML
     private RadioButton idCouvert;
-
+    @FXML
+    private TextArea descriptionTextField;
     @FXML
     private RadioButton idEnfant;
 
@@ -68,7 +69,7 @@ public class Espace {
     private Button uploadImgBtn;
     private String imageData;
     @FXML
-    private Label imageLinksLabel; // Assuming you have a Label in your FXML file to display the image links
+    private TextArea imageLinksLabel; // Assuming you have a Label in your FXML file to display the image links
 
     private List<String> imagePaths = new ArrayList<>(); // List to store paths of selected images
 

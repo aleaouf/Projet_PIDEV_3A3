@@ -12,6 +12,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+
         try {
             StageManager stageManager = StageManager.getInstance();
             stageManager.setPrimaryStage(primaryStage);

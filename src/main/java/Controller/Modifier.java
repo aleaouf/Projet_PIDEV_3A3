@@ -36,7 +36,7 @@ public class Modifier {
     private URL location;
 
     @FXML
-    private TextField descriptionTextField;
+    private TextArea descriptionTextField;
 
     @FXML
     private RadioButton idCouvert;
@@ -67,7 +67,7 @@ public class Modifier {
     private Button uploadImgBtn;
     private String imageData;
     @FXML
-    private Label imageLinksLabel;
+    private TextArea imageLinksLabel;
 
     private List<String> imagePaths = new ArrayList<>();
 

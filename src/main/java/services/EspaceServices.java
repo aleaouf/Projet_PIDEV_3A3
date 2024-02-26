@@ -35,17 +35,20 @@ public class EspaceServices implements IServices<EspacePartenaire>  {
 
     @Override
     public void updateEntity(EspacePartenaire espacePartenaire) {
-        String req = "UPDATE EspacePartenaire SET nom = ?, localisation = ?, type = ?, description = ?, photos = ? WHERE id_espace = ?";
+        String req = "UPDATE EspacePartenaire SET nom = ?, localisation = ?, type = ?, description = ?, photos = ? , accepted = ? WHERE id_espace = ?";
         try {
             PreparedStatement ps = MyConnection.getInstance().getCnx().prepareStatement(req);
             ps.setString(1, espacePartenaire.getNom());
             ps.setString(2, espacePartenaire.getLocalisation());
             ps.setString(3, espacePartenaire.getType());
             ps.setString(4, espacePartenaire.getDescription());
-            ps.setInt(6,espacePartenaire.getId_espace());
-            // Convertir la liste de photos en une chaîne séparée par des virgules
+// Set the 5th parameter for photos
             String photosStr = String.join(",", espacePartenaire.getPhotos());
             ps.setString(5, photosStr);
+// Set the 6th parameter for accepted
+            ps.setBoolean(6, espacePartenaire.isAccepted());
+// Set the 7th parameter for id_espace
+            ps.setInt(7, espacePartenaire.getId_espace());
 
             ps.executeUpdate();
             System.out.println("Espace Partenaire modifié avec succès");

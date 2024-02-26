@@ -1,4 +1,5 @@
 package Controller;
+
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
@@ -11,10 +12,7 @@ import javafx.scene.image.ImageView;
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.URL;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.*;
 
 import entities.Categorie;
@@ -56,6 +54,9 @@ public class SpaceView {
     @FXML
     private Label TypeAf;
 
+    private static EspacePartenaire selectedEspace;
+
+
     @FXML
     void initialize() {
         imageView.setOnMouseClicked(event -> showAllImages(event));
@@ -79,41 +80,36 @@ public class SpaceView {
 
     @FXML
     public void showAllImages(MouseEvent mouseEvent) {
-        // Get the selected EspacePartenaire object
-        EspacePartenaire selectedEspace = getSelectedEspace();
+        System.out.println(selectedEspace);
         if (selectedEspace != null) {
             // Create a new stage to display all images
             Stage stage = new Stage();
 
             // Create a VBox to hold the images
             VBox vbox = new VBox();
-            vbox.setAlignment(Pos.CENTER);
+            vbox.setAlignment(Pos.CENTER_LEFT);
             vbox.setSpacing(10);
 
             // Iterate through the list of image URLs and create an ImageView for each image
             for (String imageUrl : selectedEspace.getPhotos()) {
                 try {
-                    // Split the image URLs if they are separated by commas
-                    String[] filePaths = imageUrl.split(",");
-                    for (String filePath : filePaths) {
-                        // Trim any leading or trailing whitespaces
-                        filePath = filePath.trim();
-                        // Create a File object from the image URL
-                        File imageFile = new File(filePath);
-                        if (!imageFile.exists()) {
-                            System.err.println("File does not exist: " + filePath);
-                            continue; // Skip this iteration if the file does not exist
-                        }
-                        // Create an Image object using the file path
-                        Image image = new Image(imageFile.toURI().toString());
-                        // Create an ImageView with the Image object
-                        ImageView imageView = new ImageView(image);
-                        // Set the fit width and height to control the size of the image
-                        imageView.setFitWidth(200);
-                        imageView.setFitHeight(200);
-                        // Add the ImageView to the VBox
-                        vbox.getChildren().add(imageView);
+                    // Trim any leading or trailing whitespaces
+                    String trimmedImageUrl = imageUrl.trim();
+                    // Create a File object from the image URL
+                    File imageFile = new File(trimmedImageUrl);
+                    if (!imageFile.exists()) {
+                        System.err.println("File does not exist: " + trimmedImageUrl);
+                        continue; // Skip this iteration if the file does not exist
                     }
+                    // Create an Image object using the file path
+                    Image image = new Image(imageFile.toURI().toString());
+                    // Create an ImageView with the Image object
+                    ImageView imageView = new ImageView(image);
+                    // Set the fit width and height to control the size of the image
+                    imageView.setFitWidth(400);
+                    imageView.setFitHeight(400);
+                    // Add the ImageView to the VBox
+                    vbox.getChildren().add(imageView);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -136,8 +132,6 @@ public class SpaceView {
         }
     }
 
-
-
     private void displayImage(String imageUrl) {
         try {
             // Split the file paths using the comma as the delimiter
@@ -152,16 +146,13 @@ public class SpaceView {
 
             // Set the image to the class-level imageView
             imageView.setImage(image);
-            imageView.setFitWidth(200); // Set width of ImageView
+            imageView.setFitWidth(300); // Set width of ImageView
             imageView.setPreserveRatio(true); // Preserve aspect ratio
         } catch (Exception e) {
             System.err.println("Error loading image: " + e.getMessage());
             e.printStackTrace();
         }
     }
-
-
-
 
     private EspacePartenaire getSelectedEspace() {
         ObservableList<EspacePartenaire> espaces = getEspace();
@@ -170,7 +161,6 @@ public class SpaceView {
         }
         return null;
     }
-
 
     public void AfficherEspace(EspacePartenaire espacePartenaire) {
         // Use the passed espacePartenaire directly instead of calling getSelectedEspace()
@@ -183,7 +173,8 @@ public class SpaceView {
                 .findFirst();
 
         if (optionalEspace.isPresent()) {
-            EspacePartenaire selectedEspace = optionalEspace.get();
+            selectedEspace = optionalEspace.get(); // Set the selectedEspace
+            EspacePartenaire selectedEspace = optionalEspace.get(); // Set the selectedEspace
 
             NomAf.setText(selectedEspace.getNom());
             LocAf.setText(selectedEspace.getLocalisation());
@@ -220,8 +211,6 @@ public class SpaceView {
         }
     }
 
-
-
     public ObservableList<EspacePartenaire> getEspace() {
         ObservableList<EspacePartenaire> data = FXCollections.observableArrayList();
         String requete = "SELECT * FROM espacepartenaire";
@@ -244,11 +233,8 @@ public class SpaceView {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
-
         return data;
     }
-
 
     public ObservableList<Categorie> getCategorie() {
         ObservableList<Categorie> data = FXCollections.observableArrayList();
@@ -270,6 +256,4 @@ public class SpaceView {
         }
         return data;
     }
-
-
 }

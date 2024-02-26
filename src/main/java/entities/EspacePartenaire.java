@@ -9,7 +9,15 @@ public class EspacePartenaire {
     private String description;
     private List<String> photos;
     private int id_categorie;
+    private boolean accepted;
 
+    public boolean isAccepted() {
+        return accepted;
+    }
+
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
+    }
 
     public EspacePartenaire() {
 
@@ -112,15 +120,39 @@ public class EspacePartenaire {
     public void setId_categorie(int id_categorie) {
         this.id_categorie = id_categorie;
     }
+
+    public EspacePartenaire(int id_espace, String nom, String localisation, String type, String description, List<String> photos, int id_categorie, boolean accepted) {
+        this.id_espace = id_espace;
+        this.nom = nom;
+        this.localisation = localisation;
+        this.type = type;
+        this.description = description;
+        this.photos = photos;
+        this.id_categorie = id_categorie;
+        this.accepted = accepted;
+    }
+
+    public EspacePartenaire(String nom, String localisation, String type, String description, List<String> photos, int id_categorie, boolean accepted) {
+        this.nom = nom;
+        this.localisation = localisation;
+        this.type = type;
+        this.description = description;
+        this.photos = photos;
+        this.id_categorie = id_categorie;
+        this.accepted = accepted;
+    }
+
     @Override
     public String toString() {
         return "EspacePartenaire{" +
                 "id_espace=" + id_espace +
-                ", id_categorie=" + id_categorie +
                 ", nom='" + nom + '\'' +
                 ", localisation='" + localisation + '\'' +
                 ", type='" + type + '\'' +
                 ", description='" + description + '\'' +
                 ", photos=" + photos +
+                ", id_categorie=" + id_categorie +
+                ", accepted=" + accepted +
                 '}';
-    } }
+    }
+}

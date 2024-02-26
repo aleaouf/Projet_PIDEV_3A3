@@ -3,7 +3,14 @@
 .imageView {
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 10, 0, 0, 0);
     -fx-transition: transform 0.5s ease;
+
 }
+/* styles.css */
+.image-view {
+    -fx-fit-width: 300px;
+    -fx-fit-height: 300px;
+}
+
 .imageView:hover {
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
