@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
@@ -22,3 +23,29 @@
       <Button layoutX="518.0" layoutY="311.0" mnemonicParsing="false" onAction="#Modifier" text="Modifier" />
    </children>
 </AnchorPane>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="397.0" prefWidth="914.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Afficher">
+   <children>
+      <TableView fx:id="tableEspace" accessibleRole="IMAGE_VIEW" editable="true" layoutX="28.0" layoutY="14.0" prefHeight="266.0" prefWidth="835.0">
+        <columns>
+          <TableColumn fx:id="nomTb" prefWidth="116.00006103515625" text="Nom d'espace"  />
+            <TableColumn fx:id="localisationTb" prefWidth="116.00006103515625" text="Localisation"/>
+            <TableColumn fx:id="typeTb" prefWidth="116.00006103515625" text="Type" />
+            <TableColumn fx:id="photoTb" prefWidth="116.00006103515625" text="Photos" />
+            <TableColumn fx:id="descriptionTb" prefWidth="116.00006103515625" text="Description" />
+            <TableColumn fx:id="categorieTb" prefWidth="249.60002441406255" text="Catégorie" />
+        </columns>
+      </TableView>
+      <Button layoutX="745.0" layoutY="311.0" mnemonicParsing="false" onAction="#Ajouter" text="Ajouter" />
+      <Button layoutX="632.0" layoutY="311.0" mnemonicParsing="false" onAction="#Supprimer" text="Supprimer" />
+      <Button layoutX="518.0" layoutY="311.0" mnemonicParsing="false" onAction="#Modifier" text="Modifier" />
+   </children>
+</AnchorPane>
+>>>>>>> Stashed changes

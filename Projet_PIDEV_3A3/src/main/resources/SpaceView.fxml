@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Accordion?>
@@ -43,3 +44,50 @@
       </ImageView>
    </children>
 </AnchorPane>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="233.0" prefWidth="574.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SpaceView">
+   <children>
+      <Accordion layoutX="41.0" layoutY="33.0" />
+      <ImageView fx:id="imageView" fitHeight="163.0" fitWidth="171.0" layoutX="331.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="52.0" layoutY="11.0" prefHeight="18.0" prefWidth="129.0" text="Nom de votre espace :">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="52.0" layoutY="85.0" prefHeight="18.0" prefWidth="56.0" text="Type :">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="52.0" layoutY="46.0" prefHeight="18.0" prefWidth="78.0" text="Localisation :">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="52.0" layoutY="119.0" prefHeight="18.0" prefWidth="88.0" text="Description :">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="52.0" layoutY="157.0" prefHeight="18.0" prefWidth="70.0" text="Categorie :">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label fx:id="NomAf" layoutX="52.0" layoutY="29.0" prefHeight="18.0" prefWidth="266.0" />
+      <Label fx:id="LocAf" layoutX="52.0" layoutY="65.0" prefHeight="18.0" prefWidth="266.0" />
+      <Label fx:id="TypeAf" layoutX="52.0" layoutY="103.0" prefHeight="18.0" prefWidth="266.0" />
+      <Label fx:id="DescAf" layoutX="52.0" layoutY="138.0" prefHeight="18.0" prefWidth="266.0" />
+      <Label fx:id="CatAf" layoutX="52.0" layoutY="176.0" prefHeight="42.0" prefWidth="266.0" wrapText="true" />
+      <ImageView fitHeight="42.0" fitWidth="43.0" layoutX="502.0" layoutY="145.0" onMouseClicked="#showAllImages" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@view-more-512.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
+>>>>>>> Stashed changes

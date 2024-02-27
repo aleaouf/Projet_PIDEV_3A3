@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="480.0" prefWidth="720.0" stylesheets="@reponsesStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MesReponses">
+   <children>
+      <Label fx:id="labelTitre" layoutX="270.0" layoutY="36.0" text="Les reponses a votre reclamation :" />
+      <ListView fx:id="myList" editable="true" layoutX="81.0" layoutY="79.0" prefHeight="321.0" prefWidth="557.0" />
+   </children>
+</AnchorPane>
