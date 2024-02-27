@@ -36,11 +36,9 @@ public class Affichage {
 
 
 
-    @FXML
-    private TableColumn<Reclamation, Integer> Col_id;
 
     @FXML
-    private TableColumn<Reclamation, Integer> Col_idUser;
+    private TableColumn<Reclamation, String> Col_nomUser;
 
     @FXML
     private TableColumn<Reclamation, String> Col_type;
@@ -90,8 +88,7 @@ public class Affichage {
     @FXML
     void initialize() {
         assert Col_contenu != null : "fx:id=\"Col_contenu\" was not injected: check your FXML file 'affichage.fxml'.";
-        assert Col_id != null : "fx:id=\"Col_id\" was not injected: check your FXML file 'affichage.fxml'.";
-        assert Col_idUser != null : "fx:id=\"Col_idUser\" was not injected: check your FXML file 'affichage.fxml'.";
+        assert Col_nomUser != null : "fx:id=\"Col_nomUser\" was not injected: check your FXML file 'affichage.fxml'.";
         assert Col_type != null : "fx:id=\"Col_type\" was not injected: check your FXML file 'affichage.fxml'.";
         assert ReclamationsTable != null : "fx:id=\"ReclamationsTable\" was not injected: check your FXML file 'affichage.fxml'.";
         assert ajoutBtn != null : "fx:id=\"ajoutBtn\" was not injected: check your FXML file 'affichage.fxml'.";
@@ -102,8 +99,16 @@ public class Affichage {
     }
 
     public void showReclamations(){
-        Col_id.setCellValueFactory(new PropertyValueFactory<Reclamation,Integer>("id_reclamation"));
-        Col_idUser.setCellValueFactory(new PropertyValueFactory<Reclamation,Integer>("id_user"));
+
+
+        Col_nomUser.setCellValueFactory(cellData -> {
+            return new javafx.beans.value.ObservableValueBase<String>() {
+                @Override
+                public String getValue() {
+                    return "aziz";
+                }
+            };
+        });
         Col_type.setCellValueFactory(new PropertyValueFactory<Reclamation,String>("type"));
         Col_contenu.setCellValueFactory(new PropertyValueFactory<Reclamation,String>("contenu"));
 

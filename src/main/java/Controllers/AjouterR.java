@@ -38,6 +38,7 @@ public class AjouterR {
         assert reponse != null : "fx:id=\"reponse\" was not injected: check your FXML file 'ajouterR.fxml'.";
 
         idlabel.setText("0");
+        reponse.setWrapText(true);
     }
     public void setReponse(Reclamation R) {
 

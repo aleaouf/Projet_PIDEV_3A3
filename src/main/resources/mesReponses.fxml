@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="416.0" prefWidth="699.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MesReponses">
+<AnchorPane prefHeight="680.0" prefWidth="982.0" stylesheets="@reponsesStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MesReponses">
    <children>
-      <ListView fx:id="myList" editable="true" layoutX="71.0" layoutY="35.0" prefHeight="321.0" prefWidth="557.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2350d9" height="685.0" layoutX="-449.0" layoutY="-265.0" rotate="130.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1016.0" />
+      <Circle layoutX="34.0" layoutY="35.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
+      <Text fill="WHITE" layoutX="24.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Viragecom">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Text>
+      <Label fx:id="labelTitre" layoutX="256.0" layoutY="50.0" prefHeight="55.0" prefWidth="470.0" text="Les reponses a votre reclamation" />
+      <ListView fx:id="myList" editable="true" layoutX="42.0" layoutY="170.0" prefHeight="479.0" prefWidth="898.0" />
    </children>
 </AnchorPane>

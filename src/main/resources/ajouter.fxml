@@ -7,8 +7,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
 <AnchorPane prefHeight="488.0" prefWidth="659.0" stylesheets="@ajouterStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Ajouter">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2350d9" height="703.0" layoutX="-403.0" layoutY="-301.0" rotate="140.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1275.0" />
+      <Circle layoutX="34.0" layoutY="35.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
+      <Text fill="WHITE" layoutX="24.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Viragecom">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Text>
       <Label layoutX="234.0" layoutY="14.0" text="Reclamation sur">
          <font>
             <Font size="27.0" />

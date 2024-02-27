@@ -62,6 +62,7 @@ public class ModifierR {
         idLabel.setText(String.valueOf(R.getId_reponse()));
         id_Reclam.setText(String.valueOf(R.getId_reclamation()));
         Reponse.setText(String.valueOf(R.getContenu()));
+        Reponse.setWrapText(true);
     }
 
 
