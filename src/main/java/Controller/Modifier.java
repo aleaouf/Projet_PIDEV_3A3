@@ -77,7 +77,7 @@ public class Modifier {
     @FXML
     void initialize() {
         assert idType != null : "fx:id=\"idType\" was not injected: check your FXML file 'Modifier.fxml'.";
-        idType.getItems().addAll("Salon de thé","Restaurant","Resto Bar","Espace ouvert","Cafeteria","Terrain Foot","Salle de jeux");
+        idType.getItems().addAll("Salon de thé","Restaurant","Resto Bar","Espace ouvert","Cafeteria","Terrain Foot","Salle de jeux","Café Lounge");
     }
     @FXML
     void AfficherListe(ActionEvent event) {
@@ -139,8 +139,7 @@ public class Modifier {
             return;
         }
         Categorie categorie = new Categorie(Id_categorie,couvert, enfant, fumeur, service);
-        CategorieServices categorieService = new CategorieServices();
-        categorieService.updateEntity(categorie);
+
         // Mettre à jour les détails de l'espace partenaire
         espacePartenaireToUpdate.setNom(nom);
         espacePartenaireToUpdate.setLocalisation(localisation);
@@ -153,16 +152,29 @@ public class Modifier {
         if (!imagePaths.isEmpty()) {
             espacePartenaireToUpdate.setPhotos(imagePaths);
         }
-
+        if (nomTextField.getText().isEmpty() || localisationTextField.getText().isEmpty() || idType.getValue() == null || descriptionTextField.getText() == null || this.imagePaths == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Veuillez remplir tous les champs.");
+            alert.show();
+            return;
+        }
         // Appeler la méthode pour mettre à jour l'espace partenaire dans la base de données
+        CategorieServices categorieService = new CategorieServices();
         EspaceServices espaceServices = new EspaceServices();
-        espaceServices.updateEntity(espacePartenaireToUpdate);
+        try {
+            categorieService.updateEntity(categorie);
+            espaceServices.updateEntity(espacePartenaireToUpdate);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("l'esapce a ete modifier");
+            alert.show();
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText(e.getMessage());
+            alert.show();
+        }
 
         // Afficher un message de confirmation ou effectuer une action appropriée
         System.out.println("Espace partenaire modifié avec succès.");
-
-
-
 
         StageManager stageManager = StageManager.getInstance();
         stageManager.closeCurrentStage();

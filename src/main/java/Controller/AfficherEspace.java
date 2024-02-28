@@ -90,12 +90,18 @@ public class AfficherEspace {
     @FXML
     void Modifier(ActionEvent event) {
         EspacePartenaire espacePartenaire = listViewEspace.getSelectionModel().getSelectedItem();
-        if (espacePartenaire == null) {
-            System.out.println("Aucun espace sélectionné pour la modification.");
-            return;
+
+        try {
+            if (espacePartenaire == null){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Aucun espace sélectionné pour la modification.");
+                alert.show();}
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText(e.getMessage());
+            alert.show();
         }
-        StageManager stageManager = StageManager.getInstance();
-        stageManager.closeCurrentStage();
+
 
         // Pass the selected EspacePartenaire object to the Modifier controller
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Modifier.fxml"));
@@ -122,12 +128,17 @@ public class AfficherEspace {
 
             // Get the selected items from the ListView
         EspacePartenaire espacePartenaire = listViewEspace.getSelectionModel().getSelectedItem();
-
-        if (espacePartenaire == null) {
-
-            System.out.println("Aucune espace sélectionnée.");
-            return;
+        try {
+            if (espacePartenaire == null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Aucune espace sélectionnée.");
+            alert.show();}
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText(e.getMessage());
+            alert.show();
         }
+
         String req = "DELETE FROM Categorie WHERE id_categorie = ?";
         try {
             PreparedStatement ps = MyConnection.getInstance().getCnx().prepareStatement(req);
@@ -137,8 +148,18 @@ public class AfficherEspace {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        EspaceServices es = new EspaceServices();
-        es.deleteEntity(espacePartenaire);
+        try {
+            EspaceServices es = new EspaceServices();
+            es.deleteEntity(espacePartenaire);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("l'esapce a ete supprime");
+            alert.show();
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText(e.getMessage());
+            alert.show();
+        }
+
 
         AfficherEspace();
         }

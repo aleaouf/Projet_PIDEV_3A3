@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- XML declaration -->
+<!-- Import necessary JavaFX classes -->
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<!-- Root element: VBox -->
+
+<VBox prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.test">
+    <!-- Root VBox container -->
+
+    <!-- Children elements -->
+    <children>
+        <!-- Header HBox -->
+
+        <HBox alignment="CENTER" prefHeight="86.0" prefWidth="1000.0">
+
+            <!-- Header Label -->
+            <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Découvrir nôtres espaces partenaires">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+        </HBox>
+
+        <!-- Container for partner area boxes -->
+        <VBox fx:id="partnerAreaContainer" spacing="10">
+            <!-- Partner Area boxes will be added dynamically here -->
+        </VBox>
+    </children>
+</VBox>

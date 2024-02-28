@@ -8,6 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import java.lang.String;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,6 +24,8 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.MyConnection;
@@ -30,6 +33,9 @@ import utils.MyConnection;
 public class SpaceView {
     @FXML
     private ImageView imageView;
+
+    @FXML
+    private VBox container;
 
     @FXML
     private ResourceBundle resources;
@@ -85,39 +91,45 @@ public class SpaceView {
             // Create a new stage to display all images
             Stage stage = new Stage();
 
-            // Create a VBox to hold the images
-            VBox vbox = new VBox();
-            vbox.setAlignment(Pos.CENTER_LEFT);
-            vbox.setSpacing(10);
+            // Create an HBox to hold the images in a single row
+            HBox hbox = new HBox();
+            hbox.setAlignment(Pos.CENTER);
+            hbox.setSpacing(10);
 
-            // Iterate through the list of image URLs and create an ImageView for each image
-            for (String imageUrl : selectedEspace.getPhotos()) {
-                try {
-                    // Trim any leading or trailing whitespaces
-                    String trimmedImageUrl = imageUrl.trim();
-                    // Create a File object from the image URL
-                    File imageFile = new File(trimmedImageUrl);
-                    if (!imageFile.exists()) {
-                        System.err.println("File does not exist: " + trimmedImageUrl);
-                        continue; // Skip this iteration if the file does not exist
+            // Iterate through the list of concatenated image URLs
+            for (String concatenatedUrls : selectedEspace.getPhotos()) {
+                // Split the concatenated image URLs into individual URLs
+                String[] imageUrls = concatenatedUrls.split(",\\s*"); // split by comma with optional spaces
+
+                // Iterate through the array of image URLs
+                for (String imageUrl : imageUrls) {
+                    try {
+                        // Trim any leading or trailing whitespaces
+                        String trimmedImageUrl = imageUrl.trim();
+                        // Create a File object from the image URL
+                        File imageFile = new File(trimmedImageUrl);
+                        if (!imageFile.exists()) {
+                            System.err.println("File does not exist: " + trimmedImageUrl);
+                            continue; // Skip this iteration if the file does not exist
+                        }
+                        // Create an Image object using the file path
+                        Image image = new Image(imageFile.toURI().toString());
+                        // Create an ImageView with the Image object
+                        ImageView imageView = new ImageView(image);
+                        // Set the fit width and height to control the size of the image
+                        imageView.setFitWidth(400);
+                        imageView.setFitHeight(400);
+                        // Add the ImageView to the HBox
+                        hbox.getChildren().add(imageView);
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                    // Create an Image object using the file path
-                    Image image = new Image(imageFile.toURI().toString());
-                    // Create an ImageView with the Image object
-                    ImageView imageView = new ImageView(image);
-                    // Set the fit width and height to control the size of the image
-                    imageView.setFitWidth(400);
-                    imageView.setFitHeight(400);
-                    // Add the ImageView to the VBox
-                    vbox.getChildren().add(imageView);
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
             }
 
             // Create a scroll pane to scroll through the images if there are too many
             ScrollPane scrollPane = new ScrollPane();
-            scrollPane.setContent(vbox);
+            scrollPane.setContent(hbox);
             scrollPane.setFitToWidth(true);
 
             // Create a scene and set it on the stage
@@ -132,6 +144,8 @@ public class SpaceView {
         }
     }
 
+
+
     private void displayImage(String imageUrl) {
         try {
             // Split the file paths using the comma as the delimiter
@@ -144,10 +158,20 @@ public class SpaceView {
             // Create an Image object using the first file path
             Image image = new Image(new FileInputStream(firstImagePath));
 
-            // Set the image to the class-level imageView
-            imageView.setImage(image);
-            imageView.setFitWidth(300); // Set width of ImageView
+            // Create a new ImageView
+            ImageView imageView = new ImageView(image);
+            imageView.setFitWidth(280); // Set width of ImageView
             imageView.setPreserveRatio(true); // Preserve aspect ratio
+
+            // Create a StackPane to center the ImageView
+            StackPane stackPane = new StackPane();
+            stackPane.getChildren().add(imageView);
+            stackPane.setAlignment(Pos.TOP_CENTER);
+
+            // Display the image
+            // Assuming you have a container to hold the StackPane, like a VBox or an HBox
+            container.getChildren().add(stackPane); // Replace 'container' with your actual container
+
         } catch (Exception e) {
             System.err.println("Error loading image: " + e.getMessage());
             e.printStackTrace();

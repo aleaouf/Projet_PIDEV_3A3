@@ -99,6 +99,12 @@ public class Espace {
         boolean service = idService.isSelected();
         Categorie categorie = new Categorie(couvert, enfant, fumeur, service);
         CategorieServices categorieService = new CategorieServices();
+        if (nomTextField.getText().isEmpty() || localisationTextField.getText().isEmpty() || idType.getValue() == null || descriptionTextField.getText() == null || this.imagePaths == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Veuillez remplir tous les champs.");
+            alert.show();
+            return;
+        }
         EspacePartenaire espacePartenaire = new EspacePartenaire(nomTextField.getText(), localisationTextField.getText(), idType.getValue(), descriptionTextField.getText(), this.imagePaths);
         EspaceServices espaceService = new EspaceServices();
             try {
@@ -131,7 +137,7 @@ public class Espace {
     @FXML
     void initialize() {
         assert idType != null : "fx:id=\"idType\" was not injected: check your FXML file 'Espace.fxml'.";
-        idType.getItems().addAll("Salon de thé", "Restaurant", "Resto Bar", "Espace ouvert", "Cafeteria", "Terrain Foot", "Salle de jeux");
+        idType.getItems().addAll("Salon de thé", "Restaurant", "Resto Bar", "Espace ouvert", "Cafeteria", "Terrain Foot", "Salle de jeux","Café Lounge");
 
     }
 
