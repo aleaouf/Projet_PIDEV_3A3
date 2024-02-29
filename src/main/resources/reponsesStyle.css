@@ -71,6 +71,7 @@
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 10,0,0,8 ); /* Enhance shadow on hover */
     -fx-rotate: 2deg; /* Rotate slightly on hover */
 }
+<<<<<<< Updated upstream
 #labelTitre{
     -fx-font-family: "Roboto"; /* Font family */
     -fx-font-size: 32px; /* Font size */
@@ -83,6 +84,16 @@
     -fx-text-transform: uppercase; /* Convert text to uppercase */
     -fx-letter-spacing: 1px; /* Letter spacing */
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.1) , 1,1,1,1 ); /* Text shadow */
+=======
+#labelTitre {
+    -fx-font-size: 28px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff; /* Text color */
+    -fx-background-color: #2f46c7; /* Background color */
+    -fx-padding: 10px 16px; /* Padding around the text */
+    -fx-background-radius: 5px; /* Background radius */
+>>>>>>> Stashed changes
 }
 
 

@@ -1,5 +1,6 @@
 
 #labelType {
+<<<<<<< Updated upstream
     -fx-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Font family */
     -fx-font-size: 16px; /* Font size */
     -fx-font-weight: bold; /* Font weight */
@@ -7,13 +8,20 @@
     -fx-padding: 8px 12px; /* Padding */
     -fx-background-radius: 4px; /* Border radius */
     -fx-border-color: #333333; /* Border color */
+=======
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 18px;
+    -fx-text-fill: #ffffff; /* Text color */
+    -fx-padding: 8px 12px; /* Padding around the text */
+    -fx-background-color: transparent; /* Transparent background */
+>>>>>>> Stashed changes
     -fx-border-width: 1px; /* Border width */
-    -fx-cursor: pointer; /* Cursor style */
-    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 3,0,0,2 ); /* Drop shadow effect */
-    -fx-transition: background-color 0.3s, -fx-translate-y 0.3s; /* Transition effect */
+    -fx-border-color: #ffffff; /* Border color */
+    -fx-border-radius: 5px; /* Rounded corners */
 
 }
 #labelContenu {
+<<<<<<< Updated upstream
     -fx-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Font family */
     -fx-font-size: 16px; /* Font size */
     -fx-font-weight: bold; /* Font weight */
@@ -21,18 +29,33 @@
     -fx-padding: 8px 12px; /* Padding */
     -fx-background-radius: 4px; /* Border radius */
     -fx-border-color: #333333; /* Border color */
+=======
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 18px;
+    -fx-text-fill: #ffffff; /* Text color */
+    -fx-padding: 8px 12px; /* Padding around the text */
+    -fx-background-color: transparent; /* Transparent background */
+>>>>>>> Stashed changes
     -fx-border-width: 1px; /* Border width */
-    -fx-cursor: pointer; /* Cursor style */
-    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 3,0,0,2 ); /* Drop shadow effect */
-    -fx-transition: background-color 0.3s, -fx-translate-y 0.3s; /* Transition effect */
-
-
-
+    -fx-border-color: #ffffff; /* Border color */
+    -fx-border-radius: 5px; /* Rounded corners */
+}
+#labelTitre {
+    -fx-font-size: 28px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff; /* Text color */
+    -fx-background-color: #2f46c7; /* Background color */
+    -fx-padding: 10px 16px; /* Padding around the text */
+    -fx-background-radius: 5px; /* Background radius */
 }
 /* Style for the ListView */
 .list-view {
-    -fx-background-color: #f0f2f5; /* Background color */
+    -fx-background-color: #fff; /* Background color */
     -fx-padding: 20px; /* Padding around the ListView */
+    -fx-border-color: #fff; /* Border color */
+    -fx-border-width: 1px; /* Border width */
+    -fx-border-radius: 6px; /* Border radius */
 }
 
 /* Style for the ListCell */
@@ -88,7 +111,7 @@
     -fx-padding: 10px 18px; /* Padding */
     -fx-background-radius: 20px; /* Border radius */
     -fx-cursor: pointer; /* Cursor style */
-    -fx-effect: dropshadow( gaussian , rgb(77, 119, 154), 10,0,0,8 ); /* Drop shadow effect */
+    -fx-effect: dropshadow( gaussian , rgb(3, 25, 42), 10,0,0,8 ); /* Drop shadow effect */
     -fx-transition: background-color 0.3s, -fx-translate-y 0.3s, -fx-scale-x 0.3s, -fx-scale-y 0.3s, -fx-rotate 0.3s; /* Transition effect */
 }
 

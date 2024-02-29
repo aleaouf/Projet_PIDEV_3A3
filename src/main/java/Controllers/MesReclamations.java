@@ -21,6 +21,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -188,84 +190,81 @@ public class MesReclamations {
             ListeR=getAllData(id_user);
             myListView.setItems(ListeR);
             myListView.setCellFactory(param -> new ListCell<Reclamation>() {
+                private final Button button = new Button("-> Montrer les réponses");
 
-                private final Button button = new Button("-> Montrer les reponses sur reclamation");
                 private final HBox hbox = new HBox();
 
                 {
+<<<<<<< Updated upstream
                     hbox.setSpacing(16); // Set spacing between attributes
+=======
+                    hbox.setSpacing(8); // Set horizontal spacing between attributes
+>>>>>>> Stashed changes
                 }
-
 
                 @Override
                 protected void updateItem(Reclamation rec, boolean empty) {
                     super.updateItem(rec, empty);
 
-
-                    if (rec == null || empty) {
+                    if (empty || rec == null) {
                         setText(null);
                         setGraphic(null);
-
                     } else {
-                        List<Reponse> listeReponses = rs.getAllDataId(rec.getId_reclamation());
+                        Label t = new Label(rec.getType());
+                        TextArea c = new TextArea(rec.getContenu());
+                        c.setFocusTraversable(false);
+                        c.setWrapText(true);
+                        c.setEditable(false);
+                        t.setStyle("-fx-padding: 10px;");
+                        c.setStyle("-fx-padding: 10px;");
 
-                        if (!listeReponses.isEmpty()) {
-                            Label t = new Label(rec.getType());
-                            TextArea c = new TextArea(rec.getContenu());
+                        hbox.getChildren().clear(); // Clear existing content
 
-                            c.setLayoutX(50);
-                            c.setFocusTraversable(false);
-                            c.setWrapText(true);
-                            c.setEditable(false);
-                            t.setStyle("-fx-padding: 10px;");
-                            c.setStyle("-fx-padding: 10px;");
+                        // Add type label
+                        hbox.getChildren().add(t);
 
+                        // Add region for flexible spacing
+                        Region region = new Region();
+                        HBox.setHgrow(region, Priority.ALWAYS); // Allow region to grow horizontally
+                        hbox.getChildren().add(region);
 
+                        // Add contenu text area
+                        hbox.getChildren().add(c);
+
+                        // Check for responses and add button if present
+                        if (!rs.getAllDataId(rec.getId_reclamation()).isEmpty()) {
+                            button.setVisible(true);
                             button.setStyle("-fx-padding: 10px;");
-
-                            HBox hbox = new HBox(t, c, button);
-                            HBox.setHgrow(button, javafx.scene.layout.Priority.ALWAYS);
-                            button.setAlignment(javafx.geometry.Pos.CENTER_RIGHT);
-                            hbox.setSpacing(25);
-
-                            setGraphic(hbox);
+                            hbox.getChildren().add(button);
 
                             button.setOnAction(event -> {
-                                FXMLLoader loader= new FXMLLoader(getClass().getResource("/mesReponses.fxml"));
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/mesReponses.fxml"));
                                 try {
                                     Parent root = loader.load();
                                     MesReponses repControl = loader.getController();
-                                    repControl.setReponses(myListView.getItems().get(getIndex()).getId_reclamation());
+                                    repControl.setReponses(rec.getId_reclamation());
                                     Stage stage = new Stage();
-                                    Scene scene = new Scene(root);
-                                    stage.setScene(scene);
+                                    stage.setScene(new Scene(root));
                                     stage.showAndWait();
-
-
                                 } catch (IOException e) {
-                                    throw new RuntimeException(e);
+                                    e.printStackTrace();
                                 }
-
                             });
                         }
                         else {
-                            Label t = new Label(rec.getType());
-                            TextArea c = new TextArea(rec.getContenu());
-                            c.setLayoutX(100);
-                            c.setFocusTraversable(false);
-                            c.setWrapText(true);
-                            c.setEditable(false);
-                            t.setStyle("-fx-padding: 10px;");
-                            c.setStyle("-fx-padding: 10px;");
-
-                            HBox hbox = new HBox(t, c);
-                            hbox.setSpacing(25);
-                            setGraphic(hbox);
+                            button.setStyle("-fx-padding: 10px;");
+                            hbox.getChildren().add(button);
+                            button.setVisible(false);
                         }
+
+                        setGraphic(hbox);
                     }
                 }
-
             });
+
+
+
+
 
             myListView.setFixedCellSize(150);
         } catch (SQLException e) {

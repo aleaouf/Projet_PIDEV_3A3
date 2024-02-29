@@ -6,43 +6,53 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="536.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Modifier">
+<AnchorPane prefHeight="750.0" prefWidth="752.0" stylesheets="@modifierStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Modifier">
    <children>
-      <Label layoutX="194.0" layoutY="14.0" text="Modifier Reclamation">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2350d9" height="703.0" layoutX="-553.0" layoutY="-243.0" rotate="110.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1275.0" />
+      <Circle layoutX="34.0" layoutY="35.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
+      <Text fill="WHITE" layoutX="24.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Viragecom">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Text>
+      <Label fx:id="labelTitre" layoutX="267.0" layoutY="35.0" text="Modifier Reclamation">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
-      <Label layoutX="99.0" layoutY="108.0" text="id_user">
+      <Label fx:id="labelAtt" layoutX="182.0" layoutY="202.0" text="id_user">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="106.0" layoutY="180.0" text="Type">
+      <Label fx:id="labelAtt" layoutX="182.0" layoutY="316.0" text="Type">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="103.0" layoutY="251.0" text="Reclamation:">
+      <Label fx:id="labelAtt" layoutX="180.0" layoutY="437.0" text="Reclamation:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="id_user" layoutX="98.0" layoutY="141.0" />
-      <TextArea fx:id="reclamation" layoutX="98.0" layoutY="281.0" prefHeight="159.0" prefWidth="468.0" />
-      <ChoiceBox fx:id="type" layoutX="98.0" layoutY="216.0" prefWidth="150.0" />
-      <Button fx:id="modBtn" layoutX="252.0" layoutY="466.0" mnemonicParsing="false" onAction="#onClickModifier" prefHeight="30.0" prefWidth="101.0" text="Modifier">
+      <TextField fx:id="id_user" layoutX="182.0" layoutY="253.0" />
+      <TextArea fx:id="reclamation" layoutX="182.0" layoutY="491.0" prefHeight="159.0" prefWidth="468.0" />
+      <ChoiceBox fx:id="type" layoutX="182.0" layoutY="362.0" prefWidth="150.0" />
+      <Button fx:id="modBtn" layoutX="365.0" layoutY="687.0" mnemonicParsing="false" onAction="#onClickModifier" prefHeight="54.0" prefWidth="121.0" text="Modifier">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label layoutX="99.0" layoutY="63.0" text="id">
+      <Label fx:id="labelAtt" layoutX="182.0" layoutY="131.0" text="id">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="idLabel" layoutX="136.0" layoutY="65.0" />
+      <Label fx:id="idLabel" layoutX="233.0" layoutY="131.0" prefHeight="18.0" prefWidth="12.0" />
    </children>
 </AnchorPane>

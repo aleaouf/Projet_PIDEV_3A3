@@ -18,6 +18,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+<<<<<<< Updated upstream
+=======
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
+>>>>>>> Stashed changes
 import javafx.stage.Stage;
 import utils.MyConnection;
 
@@ -64,7 +69,11 @@ public class MesReponses {
             private final HBox hbox = new HBox();
 
             {
+<<<<<<< Updated upstream
                 hbox.setSpacing(16); // Set spacing between attributes
+=======
+                hbox.setSpacing(10); // Set horizontal spacing between attributes
+>>>>>>> Stashed changes
             }
 
 
@@ -80,16 +89,38 @@ public class MesReponses {
                 } else {
                     Label t = new Label(String.valueOf(rep.getId_reclamation()));
                     TextArea c = new TextArea(rep.getContenu());
+<<<<<<< Updated upstream
                     c.setLayoutX(100);
+=======
+
+>>>>>>> Stashed changes
                     c.setFocusTraversable(false);
                     c.setWrapText(true);
                     c.setEditable(false);
                     t.setStyle("-fx-padding: 10px;");
                     c.setStyle("-fx-padding: 10px;");
 
+<<<<<<< Updated upstream
                     HBox hbox = new HBox(t, c);
                     hbox.setSpacing(25);
                     setGraphic(hbox);
+=======
+                    hbox.getChildren().clear(); // Clear existing content
+
+                    // Add type label
+                    hbox.getChildren().add(t);
+
+                    // Add region for flexible spacing
+                    Region region = new Region();
+                    HBox.setHgrow(region, Priority.ALWAYS); // Allow region to grow horizontally
+                    hbox.getChildren().add(region);
+
+                    // Add contenu text area
+                    hbox.getChildren().add(c);
+                    setGraphic(hbox);
+
+
+>>>>>>> Stashed changes
                 }
 
 
