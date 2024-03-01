@@ -5,15 +5,14 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="794.0" prefWidth="1000.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Espace">
+<AnchorPane prefHeight="794.0" prefWidth="1211.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Espace">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2350d9" height="844.0" layoutX="-429.0" layoutY="-363.0" rotate="140.0" stroke="BLACK" strokeType="INSIDE" width="1300.0" />
       <Circle layoutX="65.0" layoutY="48.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
@@ -38,14 +37,9 @@
          </font></RadioButton>
       <ChoiceBox fx:id="idType" layoutX="93.0" layoutY="214.0" prefWidth="150.0" />
       <Button fx:id="uploadImgBtn" layoutX="93.0" layoutY="404.0" mnemonicParsing="false" onAction="#onUploadButtonClick" prefHeight="25.0" prefWidth="150.0" text="upload" />
-      <ImageView fx:id="imageloc" fitHeight="269.0" fitWidth="460.0" layoutX="440.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../Desktop/map.png" />
-         </image>
-      </ImageView>
       <Button fx:id="AfficherBtn" layoutX="62.0" layoutY="680.0" mnemonicParsing="false" onAction="#AfficherListe" text="Consevoir votre liste d'espace" />
       <TextArea fx:id="descriptionTextField" layoutX="91.0" layoutY="274.0" prefHeight="102.0" prefWidth="334.0" wrapText="true" />
-      <TextArea fx:id="imageLinksLabel" layoutX="92.0" layoutY="453.0" prefHeight="62.0" prefWidth="798.0" wrapText="true">
+      <TextArea fx:id="imageLinksLabel" layoutX="92.0" layoutY="453.0" prefHeight="62.0" prefWidth="396.0" wrapText="true">
          <font>
             <Font size="10.0" />
          </font>
@@ -90,5 +84,6 @@
             <Font size="17.0" />
          </font>
       </Text>
+      <WebView fx:id="mapView" layoutX="502.0" layoutY="86.0" prefHeight="458.0" prefWidth="743.0" />
    </children>
 </AnchorPane>

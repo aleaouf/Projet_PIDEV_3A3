@@ -1,7 +1,10 @@
 
 
 package Controller;
-
+import javafx.concurrent.Worker;
+import javafx.fxml.FXML;
+         import javafx.scene.web.WebEngine;
+         import javafx.scene.web.WebView;
         import java.io.File;
         import java.io.IOException;
         import java.net.URL;
@@ -25,6 +28,7 @@ package Controller;
         import services.CategorieServices;
         import services.EspaceServices;
         import javafx.scene.control.Label;
+        import org.openstreetmap.gui.jmapviewer.*;
 
         import javax.swing.text.html.ImageView;
 
@@ -72,6 +76,9 @@ public class Espace {
     private TextArea imageLinksLabel; // Assuming you have a Label in your FXML file to display the image links
 
     private List<String> imagePaths = new ArrayList<>(); // List to store paths of selected images
+
+    @FXML
+    private WebView mapView;
 
     @FXML
     private void onUploadButtonClick(ActionEvent event) {
@@ -138,8 +145,49 @@ public class Espace {
     void initialize() {
         assert idType != null : "fx:id=\"idType\" was not injected: check your FXML file 'Espace.fxml'.";
         idType.getItems().addAll("Salon de thé", "Restaurant", "Resto Bar", "Espace ouvert", "Cafeteria", "Terrain Foot", "Salle de jeux","Café Lounge");
+        WebEngine webEngine = mapView.getEngine();
+        webEngine.setJavaScriptEnabled(true);
+        String htmlFilePath = getClass().getResource("/map.html").toExternalForm();
+        System.out.println(htmlFilePath);
+        webEngine.load(htmlFilePath);
+      /*   webEngine.load("https://www.google.com");
+        webEngine.getLoadWorker().stateProperty().addListener((observable, oldState, newState) -> {
+            if (newState == Worker.State.FAILED) {
+                System.out.println("Failed to load webpage: " + webEngine.getLocation());
+                // Handle the connection error here
+            }
+        });
 
+       webEngine.loadContent("<!DOCTYPE html>" +
+                "<html lang='en'>" +
+                "<head>" +
+                "<meta charset='UTF-8'>" +
+                "<meta name='viewport' content='width=device-width, initial-scale=1.0'>" +
+                "<title>OpenStreetMap</title>" +
+                "<script src='https://cdn.jsdelivr.net/npm/ol@6.5.0/dist/ol.js'></script>" +
+                "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/ol@6.5.0/dist/ol.css' type='text/css'>" +
+                "</head>" +
+                "<body>" +
+                "<div id='map' class='map'></div>" +
+                "<script>" +
+                "var map = new ol.Map({" +
+                "  target: 'map'," +
+                "  layers: [" +
+                "    new ol.layer.Tile({" +
+                "      source: new ol.source.OSM()" +
+                "    })" +
+                "  ]," +
+                "  view: new ol.View({" +
+                "    center: ol.proj.fromLonLat([0, 0])," +
+                "    zoom: 2" +
+                "  })" +
+                "});" +
+                "</script>" +
+                "</body>" +
+                "</html>");*/
     }
+
+
 
     @FXML
     void AfficherListe(ActionEvent event)

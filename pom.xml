@@ -29,9 +29,31 @@
             <artifactId>javafx-controls</artifactId>
             <version>21.0.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.openstreetmap.josm</groupId>
+            <artifactId>josm</artifactId>
+            <version>latest_version</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/josm-latest.jar</systemPath>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jxmapviewer/jxmapviewer2 -->
+        <dependency>
+            <groupId>org.jxmapviewer</groupId>
+            <artifactId>jxmapviewer2</artifactId>
+            <version>2.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>21.0.2</version> <!-- Replace with your JavaFX version -->
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-web</artifactId>
+            <version>21.0.2</version> <!-- Replace with your JavaFX version -->
+        </dependency>
 
     </dependencies>
-
     <build>
         <plugins>
             <plugin>

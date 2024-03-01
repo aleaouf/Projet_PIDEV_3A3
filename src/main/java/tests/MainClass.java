@@ -10,6 +10,7 @@ import services.CategorieServices;
 public class MainClass {
 
     public static void main(String[] args) {
+
         List<String> photos = new ArrayList<>();
         photos.add("url1");
         photos.add("url2");

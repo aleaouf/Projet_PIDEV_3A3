@@ -18,6 +18,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import utils.MyConnection;
 
@@ -35,16 +37,23 @@ public class test {
 
     @FXML
     private VBox partnerAreaContainer;
+    @FXML
+    private WebView webView;
 
     public void initialize() throws FileNotFoundException {
-        ObservableList<EspacePartenaire> partnerAreas = getEspace();
+       // ObservableList<EspacePartenaire> partnerAreas = getEspace();
 
         // Display partner areas
-        displayPartnerAreas(partnerAreas);
+       // displayPartnerAreas(partnerAreas);
+        String htmlFilePath = getClass().getResource("/map.html").toExternalForm();
+        System.out.println(htmlFilePath);
+        WebEngine webEngine = webView.getEngine();
+     webEngine.load(htmlFilePath);
     }
 
+
     // Method to display partner areas in a scrollable grid
-    private void displayPartnerAreas(List<EspacePartenaire> partnerAreas) {
+   /* private void displayPartnerAreas(List<EspacePartenaire> partnerAreas) {
         // Create a GridPane to display partner areas in a grid layout
         GridPane gridPane = new GridPane();
         gridPane.setHgap(20);
@@ -202,5 +211,5 @@ public class test {
             System.out.println(e.getMessage());
         }
         return data;
-    }
+    }*/
 }

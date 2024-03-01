@@ -17,7 +17,7 @@ public class Main extends Application {
             StageManager stageManager = StageManager.getInstance();
             stageManager.setPrimaryStage(primaryStage);
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherClient.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/espace.fxml"));
             Parent root = loader.load();
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
@@ -27,6 +27,8 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+
+
         launch(args);
     }
 
