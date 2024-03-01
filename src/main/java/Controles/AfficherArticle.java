@@ -89,6 +89,7 @@ public class AfficherArticle implements Initializable {
 
     private List<String> imagePaths = new ArrayList<>();
 
+    //image
     @FXML
     private void onUploadButtonClick(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
