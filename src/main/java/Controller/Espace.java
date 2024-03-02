@@ -150,41 +150,7 @@ public class Espace {
         String htmlFilePath = getClass().getResource("/map.html").toExternalForm();
         System.out.println(htmlFilePath);
         webEngine.load(htmlFilePath);
-      /*   webEngine.load("https://www.google.com");
-        webEngine.getLoadWorker().stateProperty().addListener((observable, oldState, newState) -> {
-            if (newState == Worker.State.FAILED) {
-                System.out.println("Failed to load webpage: " + webEngine.getLocation());
-                // Handle the connection error here
-            }
-        });
 
-       webEngine.loadContent("<!DOCTYPE html>" +
-                "<html lang='en'>" +
-                "<head>" +
-                "<meta charset='UTF-8'>" +
-                "<meta name='viewport' content='width=device-width, initial-scale=1.0'>" +
-                "<title>OpenStreetMap</title>" +
-                "<script src='https://cdn.jsdelivr.net/npm/ol@6.5.0/dist/ol.js'></script>" +
-                "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/ol@6.5.0/dist/ol.css' type='text/css'>" +
-                "</head>" +
-                "<body>" +
-                "<div id='map' class='map'></div>" +
-                "<script>" +
-                "var map = new ol.Map({" +
-                "  target: 'map'," +
-                "  layers: [" +
-                "    new ol.layer.Tile({" +
-                "      source: new ol.source.OSM()" +
-                "    })" +
-                "  ]," +
-                "  view: new ol.View({" +
-                "    center: ol.proj.fromLonLat([0, 0])," +
-                "    zoom: 2" +
-                "  })" +
-                "});" +
-                "</script>" +
-                "</body>" +
-                "</html>");*/
     }
 
 
