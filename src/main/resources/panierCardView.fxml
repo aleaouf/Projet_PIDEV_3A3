@@ -31,5 +31,6 @@
                </image>
             </ImageView>
          </graphic></Button>
+      <Button layoutX="492.0" layoutY="62.0" mnemonicParsing="false" onAction="#changeCurrency" text="price in dollar &quot;$&quot;" />
    </children>
 </AnchorPane>

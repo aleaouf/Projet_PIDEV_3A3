@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -35,6 +36,10 @@ import java.util.stream.Collectors;
 import entities.Panier;
 import services.PanierServices;
 import javafx.scene.control.Alert;
+
+
+import java.io.IOException;
+
 public class Marketplace implements Initializable {
     @FXML
     private VBox articlesVBox;
@@ -54,6 +59,9 @@ public class Marketplace implements Initializable {
     private Articles currentArticle;
     @FXML
     private Text sommePrixText;
+    @FXML
+    private Text sommePrixText1;
+
 
 
     @Override
@@ -112,7 +120,7 @@ public class Marketplace implements Initializable {
             showArticles(articles);
     }
     @FXML
-    public void panierBtnClicked(MouseEvent event){
+    /*public void panierBtnClicked(MouseEvent event){
         panierVBox.getChildren().clear();
         PanierServices panierServices = new PanierServices();
         List<Panier> paniers = panierServices.getPanierByUser(1);
@@ -139,4 +147,72 @@ public class Marketplace implements Initializable {
 
 
     }
+    @FXML
+    public void panierBtnClicked1(MouseEvent event){
+        panierVBox.getChildren().clear();
+        PanierServices panierServices = new PanierServices();
+        List<Panier> paniers = panierServices.getPanierByUser(1);
+
+        // Calculer la somme des prix
+        int sommePrix = panierServices.calculerSommePrixArticlesDansPanier(1);
+
+        // Appliquer la remise de 10% si le nombre d'articles dans le panier est supérieur à 2
+        if (paniers.size() > 2) {
+            sommePrix *= 0.9; // Appliquer une remise de 10%
+        }
+
+        // Afficher la somme des prix dans le panier
+        sommePrixText1.setText("La somme des prix dans le panier après remise est " + sommePrix + " TND");
+
+        // Afficher les articles dans le panier
+        for(Panier p : paniers){
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/panierCardView.fxml"));
+                Parent root = fxmlLoader.load();
+                PanierCardViewController controller = fxmlLoader.getController();
+                controller.setData(p,this);
+                panierVBox.getChildren().add(root);
+            } catch (IOException e){
+                System.out.println(e.getMessage());
+            }
+        }
+        panierContainer.setVisible(true);
+    }*/
+
+
+    public void panierBtnClicked(MouseEvent event){
+        panierVBox.getChildren().clear();
+        PanierServices panierServices = new PanierServices();
+        List<Panier> paniers = panierServices.getPanierByUser(1);
+
+        // Calculer la somme des prix avant remise
+        int sommePrixAvantRemise = panierServices.calculerSommePrixArticlesDansPanier(1);
+
+        // Appliquer la remise de 10% si le nombre d'articles dans le panier est supérieur à 2
+        int sommePrixApresRemise = sommePrixAvantRemise;
+        if (paniers.size() > 2) {
+            sommePrixApresRemise *= 0.9; // Appliquer une remise de 10%
+        }
+
+        // Afficher la somme des prix dans le panier avant et après remise
+        sommePrixText.setText("La somme des prix dans le panier avant remise est " + sommePrixAvantRemise + " TND");
+        sommePrixText1.setText("La somme des prix dans le panier après remise est " + sommePrixApresRemise + " TND");
+
+        // Afficher les articles dans le panier
+        for(Panier p : paniers){
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/panierCardView.fxml"));
+                Parent root = fxmlLoader.load();
+                PanierCardViewController controller = fxmlLoader.getController();
+                controller.setData(p,this);
+                panierVBox.getChildren().add(root);
+            } catch (IOException e){
+                System.out.println(e.getMessage());
+            }
+        }
+        panierContainer.setVisible(true);
+    }
+
 }

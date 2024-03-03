@@ -92,7 +92,16 @@
                </content>
             </ScrollPane>
             <Button layoutX="1173.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#goBack" prefHeight="35.0" prefWidth="62.0" styleClass="article-btn" stylesheets="@style.css" text="Retour" />
-            <Text fx:id="sommePrixText" layoutX="531.0" layoutY="627.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="nom-produit" text="125 TND" wrappingWidth="459.73675537109375" />
+            <Text fx:id="sommePrixText" layoutX="546.0" layoutY="598.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="nom-produit" text="125 TND" wrappingWidth="459.73675537109375">
+               <font>
+                  <Font name="System Bold" size="80.0" />
+               </font>
+            </Text>
+            <Text fx:id="sommePrixText1" layoutX="546.0" layoutY="659.0" strokeType="OUTSIDE" strokeWidth="0.0" text="130 TND" wrappingWidth="487.2033309936524">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
       <Circle layoutX="73.0" layoutY="38.0" radius="34.0" stroke="TRANSPARENT" strokeType="INSIDE" />
