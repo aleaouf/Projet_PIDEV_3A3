@@ -103,7 +103,51 @@ public class PanierServices implements Iservices<Panier> {
         return paniers;
     }
 
-}
+
+        public int calculerSommePrixArticlesDansPanier(int idUtilisateur) {
+            int sommePrix = 0;
+
+            // Récupérer tous les articles dans le panier de l'utilisateur spécifié
+            List<Panier> panierUtilisateur = getPanierByUser(idUtilisateur);
+
+            // Parcourir chaque élément du panier
+            for (Panier panier : panierUtilisateur) {
+                // Récupérer l'article correspondant à l'élément du panier
+                Articles article = getArticleById(panier.getId_article());
+
+                // Ajouter le prix de l'article à la somme totale
+                sommePrix += article.getPrix();
+            }
+
+            return sommePrix;
+        }
+
+        // Méthode pour récupérer un article par son ID
+        public Articles getArticleById(int idArticle) {
+            String requete = "SELECT * FROM Articles WHERE id = ?";
+            try {
+                PreparedStatement stm = myconnection.getInstance().getCnx().prepareStatement(requete);
+                stm.setInt(1, idArticle);
+                ResultSet rs = stm.executeQuery();
+                if (rs.next()) {
+                    // Créer un objet Articles à partir des données récupérées
+                    return new Articles(
+                            rs.getInt("id"),
+                            rs.getString("nom"),
+                            rs.getString("description"),
+                            rs.getInt("prix"),
+                            rs.getInt("contact"),
+                            rs.getString("image"),
+                            rs.getInt("quantite")
+                    );
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+            return null; // Retourner null si l'article n'est pas trouvé
+        }
+    }
+
 
 
 

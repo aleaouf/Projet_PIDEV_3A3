@@ -6,10 +6,20 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="666.0" prefWidth="985.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controles.AfficherArticle">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2350d9" height="687.0" layoutX="-373.0" layoutY="-352.0" rotate="140.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1280.0" />
+      <Circle layoutX="83.0" layoutY="48.0" radius="34.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Text fx:id="nomProduit1" fill="WHITE" layoutX="74.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="logo-title" text="Viragecom" wrappingWidth="214.40340423583984">
+         <font>
+            <Font name="System Bold Italic" size="33.0" />
+         </font>
+      </Text>
        <TextField fx:id="Nomfield" layoutX="35.0" layoutY="174.0" prefHeight="26.0" prefWidth="197.0" />
        <TextField fx:id="Descriptionfield" layoutX="35.0" layoutY="258.0" prefHeight="26.0" prefWidth="197.0" />
        <TextField fx:id="Prixfield" layoutX="34.0" layoutY="334.0" prefHeight="26.0" prefWidth="197.0" />
@@ -45,9 +55,9 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <Label layoutX="369.0" layoutY="14.0" text="Articles">
+      <Label layoutX="465.0" layoutY="14.0" text="Articles">
          <font>
-            <Font size="64.0" />
+            <Font name="System Bold" size="64.0" />
          </font>
       </Label>
       <Button fx:id="uploadImgBtn" layoutX="85.0" layoutY="569.0" mnemonicParsing="false" onAction="#onUploadButtonClick" prefHeight="26.0" prefWidth="96.0" text="Upload Image" />

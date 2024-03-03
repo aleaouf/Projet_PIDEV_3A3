@@ -52,6 +52,9 @@ public class Marketplace implements Initializable {
     private VBox panierVBox;
     private List<Articles> articles;
     private Articles currentArticle;
+    @FXML
+    private Text sommePrixText;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -126,5 +129,14 @@ public class Marketplace implements Initializable {
             }
         }
         panierContainer.setVisible(true);
+
+        int idUtilisateur = 1; // ID de l'utilisateur connecté (remplacez-le par l'ID de l'utilisateur actuel)
+        PanierServices panierService = new PanierServices();
+        int sommePrix = panierServices.calculerSommePrixArticlesDansPanier(idUtilisateur);
+        sommePrixText.setText("LA Somme des prix dans le panier est " + sommePrix + " TND");
+
+
+
+
     }
 }

@@ -12,18 +12,20 @@ public class Panier {
     public Panier() {
     }
 
-    public Panier(int id_panier, int id_usr, int nbr_articles,int id_article) {
+    public Panier(int id_panier, int id_usr, int nbr_articles, int id_article) {
         this.id_panier = id_panier;
         this.id_usr = id_usr;
         this.nbr_articles = nbr_articles;
         this.id_article = id_article;
     }
-    public Panier(int id_usr, int nbr_articles,int id_article) {
+
+    public Panier(int id_usr, int nbr_articles, int id_article) {
 
         this.id_usr = id_usr;
         this.nbr_articles = nbr_articles;
         this.id_article = id_article;
     }
+
     public Panier(int id_article) {
         this.id_article = id_article;
     }

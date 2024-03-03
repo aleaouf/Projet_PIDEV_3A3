@@ -32,7 +32,7 @@
       <TextField layoutX="965.0" layoutY="22.0" onKeyTyped="#recherche" prefHeight="26.0" prefWidth="190.0" promptText="Rechercher" styleClass="recherche-input" stylesheets="@style.css" />
         <Label layoutX="536.0" layoutY="83.0" text="Marketplace">
             <font>
-                <Font size="43.0" />
+                <Font name="System Bold" size="43.0" />
             </font>
         </Label>
       <ScrollPane hbarPolicy="NEVER" layoutX="251.0" layoutY="165.0" prefHeight="410.0" prefWidth="787.0" styleClass="scrollPane" stylesheets="@style.css">
@@ -76,23 +76,29 @@
       <AnchorPane fx:id="panierContainer" prefHeight="720.0" prefWidth="1280.0" styleClass="panier-container" stylesheets="@style.css">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2350d9" height="687.0" layoutX="-369.0" layoutY="-296.0" rotate="140.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1280.0" />
+            <ImageView fitHeight="85.0" fitWidth="108.0" layoutX="385.0" layoutY="591.0">
+               <image>
+                  <Image url="@../../../../../Images/Captures%20d’écran/Capture%20d'écran%202023-10-09%20175208.png" />
+               </image>
+            </ImageView>
             <Label layoutX="596.0" layoutY="14.0" styleClass="title-detail" stylesheets="@style.css" text="Panier">
                <font>
                   <Font size="43.0" />
                </font>
             </Label>
-            <ScrollPane styleClass="scrollPane" hbarPolicy="NEVER" layoutX="253.0" layoutY="171.0" prefHeight="410.0" prefWidth="787.0" stylesheets="@style.css">
+            <ScrollPane hbarPolicy="NEVER" layoutX="253.0" layoutY="171.0" prefHeight="410.0" prefWidth="787.0" styleClass="scrollPane" stylesheets="@style.css">
                <content>
                   <VBox fx:id="panierVBox" alignment="TOP_CENTER" prefHeight="410.0" prefWidth="786.0" spacing="10.0" styleClass="vbox-container" />
                </content>
             </ScrollPane>
             <Button layoutX="1173.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#goBack" prefHeight="35.0" prefWidth="62.0" styleClass="article-btn" stylesheets="@style.css" text="Retour" />
+            <Text fx:id="sommePrixText" layoutX="531.0" layoutY="627.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="nom-produit" text="125 TND" wrappingWidth="459.73675537109375" />
          </children>
       </AnchorPane>
-      <Circle fill="WHITE" layoutX="73.0" layoutY="38.0" radius="34.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-      <Text fx:id="nomProduit1" layoutX="64.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="logo-title" text="Viragecom" wrappingWidth="214.40340423583984">
+      <Circle layoutX="73.0" layoutY="38.0" radius="34.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Text fx:id="nomProduit1" fill="WHITE" layoutX="64.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="logo-title" text="Viragecom" wrappingWidth="214.40340423583984">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold Italic" size="24.0" />
          </font>
       </Text>
     </children>
