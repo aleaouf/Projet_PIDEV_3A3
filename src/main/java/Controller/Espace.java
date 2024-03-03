@@ -1,13 +1,18 @@
 
 
 package Controller;
+import javafx.application.Platform;
 import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
          import javafx.scene.web.WebEngine;
          import javafx.scene.web.WebView;
-        import java.io.File;
+
+import java.io.BufferedReader;
+import java.io.File;
         import java.io.IOException;
-        import java.net.URL;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
         import java.util.ArrayList;
         import java.util.Collections;
         import java.util.List;
@@ -25,7 +30,11 @@ import javafx.fxml.FXML;
         import javafx.stage.FileChooser;
         import javafx.stage.Stage;
         import javafx.stage.Window;
-        import services.CategorieServices;
+import netscape.javascript.JSObject;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import services.CategorieServices;
         import services.EspaceServices;
         import javafx.scene.control.Label;
         import org.openstreetmap.gui.jmapviewer.*;
@@ -40,7 +49,7 @@ public class Espace {
     @FXML
     private URL location;
 
-   // @FXML
+    // @FXML
     //private TextField descriptionTextField;
 
     @FXML
@@ -114,17 +123,17 @@ public class Espace {
         }
         EspacePartenaire espacePartenaire = new EspacePartenaire(nomTextField.getText(), localisationTextField.getText(), idType.getValue(), descriptionTextField.getText(), this.imagePaths);
         EspaceServices espaceService = new EspaceServices();
-            try {
-                categorieService.addEntity(categorie);
-                espaceService.addEntity(espacePartenaire);
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("l'esapce a ete ajoute");
-                alert.show();
-            } catch (Exception e) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText(e.getMessage());
-                alert.show();
-            }
+        try {
+            categorieService.addEntity(categorie);
+            espaceService.addEntity(espacePartenaire);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("l'esapce a ete ajoute");
+            alert.show();
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText(e.getMessage());
+            alert.show();
+        }
 
 
         StageManager stageManager = StageManager.getInstance();
@@ -144,14 +153,80 @@ public class Espace {
     @FXML
     void initialize() {
         assert idType != null : "fx:id=\"idType\" was not injected: check your FXML file 'Espace.fxml'.";
-        idType.getItems().addAll("Salon de thé", "Restaurant", "Resto Bar", "Espace ouvert", "Cafeteria", "Terrain Foot", "Salle de jeux","Café Lounge");
-        WebEngine webEngine = mapView.getEngine();
-        webEngine.setJavaScriptEnabled(true);
-        String htmlFilePath = getClass().getResource("/map.html").toExternalForm();
-        System.out.println(htmlFilePath);
-        webEngine.load(htmlFilePath);
+        idType.getItems().addAll("Salon de thé", "Restaurant", "Resto Bar", "Espace ouvert", "Cafeteria", "Terrain Foot", "Salle de jeux", "Café Lounge");
+        //WebEngine webEngine = mapView.getEngine();
 
+        // Load Google Maps webpage in an iframe
+        //  String htmlContent = "<iframe width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0\" src=\"https://www.google.com/maps/embed/v1/place?q=Ariana,Tunisia&key=AIzaSyBvGfBCJhvd5MJCSnY6XQIoKVAj3qEN0UY\" allowfullscreen></iframe>";
+        //webEngine.loadContent(htmlContent);
+        WebEngine webEngine = mapView.getEngine();
+        webEngine.load(getClass().getResource("/googlemaps.html").toExternalForm());
+
+        // Enable JavaScript communication
+        webEngine.getLoadWorker().stateProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == Worker.State.SUCCEEDED) {
+                JSObject window = (JSObject) webEngine.executeScript("window");
+                window.setMember("java", this);
+            }
+        });
     }
+
+
+
+
+
+    public void handleSelectedLocation(double latitude, double longitude) {
+        Platform.runLater(() -> {
+            System.out.println("Selected Location: " + latitude + ", " + longitude);
+            String placeName = getPlaceName(latitude, longitude);
+            String locationInfo = "";
+            if (placeName != null && !placeName.isEmpty()) {
+                locationInfo += placeName + " ";
+            }
+            locationInfo += "( "+ latitude + "," + longitude + ")";
+            localisationTextField.setText(locationInfo);
+            // You can perform any necessary actions with the received latitude, longitude, and placeName here
+        });
+    }
+
+    private String getPlaceName(double latitude, double longitude) {
+        String apiKey = "AIzaSyBvGfBCJhvd5MJCSnY6XQIoKVAj3qEN0UY";
+        String fullAddress = null;
+
+        try {
+            String apiUrl = "https://maps.googleapis.com/maps/api/geocode/json?" +
+                    "latlng=" + latitude + "," + longitude +
+                    "&key=" + apiKey;
+
+            URL url = new URL(apiUrl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuilder response = new StringBuilder();
+            String line;
+
+            while ((line = in.readLine()) != null) {
+                response.append(line);
+            }
+
+            in.close();
+
+            JSONObject jsonResponse = new JSONObject(response.toString());
+            if (jsonResponse.has("results") && jsonResponse.getJSONArray("results").length() > 0) {
+                JSONObject result = jsonResponse.getJSONArray("results").getJSONObject(0);
+                fullAddress = result.getString("formatted_address");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return fullAddress;
+    }
+
+
+
+
 
 
 

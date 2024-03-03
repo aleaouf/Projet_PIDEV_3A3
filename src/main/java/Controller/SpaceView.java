@@ -27,6 +27,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import utils.MyConnection;
 
@@ -44,21 +46,22 @@ public class SpaceView {
     private URL location;
     @FXML
     private ImageView viewMoreIcon;
+    @FXML
+    private TextFlow CatAfText;
 
     @FXML
-    private Label CatAf;
+    private TextFlow DescAfText;
 
     @FXML
-    private Label DescAf;
+    private TextFlow LocAfText;
 
     @FXML
-    private Label LocAf;
+    private TextFlow NomAfText;
 
     @FXML
-    private Label NomAf;
-
+    private TextFlow TypeAfText;
     @FXML
-    private Label TypeAf;
+    private Text nomText;
 
     private static EspacePartenaire selectedEspace;
 
@@ -200,10 +203,19 @@ public class SpaceView {
             selectedEspace = optionalEspace.get(); // Set the selectedEspace
             EspacePartenaire selectedEspace = optionalEspace.get(); // Set the selectedEspace
 
-            NomAf.setText(selectedEspace.getNom());
-            LocAf.setText(selectedEspace.getLocalisation());
-            DescAf.setText(selectedEspace.getDescription());
-            TypeAf.setText(selectedEspace.getType());
+            Text nomText = new Text(selectedEspace.getNom());
+            NomAfText.getChildren().add(nomText);
+
+            Text locText = new Text(selectedEspace.getLocalisation());
+            LocAfText.getChildren().addAll(locText);
+
+            Text descText = new Text(selectedEspace.getDescription());
+            DescAfText.getChildren().addAll(descText);
+
+
+            Text typeText = new Text(selectedEspace.getType());
+            TypeAfText.getChildren().addAll(typeText);
+        }
 
             // Get the corresponding Categorie object
             Optional<Categorie> optionalCategorie = getCategorie().stream()
@@ -225,7 +237,8 @@ public class SpaceView {
                 if (categorie.isServiceRestauration()) {
                     attributes.add("Il y a un service de restauration");
                 }
-                CatAf.setText(String.join(", ", attributes));
+                Text catText = new Text(String.join(", ", attributes));
+                CatAfText.getChildren().addAll(catText);
             }
 
             // Display the first image
@@ -233,7 +246,7 @@ public class SpaceView {
             System.out.println(selectedEspace.getPhotos());
             // Set the click event for the first image to show the rest of the images
         }
-    }
+
 
     public ObservableList<EspacePartenaire> getEspace() {
         ObservableList<EspacePartenaire> data = FXCollections.observableArrayList();
