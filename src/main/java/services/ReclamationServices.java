@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReclamationServices implements IServices<Reclamation> {
+
+    MailService mailService = new MailService();
     @Override
     public void addEntity(Reclamation reclamation) throws SQLException {
         String requete = "INSERT INTO reclamation (id_user, type, contenu) VALUES (?, ?, ?)";
@@ -38,6 +40,8 @@ public class ReclamationServices implements IServices<Reclamation> {
             pst.setString(3, reclamation.getContenu());
             pst.setInt(4, reclamation.getId_reclamation());
             pst.executeUpdate();
+            mailService.sendEmail("azizghest@gmail.com","Traitement Reclamations","Une reponse a été envoyé a votre reclamation." +
+                    "\nMerci pour votre patience.");
             System.out.println("Reclamation mise à jour");
         } catch (SQLException e) {
             System.out.println(e.getMessage());

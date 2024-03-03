@@ -18,12 +18,16 @@ public class Reponse {
         this.contenu = contenu;
     }
 
+<<<<<<< Updated upstream
     public Reponse(int id_reponse, int id_reclamation, String contenu, Date date_rep) {
         this.id_reponse = id_reponse;
         this.id_reclamation = id_reclamation;
         this.contenu = contenu;
         this.date_rep = date_rep;
     }
+=======
+
+>>>>>>> Stashed changes
 
     // Getters
     public int getId_reponse() {

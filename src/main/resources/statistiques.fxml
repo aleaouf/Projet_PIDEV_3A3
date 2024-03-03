@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="629.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Statistiques">
+   <children>
+      <PieChart fx:id="idPie" layoutX="14.0" layoutY="14.0" prefHeight="290.0" prefWidth="392.0" />
+      <BarChart fx:id="idBar" categoryGap="20.0" layoutX="459.0" layoutY="14.0" prefHeight="290.0" prefWidth="448.0" verticalGridLinesVisible="false">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis minorTickCount="0" side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <Text layoutX="463.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Temps de réponse moyen : " />
+      <Label fx:id="labelTM" layoutX="655.0" layoutY="468.0" prefHeight="18.0" prefWidth="59.0" />
+   </children>
+</AnchorPane>

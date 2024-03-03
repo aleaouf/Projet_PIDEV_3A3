@@ -12,6 +12,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+import services.FilterService;
+>>>>>>> Stashed changes
 =======
 import services.FilterService;
 >>>>>>> Stashed changes

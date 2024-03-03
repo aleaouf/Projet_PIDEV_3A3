@@ -19,6 +19,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
+>>>>>>> Stashed changes
 =======
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
@@ -70,7 +75,11 @@ public class MesReponses {
 
             {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 hbox.setSpacing(16); // Set spacing between attributes
+=======
+                hbox.setSpacing(10); // Set horizontal spacing between attributes
+>>>>>>> Stashed changes
 =======
                 hbox.setSpacing(10); // Set horizontal spacing between attributes
 >>>>>>> Stashed changes
@@ -90,7 +99,11 @@ public class MesReponses {
                     Label t = new Label(String.valueOf(rep.getId_reclamation()));
                     TextArea c = new TextArea(rep.getContenu());
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     c.setLayoutX(100);
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -101,10 +114,13 @@ public class MesReponses {
                     c.setStyle("-fx-padding: 10px;");
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     HBox hbox = new HBox(t, c);
                     hbox.setSpacing(25);
                     setGraphic(hbox);
 =======
+=======
+>>>>>>> Stashed changes
                     hbox.getChildren().clear(); // Clear existing content
 
                     // Add type label
@@ -120,6 +136,9 @@ public class MesReponses {
                     setGraphic(hbox);
 
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                 }
 

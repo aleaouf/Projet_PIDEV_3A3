@@ -24,7 +24,11 @@ public class ReponseServices implements IServices<Reponse> {
                 pst.setInt(1, reponse.getId_reclamation());
                 pst.setString(2, reponse.getContenu());
                 pst.executeUpdate();
+<<<<<<< Updated upstream
                 mailService.sendEmail("azizghest@gmail.com","Traitement Reclamations","Votre reponse a été envoyé a votre reclamation." +
+=======
+                mailService.sendEmail("azizghest@gmail.com","Traitement Reclamations","Une reponse a été envoyé a votre reclamation." +
+>>>>>>> Stashed changes
                         "\nMerci pour votre patience.");
                 System.out.println("Réponse ajoutée avec succès");
 
@@ -62,22 +66,31 @@ public class ReponseServices implements IServices<Reponse> {
         }
 
         @Override
-        public List<Reponse> getAllData() throws SQLException{
+        public List<Reponse> getAllData() throws SQLException {
             List<Reponse> reponses = new ArrayList<>();
             String requete = "SELECT * FROM reponse";
             try {
                 Statement st = MyConnection.getInstance().getCnx().createStatement();
                 ResultSet rs = st.executeQuery(requete);
                 while (rs.next()) {
+<<<<<<< Updated upstream
                     Reponse reponse = new Reponse(rs.getInt("id_reponse"),
                             rs.getInt("id_reclamation"),
                             rs.getString("contenu"),
                             rs.getDate("date_rep"));
+=======
+                    Reponse reponse = new Reponse();
+                    reponse.setId_reponse(rs.getInt("id_reponse"));
+                    reponse.setId_reclamation(rs.getInt("id_reclamation"));
+                    reponse.setContenu(rs.getString("contenu"));
+
+>>>>>>> Stashed changes
                     reponses.add(reponse);
                 }
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
+            System.out.println(reponses);
             return reponses;
         }
 
@@ -88,9 +101,12 @@ public class ReponseServices implements IServices<Reponse> {
             Statement st = MyConnection.getInstance().getCnx().createStatement();
             ResultSet rs = st.executeQuery(requete);
             while (rs.next()) {
-                Reponse reponse = new Reponse(rs.getInt("id_reponse"),
-                        rs.getInt("id_reclamation"),
-                        rs.getString("contenu"));
+                Reponse reponse = new Reponse();
+                reponse.setId_reponse(rs.getInt("id_reponse"));
+                reponse.setId_reclamation(rs.getInt("id_reclamation"));
+                reponse.setContenu(rs.getString("contenu"));
+                reponse.setDate_rep(rs.getDate("date_rep"));
+
                 reponses.add(reponse);
             }
         } catch (SQLException e) {

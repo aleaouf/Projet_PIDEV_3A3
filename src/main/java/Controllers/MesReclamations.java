@@ -196,7 +196,11 @@ public class MesReclamations {
 
                 {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     hbox.setSpacing(16); // Set spacing between attributes
+=======
+                    hbox.setSpacing(8); // Set horizontal spacing between attributes
+>>>>>>> Stashed changes
 =======
                     hbox.setSpacing(8); // Set horizontal spacing between attributes
 >>>>>>> Stashed changes

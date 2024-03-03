@@ -32,6 +32,11 @@ public class AjouterR {
     @FXML
     private Label idlabel ;
 
+    private Reclamation reclamation;
+
+
+    ReclamationServices RS = new ReclamationServices();
+
     @FXML
     void initialize() {
         assert envoyerBtn != null : "fx:id=\"envoyerBtn\" was not injected: check your FXML file 'ajouterR.fxml'.";
@@ -54,9 +59,10 @@ public class AjouterR {
         }
         else {
             Reponse R = new Reponse(1,Integer.parseInt(idlabel.getText()),reponse.getText());
-            ReponseServices RS = new ReponseServices();
+            ReponseServices rs = new ReponseServices();
             try {
-                RS.addEntity(R);
+                rs.addEntity(R);
+                RS.updateStatus(reclamation);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Reponse envoyée avec succés");
                 alert.show();
@@ -77,4 +83,11 @@ public class AjouterR {
 
     }
 
+    public Reclamation getReclamation() {
+        return reclamation;
+    }
+
+    public void setReclamation(Reclamation reclamation) {
+        this.reclamation = reclamation;
+    }
 }

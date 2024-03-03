@@ -127,13 +127,14 @@ public class Affichage {
                         final Button editButton = new Button("Repondre");
 //attach listener on button, what to do when clicked
                         editButton.setOnAction(event -> {
-                            Reclamation Rep = getTableView().getItems().get(getIndex());
+                            Reclamation Rec = getTableView().getItems().get(getIndex());
 
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ajouterR.fxml"));
                             try {
                                 Parent root = loader.load();
                                 AjouterR moRdControl = loader.getController();
-                                moRdControl.setReponse(Rep);
+                                moRdControl.setReponse(Rec);
+                                moRdControl.setReclamation(Rec);
                                 Stage stage = new Stage();
                                 Scene scene = new Scene(root);
                                 stage.setScene(scene);
