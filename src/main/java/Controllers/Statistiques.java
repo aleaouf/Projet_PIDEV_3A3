@@ -98,11 +98,17 @@ public class Statistiques {
 }
                         }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
                         else {
                             sommeDays +=0;
                             nbr++;
                         }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                     }
 
@@ -110,7 +116,11 @@ public class Statistiques {
                 System.out.println("***"+sommeDays/nbr);
                 TM += sommeDays/nbr;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 series.getData().add(new XYChart.Data<>(type, sommeDays/nbr));
+=======
+                series.getData().add(new XYChart.Data<>(type, 2+sommeDays/nbr));
+>>>>>>> Stashed changes
 =======
                 series.getData().add(new XYChart.Data<>(type, 2+sommeDays/nbr));
 >>>>>>> Stashed changes
@@ -119,7 +129,11 @@ public class Statistiques {
             idBar.getYAxis().setLabel("jours");
             idBar.getData().add(series);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             labelTM.setText(Float.toString(TM/3));
+=======
+            labelTM.setText(Float.toString(TM/3)+" jours");
+>>>>>>> Stashed changes
 =======
             labelTM.setText(Float.toString(TM/3)+" jours");
 >>>>>>> Stashed changes

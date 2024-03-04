@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="629.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Statistiques">
@@ -14,6 +15,8 @@
       <PieChart fx:id="idPie" layoutX="14.0" layoutY="14.0" prefHeight="290.0" prefWidth="392.0" />
       <BarChart fx:id="idBar" categoryGap="20.0" layoutX="459.0" layoutY="14.0" prefHeight="290.0" prefWidth="448.0" verticalGridLinesVisible="false">
 =======
+=======
+>>>>>>> Stashed changes
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -30,6 +33,9 @@
        </Text>
       <PieChart fx:id="idPie" layoutX="14.0" layoutY="302.0" prefHeight="362.0" prefWidth="478.0" />
       <BarChart fx:id="idBar" categoryGap="20.0" layoutX="484.0" layoutY="282.0" prefHeight="402.0" prefWidth="674.0" verticalGridLinesVisible="false">
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         <xAxis>
           <CategoryAxis side="BOTTOM" />
@@ -39,8 +45,14 @@
         </yAxis>
       </BarChart>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <Text layoutX="463.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Temps de réponse moyen : " />
       <Label fx:id="labelTM" layoutX="655.0" layoutY="468.0" prefHeight="18.0" prefWidth="59.0" />
+=======
+      <Label fx:id="labelTM" layoutX="330.0" layoutY="150.0" prefHeight="42.0" prefWidth="101.0" />
+      <Label fx:id="labelTitre" layoutX="421.0" layoutY="35.0" text="Statistiques sur reclamations" />
+      <Label fx:id="labelAtt" layoutX="68.0" layoutY="151.0" text="Temps de reponse moyen :" />
+>>>>>>> Stashed changes
 =======
       <Label fx:id="labelTM" layoutX="330.0" layoutY="150.0" prefHeight="42.0" prefWidth="101.0" />
       <Label fx:id="labelTitre" layoutX="421.0" layoutY="35.0" text="Statistiques sur reclamations" />

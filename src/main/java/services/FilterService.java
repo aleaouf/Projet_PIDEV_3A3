@@ -18,6 +18,7 @@ public class FilterService {
 
         for (String word : words) {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             boolean isProfane = false;
             for (String profaneWord : profaneWords) {
                 if (isSimilar(word, profaneWord)) {
@@ -26,6 +27,9 @@ public class FilterService {
                 }
             }
             if (isProfane) {
+=======
+            if (isProfane(word)) {
+>>>>>>> Stashed changes
 =======
             if (isProfane(word)) {
 >>>>>>> Stashed changes
@@ -39,7 +43,10 @@ public class FilterService {
     }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
     private static boolean isProfane(String word) {
         for (String profaneWord : profaneWords) {
             if (isSimilar(word, profaneWord)) {
@@ -49,6 +56,9 @@ public class FilterService {
         return false;
     }
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     private static boolean isSimilar(String word1, String word2) {
         return soundex.encode(word1).equals(soundex.encode(word2))

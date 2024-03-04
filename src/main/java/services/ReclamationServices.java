@@ -86,17 +86,23 @@ public class ReclamationServices implements IServices<Reclamation> {
     }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     public void updateStatus(Reclamation reclamation) throws SQLException {
         String requete = "UPDATE reclamation SET status=? WHERE id_reclamation=?";
         try {
             PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete);
             pst.setString(1, "traitée");
 =======
+=======
+>>>>>>> Stashed changes
     public void updateStatus(Reclamation reclamation,String status) throws SQLException {
         String requete = "UPDATE reclamation SET status=? WHERE id_reclamation=?";
         try {
             PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete);
             pst.setString(1, status);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             pst.setInt(2, reclamation.getId_reclamation());
             pst.executeUpdate();
@@ -106,8 +112,11 @@ public class ReclamationServices implements IServices<Reclamation> {
         }
     }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 }
 =======
+=======
+>>>>>>> Stashed changes
 
         public Reclamation getReclamationById(int id) throws SQLException {
             Reclamation reclamation = null;
@@ -129,4 +138,7 @@ public class ReclamationServices implements IServices<Reclamation> {
 
 
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

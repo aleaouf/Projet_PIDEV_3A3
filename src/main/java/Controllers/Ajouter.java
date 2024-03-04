@@ -54,7 +54,11 @@ public class Ajouter {
         else {
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             Reclamation R = new Reclamation(1, 36, type.getValue(), reclamation.getText());
+=======
+            Reclamation R = new Reclamation(1, 22, type.getValue(), reclamation.getText());
+>>>>>>> Stashed changes
 =======
             Reclamation R = new Reclamation(1, 22, type.getValue(), reclamation.getText());
 >>>>>>> Stashed changes

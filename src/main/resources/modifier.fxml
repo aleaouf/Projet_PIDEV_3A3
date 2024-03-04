@@ -14,7 +14,11 @@
 <AnchorPane prefHeight="750.0" prefWidth="752.0" stylesheets="@modifierStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Modifier">
    <children>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2350d9" height="703.0" layoutX="-553.0" layoutY="-243.0" rotate="110.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1275.0" />
+=======
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2350d9" height="703.0" layoutX="-595.0" layoutY="-261.0" rotate="115.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1275.0" />
+>>>>>>> Stashed changes
 =======
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2350d9" height="703.0" layoutX="-595.0" layoutY="-261.0" rotate="115.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1275.0" />
 >>>>>>> Stashed changes
@@ -25,7 +29,11 @@
          </font>
       </Text>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <Label fx:id="labelTitre" layoutX="267.0" layoutY="35.0" text="Modifier Reclamation">
+=======
+      <Label fx:id="labelTitre" layoutX="217.0" layoutY="131.0" text="Modifier Reclamation">
+>>>>>>> Stashed changes
 =======
       <Label fx:id="labelTitre" layoutX="217.0" layoutY="131.0" text="Modifier Reclamation">
 >>>>>>> Stashed changes
@@ -34,7 +42,11 @@
          </font>
       </Label>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <Label fx:id="labelAtt" layoutX="182.0" layoutY="202.0" text="id_user">
+=======
+      <Label fx:id="labelAtt" layoutX="142.0" layoutY="235.0" text="Type :">
+>>>>>>> Stashed changes
 =======
       <Label fx:id="labelAtt" layoutX="142.0" layoutY="235.0" text="Type :">
 >>>>>>> Stashed changes
@@ -43,7 +55,11 @@
          </font>
       </Label>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <Label fx:id="labelAtt" layoutX="182.0" layoutY="316.0" text="Type">
+=======
+      <Label fx:id="labelAtt" layoutX="142.0" layoutY="383.0" text="Reclamation :">
+>>>>>>> Stashed changes
 =======
       <Label fx:id="labelAtt" layoutX="142.0" layoutY="383.0" text="Reclamation :">
 >>>>>>> Stashed changes
@@ -51,6 +67,7 @@
             <Font size="14.0" />
          </font>
       </Label>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
       <Label fx:id="labelAtt" layoutX="180.0" layoutY="437.0" text="Reclamation:">
          <font>
@@ -62,15 +79,21 @@
       <ChoiceBox fx:id="type" layoutX="182.0" layoutY="362.0" prefWidth="150.0" />
       <Button fx:id="modBtn" layoutX="365.0" layoutY="687.0" mnemonicParsing="false" onAction="#onClickModifier" prefHeight="54.0" prefWidth="121.0" text="Modifier">
 =======
+=======
+>>>>>>> Stashed changes
       <TextField fx:id="id_user" layoutX="13.0" layoutY="141.0" />
       <TextArea fx:id="reclamation" layoutX="141.0" layoutY="447.0" prefHeight="200.0" prefWidth="469.0" />
       <ChoiceBox fx:id="type" layoutX="141.0" layoutY="294.0" prefWidth="150.0" />
       <Button fx:id="modBtn" layoutX="315.0" layoutY="671.0" mnemonicParsing="false" onAction="#onClickModifier" prefHeight="54.0" prefWidth="121.0" text="Modifier">
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
          <font>
             <Font size="14.0" />
          </font>
       </Button>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
       <Label fx:id="labelAtt" layoutX="182.0" layoutY="131.0" text="id">
          <font>
@@ -78,6 +101,9 @@
          </font>
       </Label>
       <Label fx:id="idLabel" layoutX="233.0" layoutY="131.0" prefHeight="18.0" prefWidth="12.0" />
+=======
+      <Label fx:id="idLabel" layoutX="13.0" layoutY="90.0" prefHeight="41.0" prefWidth="41.0" />
+>>>>>>> Stashed changes
 =======
       <Label fx:id="idLabel" layoutX="13.0" layoutY="90.0" prefHeight="41.0" prefWidth="41.0" />
 >>>>>>> Stashed changes

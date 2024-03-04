@@ -29,11 +29,17 @@
 
 /* Style for the Table column headers */
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 .table-view .column-header-background {
     -fx-background-color: linear-gradient(to bottom, #1a69ff, #2c3e50); /* Blue gradient background color */
     -fx-text-fill: white; /* Text color */
     -fx-font-weight: bold; /* Font weight */
     -fx-padding: 10px 20px; /* Padding */
+=======
+
+.table-view .column-header-background {
+    -fx-background-color: blue;
+>>>>>>> Stashed changes
 =======
 
 .table-view .column-header-background {
@@ -49,12 +55,15 @@
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 /* Hover effect for the Table cells */
 .table-view .table-row-cell:hover {
     -fx-background-color: #f0f0f0; /* Lighter background color on hover */
 }
 
 =======
+=======
+>>>>>>> Stashed changes
 
 .table-view .column-header-background {
 
@@ -65,6 +74,9 @@
 }
 
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 /* Style for the selected Table cells */
 .table-view .table-row-cell:selected {
@@ -75,6 +87,12 @@
     -fx-border-radius: 5px; /* Border radius */
 }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+.table-view .table-row-cell:hover{
+    -fx-background-color: #b6b6b6;
+}
+>>>>>>> Stashed changes
 =======
 .table-view .table-row-cell:hover{
     -fx-background-color: #b6b6b6;
@@ -98,7 +116,11 @@
     -fx-background-color: #1a69ff; /* Blue background color */
     -fx-text-fill: white; /* Text color */
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     -fx-padding: 12px 24px; /* Padding */
+=======
+    -fx-padding: 10px 20px; /* Padding */
+>>>>>>> Stashed changes
 =======
     -fx-padding: 10px 20px; /* Padding */
 >>>>>>> Stashed changes

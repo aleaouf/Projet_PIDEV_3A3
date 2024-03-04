@@ -22,6 +22,7 @@ import javafx.scene.layout.HBox;
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
@@ -32,10 +33,15 @@ import javafx.scene.layout.Region;
 >>>>>>> Stashed changes
 import javafx.stage.Stage;
 =======
+=======
+>>>>>>> Stashed changes
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import services.ReclamationServices;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 import utils.MyConnection;
 
@@ -125,7 +131,11 @@ public class MesReponses {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 hbox.setSpacing(16); // Set spacing between attributes
+=======
+                hbox.setSpacing(10); // Set horizontal spacing between attributes
+>>>>>>> Stashed changes
 =======
                 hbox.setSpacing(10); // Set horizontal spacing between attributes
 >>>>>>> Stashed changes
@@ -153,7 +163,11 @@ public class MesReponses {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     c.setLayoutX(100);
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -172,10 +186,13 @@ public class MesReponses {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     HBox hbox = new HBox(t, c);
                     hbox.setSpacing(25);
                     setGraphic(hbox);
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -197,6 +214,9 @@ public class MesReponses {
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

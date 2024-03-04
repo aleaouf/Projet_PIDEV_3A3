@@ -14,6 +14,10 @@ import javafx.stage.Stage;
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+import services.FilterService;
+>>>>>>> Stashed changes
 =======
 import services.FilterService;
 >>>>>>> Stashed changes
@@ -106,11 +110,17 @@ public class Modifier {
         reclamation.setWrapText(true);
         id_user.setEditable(false);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
         id_user.setVisible(false);
         idLabel.setVisible(false);
 
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 

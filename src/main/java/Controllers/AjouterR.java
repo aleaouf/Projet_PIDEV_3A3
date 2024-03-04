@@ -63,7 +63,11 @@ public class AjouterR {
             try {
                 rs.addEntity(R);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 RS.updateStatus(reclamation);
+=======
+                RS.updateStatus(reclamation,"en cours de traitement");
+>>>>>>> Stashed changes
 =======
                 RS.updateStatus(reclamation,"en cours de traitement");
 >>>>>>> Stashed changes

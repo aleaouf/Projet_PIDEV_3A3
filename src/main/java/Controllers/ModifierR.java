@@ -71,6 +71,10 @@ public class ModifierR {
         Reponse.setText(String.valueOf(R.getContenu()));
         Reponse.setWrapText(true);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+        idLabel.setVisible(false);
+>>>>>>> Stashed changes
 =======
         idLabel.setVisible(false);
 >>>>>>> Stashed changes

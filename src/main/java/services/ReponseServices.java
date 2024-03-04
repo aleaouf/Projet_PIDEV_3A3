@@ -26,7 +26,11 @@ public class ReponseServices implements IServices<Reponse> {
                 pst.executeUpdate();
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 mailService.sendEmail("azizghest@gmail.com","Traitement Reclamations","Votre reponse a été envoyé a votre reclamation." +
+=======
+                mailService.sendEmail("azizghest@gmail.com","Traitement Reclamations","Une reponse a été envoyé a votre reclamation." +
+>>>>>>> Stashed changes
 =======
                 mailService.sendEmail("azizghest@gmail.com","Traitement Reclamations","Une reponse a été envoyé a votre reclamation." +
 >>>>>>> Stashed changes
@@ -79,11 +83,14 @@ public class ReponseServices implements IServices<Reponse> {
                 while (rs.next()) {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     Reponse reponse = new Reponse(rs.getInt("id_reponse"),
                             rs.getInt("id_reclamation"),
                             rs.getString("contenu"),
                             rs.getDate("date_rep"));
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
                     Reponse reponse = new Reponse();
@@ -92,6 +99,9 @@ public class ReponseServices implements IServices<Reponse> {
                     reponse.setContenu(rs.getString("contenu"));
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
