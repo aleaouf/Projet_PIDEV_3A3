@@ -18,7 +18,7 @@
       <Circle layoutX="65.0" layoutY="48.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
       <Button layoutX="624.0" layoutY="679.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="42.0" prefWidth="256.0" text="Ajouter votre espace partenaire" />
       <TextField fx:id="nomTextField" layoutX="93.0" layoutY="108.0" prefHeight="26.0" prefWidth="256.0" />
-      <TextField fx:id="localisationTextField" layoutX="93.0" layoutY="160.0" prefHeight="26.0" prefWidth="256.0" />
+      <TextField fx:id="localisationTextField" editable="false" layoutX="93.0" layoutY="160.0" prefHeight="26.0" prefWidth="256.0" />
       <RadioButton fx:id="idCouvert" layoutX="179.0" layoutY="612.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="159.0" text="Espace couvert">
          <font>
             <Font name="System Bold" size="16.0" />

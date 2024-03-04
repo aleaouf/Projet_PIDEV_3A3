@@ -68,3 +68,15 @@
     -fx-fit-width: 300px;
     -fx-fit-height: 300px;
 }*/
+.recherche{
+    -fx-fill: #2350d9;
+    -fx-border-radius: 56px;
+    -fx-arc-width: 30;
+    -fx-arc-height: 30;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 4, 0);
+}
+.recherche-input{
+    -fx-background-color: transparent;
+    -fx-font-size: 12;
+    -fx-text-fill: #ffffff;
+}

@@ -17,7 +17,7 @@ public class Main extends Application {
             StageManager stageManager = StageManager.getInstance();
             stageManager.setPrimaryStage(primaryStage);
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficher_espace.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficherclient.fxml"));
             Parent root = loader.load();
             primaryStage.setScene(new Scene(root));
             primaryStage.show();

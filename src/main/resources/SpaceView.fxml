@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane  prefHeight="404.0" prefWidth="826.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SpaceView">
+<AnchorPane prefHeight="404.0" prefWidth="826.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SpaceView">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2350d9" height="654.0" layoutX="-372.0" layoutY="-347.0" rotate="140.0" stroke="BLACK" strokeType="INSIDE" width="744.0" />
       <Text layoutX="58.0" layoutY="43.0" text="Nom d'espace partenaire : ">
@@ -88,7 +88,7 @@
          </children>
       </TextFlow>
 
-      <ImageView fx:id="viewMoreIcon" fitHeight="60.0" fitWidth="56.0" layoutX="733.0" layoutY="268.0" onMouseClicked="#showAllImages" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="viewMoreIcon" fitHeight="60.0" fitWidth="56.0" layoutX="743.0" layoutY="267.0" onMouseClicked="#showAllImages" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@view-more-512.png" />
          </image>
@@ -111,7 +111,7 @@
             <Image url="@Google_Maps_Logo_2020.svg.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="StreetView" fitHeight="77.0" fitWidth="88.0" layoutX="361.0" layoutY="318.0" onMouseClicked="#showStreetView" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="StreetView" fitHeight="77.0" fitWidth="88.0" layoutX="339.0" layoutY="318.0" onMouseClicked="#showStreetView" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@70493552471.png" />
          </image>

@@ -12,12 +12,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 import utils.MyConnection;
 
@@ -32,20 +35,100 @@ import java.util.Collections;
 import java.util.List;
 
 public class AfficherClient {
-
+    @FXML
+    private ImageView home;
     @FXML
     private VBox partnerAreaContainer;
-
+    @FXML
+    private TextField recherche;
+    @FXML
     public void initialize() throws FileNotFoundException {
         ObservableList<EspacePartenaire> partnerAreas = getEspace();
-
-        // Display partner areas
-        displayPartnerAreas(partnerAreas);
+        displayPartnerAreas(getEspace(), "");
     }
 
+
+    @FXML
+    void recherche(KeyEvent event) {
+        String searchTerm = recherche.getText().trim();
+        if (searchTerm.isEmpty()) {
+            // If search term is empty, display popular and other spaces
+            displayPartnerAreas(getEspace(), "");
+        } else {
+            // If search term is not empty, display searched spaces
+            ObservableList<EspacePartenaire> filteredList = searchEspace(searchTerm);
+            displayPartnerAreas(filteredList, searchTerm);
+        }
+    }
+
+
+
+
+    private ObservableList<EspacePartenaire> searchEspace(String searchTerm) {
+        ObservableList<EspacePartenaire> filteredList = FXCollections.observableArrayList();
+        for (EspacePartenaire partnerArea : getEspace()) {
+            if (partnerArea.getNom().toLowerCase().contains(searchTerm.toLowerCase()) ||
+                    partnerArea.getType().toLowerCase().contains(searchTerm.toLowerCase())) {
+                filteredList.add(partnerArea);
+            }
+        }
+        return filteredList;
+    }
+
+    @FXML
+    void home(MouseEvent event) {
+        StageManager stageManager = StageManager.getInstance();
+        stageManager.closeCurrentStage();
+        stageManager.switchScene("/Afficher_espace.fxml");
+
+    }
+
+
+
+
+
     // Method to display partner areas in a scrollable grid
-    private void displayPartnerAreas(List<EspacePartenaire> partnerAreas) {
-        // Create a GridPane to display partner areas in a grid layout
+    private void displayPartnerAreas(List<EspacePartenaire> partnerAreas, String searchTerm) {
+        // Create a VBox to hold the partner areas
+        VBox mainContainer = new VBox();
+        mainContainer.setSpacing(20);
+        mainContainer.setAlignment(Pos.CENTER);
+
+        // Add label for "Espaces Populaires" if the search term is empty
+        if (searchTerm.isEmpty()) {
+            Label popularLabel = new Label("#Espaces Populaires");
+            popularLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2350d9;-fx-underline: true; ");
+            mainContainer.getChildren().add(popularLabel);
+
+            // Retrieve the two most popular spaces if requested
+            List<EspacePartenaire> mostPopularSpaces = getMostPopularSpaces(2);
+            if (!mostPopularSpaces.isEmpty()) {
+                // Create an HBox to display the two most popular spaces
+                HBox popularSpacesContainer = new HBox();
+                popularSpacesContainer.setAlignment(Pos.CENTER);
+                popularSpacesContainer.setSpacing(20);
+
+                for (EspacePartenaire popularSpace : mostPopularSpaces) {
+                    Node popularSpaceNode = createPartnerAreaBox(popularSpace);
+                    popularSpacesContainer.getChildren().add(popularSpaceNode);
+                }
+
+                // Add the popular spaces HBox to the main container
+                mainContainer.getChildren().add(popularSpacesContainer);
+            }
+
+            // Add label for "Autres Espaces" if requested
+            Label otherLabel = new Label("#Tous les Espaces");
+            otherLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2350d9; -fx-underline: true;");
+            mainContainer.getChildren().add(otherLabel);
+        } else {
+            // Add label for "#Espace Cherché"
+            Label searchedLabel = new Label("#Espaces Cherchés");
+            searchedLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2350d9;-fx-underline: true; ");
+            mainContainer.getChildren().add(searchedLabel);
+        }
+
+        // Create a GridPane to display the partner areas in a grid layout
         GridPane gridPane = new GridPane();
         gridPane.setHgap(20);
         gridPane.setVgap(20);
@@ -56,16 +139,20 @@ public class AfficherClient {
         int row = 0;
         for (EspacePartenaire partnerArea : partnerAreas) {
             Node partnerAreaNode = createPartnerAreaBox(partnerArea);
+            GridPane.setMargin(partnerAreaNode, new Insets(10)); // Add margins for consistent spacing
             gridPane.add(partnerAreaNode, column, row);
             column++;
-            if (column == 3) { // Display two areas per row
+            if (column == 3) { // Display three areas per row
                 column = 0;
                 row++;
             }
         }
 
+        // Add the GridPane containing partner areas to the main container
+        mainContainer.getChildren().add(gridPane);
+
         // Create a ScrollPane to allow scrolling
-        ScrollPane scrollPane = new ScrollPane(gridPane);
+        ScrollPane scrollPane = new ScrollPane(mainContainer);
         scrollPane.setFitToWidth(true);
         scrollPane.setPadding(new Insets(20));
 
@@ -170,7 +257,7 @@ public class AfficherClient {
 
     public ObservableList<EspacePartenaire> getEspace() {
         ObservableList<EspacePartenaire> data = FXCollections.observableArrayList();
-        String requete = "SELECT * FROM espacepartenaire where accepted=1 ORDER BY nbclick DESC";
+        String requete = "SELECT * FROM espacepartenaire where accepted=1 ";
         try {
             Statement st = MyConnection.getInstance().getCnx().createStatement();
             ResultSet rs = st.executeQuery(requete);
@@ -213,4 +300,32 @@ public class AfficherClient {
         }
         return data;
     }
+
+    private ObservableList<EspacePartenaire> getMostPopularSpaces(int limit) {
+        ObservableList<EspacePartenaire> data = FXCollections.observableArrayList();
+        String requete = "SELECT * FROM espacepartenaire WHERE accepted = 1 ORDER BY nbclick DESC LIMIT ?";
+        try {
+            PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete);
+            pst.setInt(1, limit);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                EspacePartenaire espacePartenaire = new EspacePartenaire();
+                espacePartenaire.setId_categorie(rs.getInt("id_categorie"));
+                espacePartenaire.setId_espace(rs.getInt("id_espace"));
+                espacePartenaire.setNom(rs.getString("nom"));
+                espacePartenaire.setLocalisation(rs.getString("localisation"));
+                espacePartenaire.setType(rs.getString("type"));
+                espacePartenaire.setDescription(rs.getString("description"));
+                // Assuming photos is a list of URLs
+                espacePartenaire.setPhotos(Collections.singletonList(rs.getString("photos")));
+                espacePartenaire.setAccepted(rs.getBoolean("accepted"));
+                data.add(espacePartenaire);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return data;
+    }
+
+
 }

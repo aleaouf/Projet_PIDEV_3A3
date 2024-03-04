@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import services.EspaceServices;
 import utils.MyConnection;
@@ -43,6 +44,9 @@ public class AfficherAdmin {
     private ChoiceBox<String> choiceBoxAffichage;
 
     private boolean afficherEspacesAcceptes;
+
+    @FXML
+    private TextField recherche;
 
     @FXML
     void Accepter(ActionEvent event) {
@@ -161,7 +165,7 @@ public class AfficherAdmin {
                     setText(null);
                 } else {
                     // Display nom and localisation
-                    StringBuilder text = new StringBuilder(item.getNom() + " - " + item.getLocalisation());
+                    StringBuilder text = new StringBuilder(item.getNom() + " - " + item.getType());
 
                     // Retrieve the associated Categorie
                     Optional<Categorie> optionalCategorie = getCategorie().stream()
@@ -252,4 +256,26 @@ public class AfficherAdmin {
         AfficherEspace();
     }
 
+    @FXML
+    void recherche(KeyEvent event) {
+        String searchTerm = recherche.getText().trim();
+        ObservableList<EspacePartenaire> filteredList = searchEspace(searchTerm);
+        listViewEspace.setItems(filteredList);
+    }
+
+    private ObservableList<EspacePartenaire> searchEspace(String searchTerm) {
+        ObservableList<EspacePartenaire> allSpaces = getEspace();
+        ObservableList<EspacePartenaire> filteredList = FXCollections.observableArrayList();
+
+        for (EspacePartenaire space : allSpaces) {
+            if (space.getNom().toLowerCase().contains(searchTerm.toLowerCase())) {
+                filteredList.add(space);
+            }
+            if (space.getType().toLowerCase().contains(searchTerm.toLowerCase())) {
+                filteredList.add(space);
+            }
+        }
+
+        return filteredList;
+    }
 }
