@@ -117,5 +117,21 @@ public class EspaceServices implements IServices<EspacePartenaire>  {
         }
         return DernierCategorie;
     }
+    public boolean isLocalisationUnique(String localisation) {
+        boolean unique = true;
+        String requete = "SELECT COUNT(*) FROM EspacePartenaire WHERE localisation = ?";
+        try (PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete)) {
+            pst.setString(1, localisation);
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    int count = rs.getInt(1);
+                    unique = count == 0;
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return unique;
+    }
 
 }

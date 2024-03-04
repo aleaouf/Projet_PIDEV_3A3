@@ -17,7 +17,7 @@
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2350d9" height="779.0" layoutX="-384.0" layoutY="-350.0" rotate="140.0" stroke="BLACK" strokeType="INSIDE" width="1128.0" />
         <Circle layoutX="65.0" layoutY="48.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
 
-        <ListView fx:id="listViewEspace" editable="true" layoutX="97.0" layoutY="154.0" prefHeight="434.0" prefWidth="857.0" stylesheets="@styles.css" />
+        <ListView fx:id="listViewEspace" editable="true" layoutX="97.0" layoutY="163.0" prefHeight="434.0" prefWidth="857.0" stylesheets="@styles.css" />
         <Button fx:id="buttonConsulter" layoutX="804.0" layoutY="604.0" onAction="#Consulter" prefHeight="42.0" prefWidth="115.0" text="Consulter">
             <font>
                 <Font size="14.0" />
@@ -30,7 +30,7 @@
             <font>
                 <Font size="14.0" />
             </font></Button>
-        <ChoiceBox fx:id="choiceBoxAffichage" layoutX="115.0" layoutY="124.0" onAction="#updateDisplay" prefHeight="23.0" prefWidth="146.0" />
+        <ChoiceBox fx:id="choiceBoxAffichage" layoutX="115.0" layoutY="102.0" onAction="#updateDisplay" prefHeight="0.0" prefWidth="146.0" stylesheets="@styles.css" />
         <Text fill="WHITE" layoutX="52.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Viragecom">
             <font>
                 <Font name="System Bold Italic" size="24.0" />

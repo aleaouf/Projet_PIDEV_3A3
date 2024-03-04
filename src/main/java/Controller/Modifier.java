@@ -153,7 +153,23 @@ public class Modifier {
 
         return fullAddress;
     }
-
+    public boolean isLocalisationUnique(String localisation, int idEspaceActuel) {
+        boolean unique = true;
+        String requete = "SELECT COUNT(*) FROM EspacePartenaire WHERE localisation = ? AND id_espace != ?";
+        try (PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete)) {
+            pst.setString(1, localisation);
+            pst.setInt(2, idEspaceActuel);
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    int count = rs.getInt(1);
+                    unique = count == 0;
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return unique;
+    }
 
 
 
@@ -209,15 +225,27 @@ public class Modifier {
         boolean enfant = idEnfant.isSelected();
         boolean fumeur = idFumeur.isSelected();
         boolean service = idService.isSelected();
-        int Id_categorie =espacePartenaireToUpdate.getId_categorie();
+        int Id_categorie = espacePartenaireToUpdate.getId_categorie();
 
         // Vérifier si tous les champs sont remplis
         if (type.isEmpty() || description.isEmpty() || localisation.isEmpty() || nom.isEmpty()) {
             // Afficher un message d'erreur ou effectuer une action appropriée
-            System.out.println("Veuillez remplir tous les champs.");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Veuillez remplir tous les champs.");
+            alert.show();
             return;
         }
-        Categorie categorie = new Categorie(Id_categorie,couvert, enfant, fumeur, service);
+
+        // Vérifier l'unicité de la localisation
+        if (!isLocalisationUnique(localisation, espacePartenaireToUpdate.getId_espace())) {
+            // Afficher un message d'erreur si la localisation n'est pas unique
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Une autre espace existe déjà avec cette localisation.");
+            alert.show();
+            return;
+        }
+
+        Categorie categorie = new Categorie(Id_categorie, couvert, enfant, fumeur, service);
 
         // Mettre à jour les détails de l'espace partenaire
         espacePartenaireToUpdate.setNom(nom);
@@ -225,18 +253,11 @@ public class Modifier {
         espacePartenaireToUpdate.setType(type);
         espacePartenaireToUpdate.setDescription(description);
 
-
-
         // Mettre à jour les photos seulement si de nouvelles photos ont été sélectionnées
         if (!imagePaths.isEmpty()) {
             espacePartenaireToUpdate.setPhotos(imagePaths);
         }
-        if (nomTextField.getText().isEmpty() || localisationTextField.getText().isEmpty() || idType.getValue() == null || descriptionTextField.getText() == null || this.imagePaths == null) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Veuillez remplir tous les champs.");
-            alert.show();
-            return;
-        }
+
         // Appeler la méthode pour mettre à jour l'espace partenaire dans la base de données
         CategorieServices categorieService = new CategorieServices();
         EspaceServices espaceServices = new EspaceServices();
@@ -244,7 +265,7 @@ public class Modifier {
             categorieService.updateEntity(categorie);
             espaceServices.updateEntity(espacePartenaireToUpdate);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("l'esapce a ete modifier");
+            alert.setContentText("L'espace a été modifié avec succès.");
             alert.show();
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);

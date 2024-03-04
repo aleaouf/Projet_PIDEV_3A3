@@ -108,37 +108,46 @@ public class Espace {
 
     @FXML
     void Ajouter(ActionEvent event) {
-
         boolean couvert = idCouvert.isSelected();
         boolean enfant = idEnfant.isSelected();
         boolean fumeur = idFumeur.isSelected();
         boolean service = idService.isSelected();
         Categorie categorie = new Categorie(couvert, enfant, fumeur, service);
         CategorieServices categorieService = new CategorieServices();
-        if (nomTextField.getText().isEmpty() || localisationTextField.getText().isEmpty() || idType.getValue() == null || descriptionTextField.getText() == null || this.imagePaths == null) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Veuillez remplir tous les champs.");
-            alert.show();
-            return;
-        }
-        EspacePartenaire espacePartenaire = new EspacePartenaire(nomTextField.getText(), localisationTextField.getText(), idType.getValue(), descriptionTextField.getText(), this.imagePaths);
+
+        // Vérification de la localisation unique
+        String localisation = localisationTextField.getText();
         EspaceServices espaceService = new EspaceServices();
-        try {
-            categorieService.addEntity(categorie);
-            espaceService.addEntity(espacePartenaire);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("l'esapce a ete ajoute");
-            alert.show();
-        } catch (Exception e) {
+        if (espaceService.isLocalisationUnique(localisation)) {
+            if (nomTextField.getText().isEmpty() || localisation.isEmpty() || idType.getValue() == null || descriptionTextField.getText().isEmpty() || this.imagePaths.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Veuillez remplir tous les champs.");
+                alert.show();
+                return;
+            }
+
+            EspacePartenaire espacePartenaire = new EspacePartenaire(nomTextField.getText(), localisation, idType.getValue(), descriptionTextField.getText(), this.imagePaths);
+
+            try {
+                categorieService.addEntity(categorie);
+                espaceService.addEntity(espacePartenaire);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("L'espace a été ajouté.");
+                alert.show();
+            } catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText(e.getMessage());
+                alert.show();
+            }
+
+            StageManager stageManager = StageManager.getInstance();
+            stageManager.closeCurrentStage();
+            stageManager.switchScene("/Afficher_espace.fxml");
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText(e.getMessage());
+            alert.setContentText("Un espace avec la même localisation existe déjà.");
             alert.show();
         }
-
-
-        StageManager stageManager = StageManager.getInstance();
-        stageManager.closeCurrentStage();
-        stageManager.switchScene("/Afficher_espace.fxml");
     }
 
     private void updateImageLinksLabel() {

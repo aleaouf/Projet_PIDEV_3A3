@@ -59,18 +59,26 @@ public class AfficherAdmin {
             return;
         }
 
-        // Mettre à jour la base de données pour marquer les espaces sélectionnés comme acceptés
-        for (EspacePartenaire espace : espacesSelectionnes) {
-            espace.setAccepted(true); // Supposons que vous avez un setter pour l'attribut "Accepted"
-            // Code pour mettre à jour la base de données ici
-            EspaceServices es = new EspaceServices();
-            es.updateEntity(espace);
+        // Affichage de la boîte de dialogue de confirmation
+        Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmDialog.setTitle("Confirmation d'acceptation");
+        confirmDialog.setHeaderText("Êtes-vous sûr de vouloir accepter les espaces sélectionnés ?");
+        confirmDialog.setContentText("L'acceptation des espaces est irréversible.");
+
+        Optional<ButtonType> result = confirmDialog.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            // Mettre à jour la base de données pour marquer les espaces sélectionnés comme acceptés
+            for (EspacePartenaire espace : espacesSelectionnes) {
+                espace.setAccepted(true); // Supposons que vous avez un setter pour l'attribut "Accepted"
+                // Code pour mettre à jour la base de données ici
+                EspaceServices es = new EspaceServices();
+                es.updateEntity(espace);
+            }
+
+            // Rafraîchir l'affichage pour refléter le changement
+            AfficherEspace();
         }
-
-        // Rafraîchir l'affichage pour refléter le changement
-        AfficherEspace();
     }
-
 
     @FXML
     void Refuser(ActionEvent event) {
@@ -81,19 +89,33 @@ public class AfficherAdmin {
             System.out.println("Aucune espace sélectionnée.");
             return;
         }
-        String req = "DELETE FROM Categorie WHERE id_categorie = ?";
-        try {
-            PreparedStatement ps = MyConnection.getInstance().getCnx().prepareStatement(req);
-            ps.setInt(1, espacePartenaire.getId_categorie());
-            ps.executeUpdate();
-            System.out.println("Catégorie supprimée");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        EspaceServices es = new EspaceServices();
-        es.deleteEntity(espacePartenaire);
 
-        AfficherEspace();
+        // Affichage de la boîte de dialogue de confirmation
+        Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmDialog.setTitle("Confirmation de refus");
+        confirmDialog.setHeaderText("Êtes-vous sûr de vouloir refuser cet espace ?");
+        confirmDialog.setContentText("Le refus de l'espace est irréversible.");
+
+        Optional<ButtonType> result = confirmDialog.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            // Supprimer l'espace de la base de données
+            String req = "DELETE FROM Categorie WHERE id_categorie = ?";
+            try {
+                PreparedStatement ps = MyConnection.getInstance().getCnx().prepareStatement(req);
+                ps.setInt(1, espacePartenaire.getId_categorie());
+                ps.executeUpdate();
+                System.out.println("Catégorie supprimée");
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+
+            // Supprimer l'espace du service
+            EspaceServices es = new EspaceServices();
+            es.deleteEntity(espacePartenaire);
+
+            // Rafraîchir l'affichage pour refléter le changement
+            AfficherEspace();
+        }
     }
 
     @FXML
@@ -135,6 +157,7 @@ public class AfficherAdmin {
 
         // Set the default choice in the choice box
         choiceBoxAffichage.setValue("En attente");
+        choiceBoxAffichage.setStyle("-fx-text-fill: white;");
 
         // Ajouter un gestionnaire d'événements pour détecter les changements de sélection
         choiceBoxAffichage.setOnAction(this::updateDisplay);
@@ -259,8 +282,15 @@ public class AfficherAdmin {
     @FXML
     void recherche(KeyEvent event) {
         String searchTerm = recherche.getText().trim();
-        ObservableList<EspacePartenaire> filteredList = searchEspace(searchTerm);
-        listViewEspace.setItems(filteredList);
+
+        if (searchTerm.isEmpty()) {
+            // If the search term is empty, refresh the list view to display all spaces
+            AfficherEspace();
+        } else {
+            // Perform the search and update the list view with the filtered list
+            ObservableList<EspacePartenaire> filteredList = searchEspace(searchTerm);
+            listViewEspace.setItems(filteredList);
+        }
     }
 
     private ObservableList<EspacePartenaire> searchEspace(String searchTerm) {
@@ -268,11 +298,12 @@ public class AfficherAdmin {
         ObservableList<EspacePartenaire> filteredList = FXCollections.observableArrayList();
 
         for (EspacePartenaire space : allSpaces) {
-            if (space.getNom().toLowerCase().contains(searchTerm.toLowerCase())) {
-                filteredList.add(space);
-            }
-            if (space.getType().toLowerCase().contains(searchTerm.toLowerCase())) {
-                filteredList.add(space);
+            // Check if the space matches the search term
+            if (space.getNom().toLowerCase().contains(searchTerm.toLowerCase()) || space.getType().toLowerCase().contains(searchTerm.toLowerCase())) {
+                // Check if the space is in the current display mode
+                if ((afficherEspacesAcceptes && space.isAccepted()) || (!afficherEspacesAcceptes && !space.isAccepted())) {
+                    filteredList.add(space);
+                }
             }
         }
 

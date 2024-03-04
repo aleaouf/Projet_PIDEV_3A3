@@ -125,44 +125,42 @@ public class AfficherEspace {
 
     @FXML
     void Supprimer(ActionEvent event) {
-
-            // Get the selected items from the ListView
+        // Get the selected item from the ListView
         EspacePartenaire espacePartenaire = listViewEspace.getSelectionModel().getSelectedItem();
-        try {
-            if (espacePartenaire == null){
+
+        if (espacePartenaire == null) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Aucune espace sélectionnée.");
-            alert.show();}
-        } catch (Exception e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText(e.getMessage());
+            alert.setContentText("Aucun espace sélectionné.");
             alert.show();
+            return;
         }
 
-        String req = "DELETE FROM Categorie WHERE id_categorie = ?";
-        try {
-            PreparedStatement ps = MyConnection.getInstance().getCnx().prepareStatement(req);
-            ps.setInt(1, espacePartenaire.getId_categorie());
-            ps.executeUpdate();
-            System.out.println("Catégorie supprimée");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        try {
-            EspaceServices es = new EspaceServices();
-            es.deleteEntity(espacePartenaire);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("l'esapce a ete supprime");
-            alert.show();
-        } catch (Exception e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText(e.getMessage());
-            alert.show();
-        }
+        // Affichage de la boîte de dialogue de confirmation
+        Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmDialog.setTitle("Confirmation de suppression");
+        confirmDialog.setHeaderText("Êtes-vous sûr de vouloir supprimer cet espace ?");
+        confirmDialog.setContentText("La suppression de l'espace est irréversible.");
 
+        Optional<ButtonType> result = confirmDialog.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            // Suppression de l'espace
+            try {
+                EspaceServices es = new EspaceServices();
+                es.deleteEntity(espacePartenaire);
+                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                successAlert.setContentText("L'espace a été supprimé avec succès.");
+                successAlert.show();
+            } catch (Exception e) {
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.setContentText("Erreur lors de la suppression de l'espace : " + e.getMessage());
+                errorAlert.show();
+            }
 
-        AfficherEspace();
+            // Mise à jour de l'affichage
+            AfficherEspace();
         }
+    }
+
 
     @FXML
     void initialize() {
