@@ -1,37 +1,11 @@
 package Controller;
 
-import entities.Categorie;
-import entities.EspacePartenaire;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-import javafx.stage.Stage;
-import utils.MyConnection;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Collections;
-import java.util.List;
 
 public class test {
 
@@ -45,7 +19,7 @@ public class test {
 
         // Display partner areas
        // displayPartnerAreas(partnerAreas);
-        String htmlFilePath = getClass().getResource("/map.html").toExternalForm();
+        String htmlFilePath = getClass().getResource("/street_view.html").toExternalForm();
         System.out.println(htmlFilePath);
         WebEngine webEngine = webView.getEngine();
      webEngine.load(htmlFilePath);

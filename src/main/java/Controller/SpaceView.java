@@ -2,12 +2,16 @@ package Controller;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
+import java.io.IOException;
 import java.lang.String;
 
 import java.io.File;
@@ -15,6 +19,8 @@ import java.io.FileInputStream;
 import java.net.URL;
 import java.sql.*;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import entities.Categorie;
 import entities.EspacePartenaire;
@@ -41,6 +47,11 @@ public class SpaceView {
 
     @FXML
     private ResourceBundle resources;
+    @FXML
+    private ImageView StreetView;
+    @FXML
+    private ImageView GoogleMaps;
+
 
     @FXML
     private URL location;
@@ -84,8 +95,62 @@ public class SpaceView {
                 viewMoreIcon.setRotate(0); // Reset rotation when mouse exits
             }
         });
+
     }
 
+    @FXML
+    void showGoogleMaps(MouseEvent event) {
+        if (selectedEspace != null) {
+            String localisation = selectedEspace.getLocalisation();
+            // Use regular expression to extract latitude and longitude
+            Pattern pattern = Pattern.compile("\\(([^,]+),([^)]+)\\)");
+            Matcher matcher = pattern.matcher(localisation);
+            if (matcher.find()) {
+                String latitude = matcher.group(1).trim();
+                String longitude = matcher.group(2).trim();
+                // Open new scene for Google Maps
+                openNewScene(latitude, longitude, true);
+            }
+        }
+
+    }
+
+    @FXML
+    void showStreetView(MouseEvent event) {
+        if (selectedEspace != null) {
+            String localisation = selectedEspace.getLocalisation();
+            // Use regular expression to extract latitude and longitude
+            Pattern pattern = Pattern.compile("\\(([^,]+),([^)]+)\\)");
+            Matcher matcher = pattern.matcher(localisation);
+            if (matcher.find()) {
+                String latitude = matcher.group(1).trim();
+                String longitude = matcher.group(2).trim();
+                // Open new scene for Street View
+                openNewScene(latitude, longitude, false);
+            }
+        }
+
+    }
+    private void openNewScene(String latitude, String longitude, boolean isGoogleMaps) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/maps.fxml"));
+            Parent root = loader.load();
+            Maps controller = loader.getController();
+            if (isGoogleMaps) {
+                controller.loadGoogleMaps(latitude, longitude);
+            } else {
+                controller.loadStreetView(latitude, longitude);
+            }
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @FXML
     public void showAllImages(MouseEvent mouseEvent) {

@@ -159,7 +159,7 @@ public class AfficherClient {
 
     public ObservableList<EspacePartenaire> getEspace() {
         ObservableList<EspacePartenaire> data = FXCollections.observableArrayList();
-        String requete = "SELECT * FROM espacepartenaire";
+        String requete = "SELECT * FROM espacepartenaire where accepted=1";
         try {
             Statement st = MyConnection.getInstance().getCnx().createStatement();
             ResultSet rs = st.executeQuery(requete);
