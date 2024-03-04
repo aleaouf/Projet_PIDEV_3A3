@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
 import services.ReclamationServices;
 import services.ReponseServices;
 
@@ -31,6 +32,11 @@ public class AjouterR {
     @FXML
     private Label idlabel ;
 
+    private Reclamation reclamation;
+
+
+    ReclamationServices RS = new ReclamationServices();
+
     @FXML
     void initialize() {
         assert envoyerBtn != null : "fx:id=\"envoyerBtn\" was not injected: check your FXML file 'ajouterR.fxml'.";
@@ -38,6 +44,7 @@ public class AjouterR {
         assert reponse != null : "fx:id=\"reponse\" was not injected: check your FXML file 'ajouterR.fxml'.";
 
         idlabel.setText("0");
+        reponse.setWrapText(true);
     }
     public void setReponse(Reclamation R) {
 
@@ -52,12 +59,19 @@ public class AjouterR {
         }
         else {
             Reponse R = new Reponse(1,Integer.parseInt(idlabel.getText()),reponse.getText());
-            ReponseServices RS = new ReponseServices();
+            ReponseServices rs = new ReponseServices();
             try {
-                RS.addEntity(R);
+                rs.addEntity(R);
+                RS.updateStatus(reclamation,"en cours de traitement");
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Reponse envoyée avec succés");
                 alert.show();
+                // Assuming you have a reference to the current stage
+                Stage stage = (Stage) envoyerBtn.getScene().getWindow();
+
+
+// Closing the current stage
+                stage.close();
 
 
             } catch (SQLException e) {
@@ -69,4 +83,11 @@ public class AjouterR {
 
     }
 
+    public Reclamation getReclamation() {
+        return reclamation;
+    }
+
+    public void setReclamation(Reclamation reclamation) {
+        this.reclamation = reclamation;
+    }
 }

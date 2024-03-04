@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="689.0" prefWidth="1097.0" stylesheets="@statistiquesRec.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Statistiques">
+   <children>
+       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2350d9" height="431.0" layoutX="-216.0" layoutY="-159.0" rotate="180.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1400.0" />
+       <Circle layoutX="34.0" layoutY="35.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
+       <Text fill="WHITE" layoutX="24.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Viragecom">
+           <font>
+               <Font name="System Bold Italic" size="24.0" />
+           </font>
+       </Text>
+      <PieChart fx:id="idPie" layoutX="14.0" layoutY="302.0" prefHeight="362.0" prefWidth="478.0" />
+      <BarChart fx:id="idBar" categoryGap="20.0" layoutX="484.0" layoutY="282.0" prefHeight="402.0" prefWidth="674.0" verticalGridLinesVisible="false">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis minorTickCount="0" side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <Label fx:id="labelTM" layoutX="330.0" layoutY="150.0" prefHeight="42.0" prefWidth="101.0" />
+      <Label fx:id="labelTitre" layoutX="421.0" layoutY="35.0" text="Statistiques sur reclamations" />
+      <Label fx:id="labelAtt" layoutX="68.0" layoutY="151.0" text="Temps de reponse moyen :" />
+   </children>
+</AnchorPane>

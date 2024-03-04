@@ -9,6 +9,7 @@ import entities.Reponse;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import services.ReclamationServices;
 import services.ReponseServices;
 
@@ -47,6 +48,12 @@ public class ModifierR {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Reclamation modifiée avec succés");
                 alert.show();
+                // Assuming you have a reference to the current stage
+                Stage stage = (Stage) EnvoyerBtn.getScene().getWindow();
+
+
+// Closing the current stage
+                stage.close();
             } catch (SQLException e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText(e.getMessage());
@@ -62,6 +69,8 @@ public class ModifierR {
         idLabel.setText(String.valueOf(R.getId_reponse()));
         id_Reclam.setText(String.valueOf(R.getId_reclamation()));
         Reponse.setText(String.valueOf(R.getContenu()));
+        Reponse.setWrapText(true);
+        idLabel.setVisible(false);
     }
 
 
@@ -71,6 +80,7 @@ public class ModifierR {
         assert Reponse != null : "fx:id=\"Reponse\" was not injected: check your FXML file 'modifierR.fxml'.";
         assert idLabel != null : "fx:id=\"idLabel\" was not injected: check your FXML file 'modifierR.fxml'.";
         assert id_Reclam != null : "fx:id=\"id_Reclam\" was not injected: check your FXML file 'modifierR.fxml'.";
+        Reponse.setWrapText(true);
 
     }
 

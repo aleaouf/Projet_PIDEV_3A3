@@ -1,10 +1,13 @@
 package entities;
 
 
+import java.sql.Date;
+
 public class Reponse {
     private int id_reponse;
     private int id_reclamation;
     private String contenu;
+    private Date date_rep;
 
     // Constructeur
 
@@ -14,6 +17,8 @@ public class Reponse {
         this.id_reclamation = id_reclamation;
         this.contenu = contenu;
     }
+
+
 
     // Getters
     public int getId_reponse() {
@@ -41,13 +46,21 @@ public class Reponse {
         this.contenu = contenu;
     }
 
-    // Méthode toString
+    public Date getDate_rep() {
+        return date_rep;
+    }
+
+    public void setDate_rep(Date date_rep) {
+        this.date_rep = date_rep;
+    }
+
     @Override
     public String toString() {
         return "Reponse{" +
                 "id_reponse=" + id_reponse +
                 ", id_reclamation=" + id_reclamation +
                 ", contenu='" + contenu + '\'' +
+                ", date_rep=" + date_rep +
                 '}';
     }
 }

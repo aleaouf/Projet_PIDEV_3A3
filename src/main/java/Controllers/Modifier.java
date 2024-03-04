@@ -10,6 +10,8 @@ import entities.Reclamation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+import services.FilterService;
 import services.ReclamationServices;
 
 public class Modifier {
@@ -37,9 +39,16 @@ public class Modifier {
 
     @FXML
     void onClickModifier(ActionEvent event) {
-        if (type.getValue() == null || reclamation.getText() == null || id_user.getText() == null){
+        if (type.getValue() == null || reclamation.getText().isEmpty()  || id_user.getText() == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Veuillez remplir tous les champs!");
+            alert.show();
+        }
+        String filtredText = FilterService.filterProfanity(reclamation.getText());
+        if (FilterService.containsBadWord(filtredText)){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Votre reclamation contient un mot inapproprié" +
+                    "\n"+filtredText);
             alert.show();
         }
         else {
@@ -47,6 +56,11 @@ public class Modifier {
             ReclamationServices RS = new ReclamationServices();
             try {
                 RS.updateEntity(R);
+
+                // Assuming you have a reference to the current stage
+                Stage stage = (Stage) modBtn.getScene().getWindow();
+// Closing the current stage
+                stage.close();
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Reclamation modifiée avec succés");
                 alert.show();
@@ -64,6 +78,7 @@ public class Modifier {
 
         idLabel.setText(String.valueOf(R.getId_reclamation()));
         id_user.setText(String.valueOf(R.getId_user()));
+        id_user.setEditable(false);
         type.getItems().addAll("Evenement","Espace","MarketPlace");
         type.setValue(String.valueOf(R.getType()));
         reclamation.setText(String.valueOf(R.getContenu()));
@@ -71,6 +86,12 @@ public class Modifier {
 
     @FXML
     void initialize() {
+        reclamation.setWrapText(true);
+        id_user.setEditable(false);
+        id_user.setVisible(false);
+        idLabel.setVisible(false);
+
+
 
 
     }

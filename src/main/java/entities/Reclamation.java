@@ -1,10 +1,15 @@
 package entities;
 
+import java.sql.Date;
+
 public class Reclamation {
     private int id_reclamation;
     private int id_user;
     private String type;
     private String contenu;
+    private Date date_env;
+    private String status;
+
 
 
     // Constructor
@@ -51,6 +56,22 @@ public class Reclamation {
 
     public void setContenu(String contenu) {
         this.contenu = contenu;
+    }
+
+    public Date getDate_env() {
+        return date_env;
+    }
+
+    public void setDate_env(Date date_env) {
+        this.date_env = date_env;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     // toString method

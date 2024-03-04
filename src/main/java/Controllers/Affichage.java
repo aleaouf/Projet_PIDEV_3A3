@@ -21,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import services.ReclamationServices;
@@ -36,11 +37,9 @@ public class Affichage {
 
 
 
-    @FXML
-    private TableColumn<Reclamation, Integer> Col_id;
 
     @FXML
-    private TableColumn<Reclamation, Integer> Col_idUser;
+    private TableColumn<Reclamation, String> Col_nomUser;
 
     @FXML
     private TableColumn<Reclamation, String> Col_type;
@@ -90,8 +89,7 @@ public class Affichage {
     @FXML
     void initialize() {
         assert Col_contenu != null : "fx:id=\"Col_contenu\" was not injected: check your FXML file 'affichage.fxml'.";
-        assert Col_id != null : "fx:id=\"Col_id\" was not injected: check your FXML file 'affichage.fxml'.";
-        assert Col_idUser != null : "fx:id=\"Col_idUser\" was not injected: check your FXML file 'affichage.fxml'.";
+        assert Col_nomUser != null : "fx:id=\"Col_nomUser\" was not injected: check your FXML file 'affichage.fxml'.";
         assert Col_type != null : "fx:id=\"Col_type\" was not injected: check your FXML file 'affichage.fxml'.";
         assert ReclamationsTable != null : "fx:id=\"ReclamationsTable\" was not injected: check your FXML file 'affichage.fxml'.";
         assert ajoutBtn != null : "fx:id=\"ajoutBtn\" was not injected: check your FXML file 'affichage.fxml'.";
@@ -102,8 +100,16 @@ public class Affichage {
     }
 
     public void showReclamations(){
-        Col_id.setCellValueFactory(new PropertyValueFactory<Reclamation,Integer>("id_reclamation"));
-        Col_idUser.setCellValueFactory(new PropertyValueFactory<Reclamation,Integer>("id_user"));
+
+
+        Col_nomUser.setCellValueFactory(cellData -> {
+            return new javafx.beans.value.ObservableValueBase<String>() {
+                @Override
+                public String getValue() {
+                    return "aziz";
+                }
+            };
+        });
         Col_type.setCellValueFactory(new PropertyValueFactory<Reclamation,String>("type"));
         Col_contenu.setCellValueFactory(new PropertyValueFactory<Reclamation,String>("contenu"));
 
@@ -122,13 +128,14 @@ public class Affichage {
                         final Button editButton = new Button("Repondre");
 //attach listener on button, what to do when clicked
                         editButton.setOnAction(event -> {
-                            Reclamation Rep = getTableView().getItems().get(getIndex());
+                            Reclamation Rec = getTableView().getItems().get(getIndex());
 
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ajouterR.fxml"));
                             try {
                                 Parent root = loader.load();
                                 AjouterR moRdControl = loader.getController();
-                                moRdControl.setReponse(Rep);
+                                moRdControl.setReponse(Rec);
+                                moRdControl.setReclamation(Rec);
                                 Stage stage = new Stage();
                                 Scene scene = new Scene(root);
                                 stage.setScene(scene);
@@ -138,9 +145,45 @@ public class Affichage {
                                 throw new RuntimeException(e);
                             }
                         });
-//remember to set the created button to cell
-                        setGraphic(editButton);
+
+                        //Now we can create the action button
+                        final Button repButton = new Button("->Reponses");
+//attach listener on button, what to do when clicked
+
+                        Reclamation Rec = getTableView().getItems().get(getIndex());
+                        MesReponses repo = new MesReponses();
+                        if (!repo.getAllData(Rec.getId_reclamation()).isEmpty()) {
+                        repButton.setOnAction(event -> {
+
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/mesReponsesAdmin.fxml"));
+                                try {
+                                    System.out.println("aaa");
+                                    Parent root2 = loader.load();
+                                    MesReponses repControl = loader.getController();
+                                    repControl.setReponses(Rec.getId_reclamation());
+                                    Stage stage = new Stage();
+                                    stage.setScene(new Scene(root2));
+                                    stage.showAndWait();
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+
+                        });
+                        repButton.setTranslateX(5);
+                        final HBox buttonsPane = new HBox(editButton,repButton);
+                        setGraphic(buttonsPane);
                         setText(null);
+                    }
+                        else {
+                            repButton.setTranslateX(5);
+                            final HBox buttonsPane = new HBox(editButton,repButton);
+                            repButton.setVisible(false);
+                            setGraphic(buttonsPane);
+                            setText(null);
+                        }
+//remember to set the created button to cell
+
+
                     }
                 }
 

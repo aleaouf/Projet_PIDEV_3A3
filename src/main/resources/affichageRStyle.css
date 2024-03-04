@@ -28,11 +28,9 @@
 }
 
 /* Style for the Table column headers */
+
 .table-view .column-header-background {
-    -fx-background-color: linear-gradient(to bottom, #1a69ff, #2c3e50); /* Blue gradient background color */
-    -fx-text-fill: white; /* Text color */
-    -fx-font-weight: bold; /* Font weight */
-    -fx-padding: 10px 20px; /* Padding */
+    -fx-background-color: blue;
 }
 
 /* Style for the Table cells */
@@ -42,10 +40,15 @@
     -fx-border-width: 0 0 1 0; /* Border width (bottom only) */
 }
 
-/* Hover effect for the Table cells */
-.table-view .table-row-cell:hover {
-    -fx-background-color: #f0f0f0; /* Lighter background color on hover */
+
+.table-view .column-header-background {
+
+    -fx-background-color: linear-gradient(to bottom, #1a69ff, #2c3e50); /* Blue gradient background color */
+    -fx-text-fill: white; /* Text color */
+    -fx-font-weight: bold; /* Font weight */
+    -fx-padding: 10px 20px; /* Padding */
 }
+
 
 /* Style for the selected Table cells */
 .table-view .table-row-cell:selected {
@@ -54,6 +57,9 @@
     -fx-border-color: #1976D2; /* Border color */
     -fx-border-width: 1px; /* Border width */
     -fx-border-radius: 5px; /* Border radius */
+}
+.table-view .table-row-cell:hover{
+    -fx-background-color: #b6b6b6;
 }
 
 /* Style for the odd rows */
@@ -72,7 +78,7 @@
     -fx-font-weight: bold; /* Font weight */
     -fx-background-color: #1a69ff; /* Blue background color */
     -fx-text-fill: white; /* Text color */
-    -fx-padding: 8px 18px; /* Padding */
+    -fx-padding: 10px 20px; /* Padding */
     -fx-background-radius: 5px; /* Border radius */
     -fx-cursor: pointer; /* Cursor style */
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 5,0,0,2 ); /* Drop shadow effect */

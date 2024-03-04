@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReclamationServices implements IServices<Reclamation> {
+
+    MailService mailService = new MailService();
     @Override
     public void addEntity(Reclamation reclamation) throws SQLException {
         String requete = "INSERT INTO reclamation (id_user, type, contenu) VALUES (?, ?, ?)";
@@ -38,6 +40,8 @@ public class ReclamationServices implements IServices<Reclamation> {
             pst.setString(3, reclamation.getContenu());
             pst.setInt(4, reclamation.getId_reclamation());
             pst.executeUpdate();
+            mailService.sendEmail("azizghest@gmail.com","Traitement Reclamations","Une reponse a été envoyé a votre reclamation." +
+                    "\nMerci pour votre patience.");
             System.out.println("Reclamation mise à jour");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -70,6 +74,9 @@ public class ReclamationServices implements IServices<Reclamation> {
                 reclamation.setId_user(rs.getInt("id_user"));
                 reclamation.setType(rs.getString("type"));
                 reclamation.setContenu(rs.getString("contenu"));
+                reclamation.setDate_env(rs.getDate("date_env"));
+                reclamation.setStatus(rs.getString("status"));
+
                 reclamations.add(reclamation);
             }
         } catch (SQLException e) {
@@ -78,4 +85,36 @@ public class ReclamationServices implements IServices<Reclamation> {
         return reclamations;
     }
 
-}
+    public void updateStatus(Reclamation reclamation,String status) throws SQLException {
+        String requete = "UPDATE reclamation SET status=? WHERE id_reclamation=?";
+        try {
+            PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete);
+            pst.setString(1, status);
+            pst.setInt(2, reclamation.getId_reclamation());
+            pst.executeUpdate();
+            System.out.println("status mise à jour");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+        public Reclamation getReclamationById(int id) throws SQLException {
+            Reclamation reclamation = null;
+            String query = "SELECT * FROM reclamation WHERE id_reclamation = ?";
+            try (PreparedStatement statement = MyConnection.instance.getCnx().prepareStatement(query)) {
+                statement.setInt(1, id);
+                try (ResultSet resultSet = statement.executeQuery()) {
+                    if (resultSet.next()) {
+                        // Populate the Reclamation object from the ResultSet
+                        reclamation = new Reclamation();
+                        reclamation.setId_reclamation(resultSet.getInt("id_reclamation"));
+                        // Set other fields similarly
+                    }
+                }
+            }
+            return reclamation;
+        }
+    }
+
+
+

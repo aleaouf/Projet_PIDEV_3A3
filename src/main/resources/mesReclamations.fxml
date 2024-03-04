@@ -9,32 +9,36 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@reclamationsClient.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MesReclamations">
+<AnchorPane prefHeight="780.0" prefWidth="1502.0" stylesheets="@reclamationsClient.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MesReclamations">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2350d9" height="703.0" layoutX="-389.0" layoutY="-296.0" rotate="140.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1275.0" />
-      <Circle fill="WHITE" layoutX="34.0" layoutY="35.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
-      <Text layoutX="34.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Viragecom">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2350d9" height="703.0" layoutX="-408.0" layoutY="-223.0" rotate="140.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1275.0" />
+      <Circle layoutX="34.0" layoutY="35.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
+      <Text fill="WHITE" layoutX="20.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Viragecom">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold Italic" size="24.0" />
          </font>
       </Text>
-      <ListView fx:id="myListView" editable="true" layoutX="45.0" layoutY="119.0" prefHeight="482.0" prefWidth="1406.0" stylesheets="@reclamationsClient.css" />
-      <Button fx:id="ajouterBtn" layoutX="1301.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickAjouter" prefHeight="41.0" prefWidth="196.0" stylesheets="@reclamationsClient.css" text="Ajouter une reclamation">
+      <ListView fx:id="myListView" editable="true" layoutX="34.0" layoutY="203.0" prefHeight="482.0" prefWidth="1429.0" stylesheets="@reclamationsClient.css" />
+      <Button fx:id="ajouterBtn" layoutX="1247.0" layoutY="40.0" mnemonicParsing="false" onAction="#onClickAjouter" prefHeight="41.0" prefWidth="196.0" stylesheets="@reclamationsClient.css" text="Ajouter une reclamation">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="modifierBtn" layoutX="607.0" layoutY="641.0" mnemonicParsing="false" onAction="#onClickModif" prefHeight="41.0" prefWidth="129.0" stylesheets="@reclamationsClient.css" text="Modifier">
+      <Button fx:id="modifierBtn" layoutX="609.0" layoutY="709.0" mnemonicParsing="false" onAction="#onClickModif" prefHeight="41.0" prefWidth="129.0" stylesheets="@reclamationsClient.css" text="Modifier">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="suppBtn" layoutX="869.0" layoutY="640.0" mnemonicParsing="false" onAction="#onClickSupp" prefHeight="42.0" prefWidth="130.0" stylesheets="@reclamationsClient.css" text="Supprimer">
+      <Button fx:id="suppBtn" layoutX="870.0" layoutY="708.0" mnemonicParsing="false" onAction="#onClickSupp" prefHeight="42.0" prefWidth="130.0" stylesheets="@reclamationsClient.css" text="Supprimer">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="labelType" layoutX="69.0" layoutY="84.0" text="Type de reclamation :" />
-      <Label fx:id="labelContenu" layoutX="433.0" layoutY="84.0" text="Contenu :" />
+      <Label fx:id="labelType" layoutX="34.0" layoutY="147.0" text="Type de reclamation :" />
+      <Label fx:id="labelContenu" layoutX="514.0" layoutY="147.0" text="Contenu :" />
+      <Label fx:id="labelTitre" layoutX="591.0" layoutY="33.0" text="Mon Espace Reclamations" />
+      <Button fx:id="filterAttBtn" layoutX="1361.0" layoutY="146.0" mnemonicParsing="false" onAction="#onFilterAtt" prefHeight="42.0" prefWidth="102.0" text="En attente" />
+      <Button fx:id="filterClotBtn" layoutX="1242.0" layoutY="146.0" mnemonicParsing="false" onAction="#onFilterClot" prefHeight="42.0" prefWidth="102.0" text="Cloturée" />
+      <Button fx:id="filterTraitBtn" layoutX="1123.0" layoutY="146.0" mnemonicParsing="false" onAction="#onFilterTrait" prefHeight="42.0" prefWidth="102.0" text="traitement" />
    </children>
 </AnchorPane>

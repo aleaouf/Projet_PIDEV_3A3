@@ -127,12 +127,12 @@ public class AffichageR {
     @FXML
     void initialize() {
         assert Col_contenu != null : "fx:id=\"Col_contenu\" was not injected: check your FXML file 'affichageR.fxml'.";
-        assert Col_id != null : "fx:id=\"Col_id\" was not injected: check your FXML file 'affichageR.fxml'.";
         assert Col_idReclam != null : "fx:id=\"Col_idReclam\" was not injected: check your FXML file 'affichageR.fxml'.";
         assert ReponsesTable != null : "fx:id=\"ReponsesTable\" was not injected: check your FXML file 'affichageR.fxml'.";
         assert ajoutBtn != null : "fx:id=\"ajoutBtn\" was not injected: check your FXML file 'affichageR.fxml'.";
         assert modifBtn != null : "fx:id=\"modifBtn\" was not injected: check your FXML file 'affichageR.fxml'.";
         assert supBtn != null : "fx:id=\"supBtn\" was not injected: check your FXML file 'affichageR.fxml'.";
+        ajoutBtn.setVisible(false);
 
         showReponses();
 
@@ -156,7 +156,6 @@ public class AffichageR {
         return reponses;
     }
     public void showReponses() {
-        Col_id.setCellValueFactory(new PropertyValueFactory<Reponse, Integer>("id_reponse"));
         Col_idReclam.setCellValueFactory(new PropertyValueFactory<Reponse, Integer>("id_reclamation"));
         Col_contenu.setCellValueFactory(new PropertyValueFactory<Reponse, String>("contenu"));
         ListeRep= getAllData();
