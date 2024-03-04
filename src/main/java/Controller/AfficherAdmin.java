@@ -306,7 +306,6 @@ public class AfficherAdmin {
                 }
             }
         }
-
         return filteredList;
     }
 }
