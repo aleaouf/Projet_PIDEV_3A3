@@ -13,7 +13,7 @@ import java.util.List;
 
 public class EspaceServices implements IServices<EspacePartenaire>  {
     public void addEntity(EspacePartenaire espacePartenaire) {
-        String requete = "INSERT INTO EspacePartenaire(nom, localisation, type, description, photos,id_categorie) VALUES (?,?,?,?,?,?)";
+        String requete = "INSERT INTO EspacePartenaire(nom, localisation, type, description, photos,id_categorie,id_user) VALUES (?,?,?,?,?,?,?)";
         try {
             PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(requete);
             pst.setString(1, espacePartenaire.getNom());
@@ -24,7 +24,7 @@ public class EspaceServices implements IServices<EspacePartenaire>  {
             String photosStr = String.join(",", espacePartenaire.getPhotos());
             pst.setString(5, photosStr);
             pst.setInt(6,recupererDernierIdCategorie());
-
+            pst.setInt(7,25);
 
             pst.executeUpdate();
             System.out.println("Espace Partenaire ajouté");

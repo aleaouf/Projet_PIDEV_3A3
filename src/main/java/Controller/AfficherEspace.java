@@ -224,7 +224,7 @@ public class AfficherEspace {
 
     public ObservableList<EspacePartenaire> getEspace() {
         ObservableList<EspacePartenaire> data = FXCollections.observableArrayList();
-        String requete = "SELECT * FROM espacepartenaire";
+        String requete = "SELECT * FROM espacepartenaire where id_user=25";
         try {
             Statement st = MyConnection.getInstance().getCnx().createStatement();
             ResultSet rs = st.executeQuery(requete);

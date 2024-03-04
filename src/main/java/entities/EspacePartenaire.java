@@ -2,7 +2,8 @@ package entities;
 import java.util.List;
 public class EspacePartenaire {
     private int id_espace;
-
+    private int nbClick;
+    private int id_user;
     private String nom;
     private String localisation;
     private String type;
@@ -121,6 +122,22 @@ public class EspacePartenaire {
         this.id_categorie = id_categorie;
     }
 
+    public int getNbClick() {
+        return nbClick;
+    }
+
+    public void setNbClick(int nbClick) {
+        this.nbClick = nbClick;
+    }
+
+    public int getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
+    }
+
     public EspacePartenaire(int id_espace, String nom, String localisation, String type, String description, List<String> photos, int id_categorie, boolean accepted) {
         this.id_espace = id_espace;
         this.nom = nom;
@@ -142,10 +159,26 @@ public class EspacePartenaire {
         this.accepted = accepted;
     }
 
+    public EspacePartenaire(int id_espace, int nbClick, int id_user, String nom, String localisation, String type, String description, List<String> photos, int id_categorie, boolean accepted) {
+        this.id_espace = id_espace;
+        this.nbClick = nbClick;
+        this.id_user = id_user;
+        this.nom = nom;
+        this.localisation = localisation;
+        this.type = type;
+        this.description = description;
+        this.photos = photos;
+        this.id_categorie = id_categorie;
+        this.accepted = accepted;
+    }
+
+
     @Override
     public String toString() {
         return "EspacePartenaire{" +
                 "id_espace=" + id_espace +
+                ", nbClick=" + nbClick +
+                ", id_user=" + id_user +
                 ", nom='" + nom + '\'' +
                 ", localisation='" + localisation + '\'' +
                 ", type='" + type + '\'' +

@@ -147,6 +147,7 @@ public class AfficherClient {
 
             SpaceView controller = loader.getController();
             controller.AfficherEspace(espacePartenaire);
+            incrementNbClick(espacePartenaire.getId_espace());
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -156,10 +157,20 @@ public class AfficherClient {
             e.printStackTrace();
         }
     }
+    private void incrementNbClick(int espaceId) {
+        try {
+            String updateQuery = "UPDATE espacepartenaire SET nbclick = nbclick + 1 WHERE id_espace = ?";
+            PreparedStatement pst = MyConnection.getInstance().getCnx().prepareStatement(updateQuery);
+            pst.setInt(1, espaceId);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public ObservableList<EspacePartenaire> getEspace() {
         ObservableList<EspacePartenaire> data = FXCollections.observableArrayList();
-        String requete = "SELECT * FROM espacepartenaire where accepted=1";
+        String requete = "SELECT * FROM espacepartenaire where accepted=1 ORDER BY nbclick DESC";
         try {
             Statement st = MyConnection.getInstance().getCnx().createStatement();
             ResultSet rs = st.executeQuery(requete);
