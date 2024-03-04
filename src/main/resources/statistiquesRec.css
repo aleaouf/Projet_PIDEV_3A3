@@ -1,68 +1,65 @@
 
-#labelType {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    -fx-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Font family */
-    -fx-font-size: 16px; /* Font size */
-    -fx-font-weight: bold; /* Font weight */
-    -fx-text-fill: #000000; /* Text color */
-    -fx-padding: 8px 12px; /* Padding */
-    -fx-background-radius: 4px; /* Border radius */
-    -fx-border-color: #333333; /* Border color */
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-    -fx-font-family: "Segoe UI", sans-serif;
-    -fx-font-size: 18px;
-    -fx-text-fill: #ffffff; /* Text color */
-    -fx-padding: 8px 12px; /* Padding around the text */
-    -fx-background-color: transparent; /* Transparent background */
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-    -fx-border-width: 1px; /* Border width */
-    -fx-border-color: #ffffff; /* Border color */
-    -fx-border-radius: 5px; /* Rounded corners */
+.chart-bar {
+    -fx-background-color: linear-gradient(to right, #e7c800, #90b929);
+}
+
+.chart-pie {
+    -fx-border-color: #ccc; /* Border color */
+}
+
+/* Style the legend text */
+.chart-legend {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Arial";
+}
+
+/* Style the legend background */
+.chart-legend-item {
+    -fx-padding: 5px;
+    -fx-background-radius: 5px;
+    -fx-background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Style the legend symbols */
+.chart-legend-item-symbol {
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+}
+
+/* Style the tooltip */
+.chart-tooltip {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Arial";
+    -fx-background-color: rgba(255, 255, 255, 0.8);
+    -fx-padding: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #ccc;
 
 }
-#labelContenu {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    -fx-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Font family */
-    -fx-font-size: 16px; /* Font size */
-    -fx-font-weight: bold; /* Font weight */
-    -fx-text-fill: #000000; /* Text color */
-    -fx-padding: 8px 12px; /* Padding */
-    -fx-background-radius: 4px; /* Border radius */
-    -fx-border-color: #333333; /* Border color */
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+#labelTM {
     -fx-font-family: "Segoe UI", sans-serif;
     -fx-font-size: 18px;
     -fx-text-fill: #ffffff; /* Text color */
     -fx-padding: 8px 12px; /* Padding around the text */
     -fx-background-color: transparent; /* Transparent background */
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     -fx-border-width: 1px; /* Border width */
     -fx-border-color: #ffffff; /* Border color */
     -fx-border-radius: 5px; /* Rounded corners */
+    -fx-pref-width: USE_COMPUTED_SIZE;
+
+}
+#labelAtt {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 18px;
+    -fx-text-fill: #ffffff; /* Text color */
+    -fx-padding: 8px 12px; /* Padding around the text */
+    -fx-background-color: transparent; /* Transparent background */
+    -fx-border-width: 1px; /* Border width */
+    -fx-border-color: #ffffff; /* Border color */
+    -fx-border-radius: 5px; /* Rounded corners */
+    -fx-fit-to-width: true;
 }
 #labelTitre {
     -fx-font-size: 28px;
@@ -124,56 +121,16 @@
 .scroll-bar:vertical .track {
     -fx-background-color: transparent; /* Color of the scrollbar track */
 }
-#filterAttBtn {
+#filterBtn {
     -fx-font-size: 16px; /* Adjust the font size as needed */
     -fx-padding: 5px 9px; /* Adjust the padding as needed */
-    -fx-background-color: #2350d9; /* Transparent background */
+    -fx-background-color: #0050b0; /* Transparent background */
     -fx-border-width: 1px; /* Border width */
-    -fx-translate-y: 2px; /* Move the button slightly down */
-    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 10,0,0,8 ); /* Enhance shadow on press */
-}
-#filterClotBtn {
-    -fx-font-size: 16px; /* Adjust the font size as needed */
-    -fx-padding: 5px 9px; /* Adjust the padding as needed */
-    -fx-background-color: #2350d9; /* Transparent background */
-    -fx-border-width: 1px; /* Border width */
-    -fx-translate-y: 2px; /* Move the button slightly down */
-    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 10,0,0,8 ); /* Enhance shadow on press */
-
-}
-#filterTraitBtn {
-    -fx-font-size: 16px; /* Adjust the font size as needed */
-    -fx-padding: 5px 9px; /* Adjust the padding as needed */
-    -fx-background-color: #2350d9; /* Transparent background */
-    -fx-border-width: 1px; /* Border width */
-    -fx-translate-y: 2px; /* Move the button slightly down */
-    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 10,0,0,8 ); /* Enhance shadow on press */
 }
 
-#filterTraitBtn:pressed {
+#filterBtn:pressed {
     -fx-background-color: #42aaff; /* Background color when pressed */
-    -fx-translate-y: -3px; /* Move the button slightly down */
-    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 10,0,0,8 ); /* Enhance shadow on press */
 }
-#filterAttBtn:pressed {
-    -fx-background-color: #42aaff; /* Background color when pressed */
-    -fx-translate-y: -3px; /* Move the button slightly down */
-    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 10,0,0,8 ); /* Enhance shadow on press */
-}
-#filterClotBtn:pressed {
-    -fx-background-color: #42aaff; /* Background color when pressed */
-    -fx-translate-y: -3px; /* Move the button slightly down */
-    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 10,0,0,8 ); /* Enhance shadow on press */
-}
-
-#filterTraitBtn:hover {
-
-}
-#filterAttBtn:hover {
-}
-#filterClotBtn:hover {
-}
-
 
 .choice-box {
     -fx-font-family: "Helvetica"; /* Font family */

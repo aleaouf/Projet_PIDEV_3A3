@@ -22,8 +22,13 @@
         <columns>
           <TableColumn fx:id="Col_nomUser" prefWidth="136.8000030517578" text="Nom_Client" />
             <TableColumn fx:id="Col_type" prefWidth="140.0" text="Type" />
+<<<<<<< Updated upstream
             <TableColumn fx:id="Col_contenu" minWidth="8.800048828125" prefWidth="691.9999389648438" text="Contenu" />
             <TableColumn fx:id="Col_Repond" prefWidth="196.7999267578125" text="Action" />
+=======
+            <TableColumn fx:id="Col_contenu" minWidth="8.800048828125" prefWidth="614.4000244140625" text="Contenu" />
+            <TableColumn fx:id="Col_Repond" prefWidth="274.4000244140625" text="Action" />
+>>>>>>> Stashed changes
         </columns>
       </TableView>
       <Label fx:id="labelTitre" layoutX="605.0" layoutY="41.0" text="Reclamations des clients" textAlignment="CENTER">

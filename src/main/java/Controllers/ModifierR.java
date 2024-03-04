@@ -70,6 +70,10 @@ public class ModifierR {
         id_Reclam.setText(String.valueOf(R.getId_reclamation()));
         Reponse.setText(String.valueOf(R.getContenu()));
         Reponse.setWrapText(true);
+<<<<<<< Updated upstream
+=======
+        idLabel.setVisible(false);
+>>>>>>> Stashed changes
     }
 
 

@@ -37,5 +37,11 @@
       <Label fx:id="labelType" layoutX="34.0" layoutY="147.0" text="Type de reclamation :" />
       <Label fx:id="labelContenu" layoutX="514.0" layoutY="147.0" text="Contenu :" />
       <Label fx:id="labelTitre" layoutX="591.0" layoutY="33.0" text="Mon Espace Reclamations" />
+<<<<<<< Updated upstream:target/classes/mesReclamations.fxml
+=======
+      <Button fx:id="filterAttBtn" layoutX="1361.0" layoutY="146.0" mnemonicParsing="false" onAction="#onFilterAtt" prefHeight="42.0" prefWidth="102.0" text="En attente" />
+      <Button fx:id="filterClotBtn" layoutX="1242.0" layoutY="146.0" mnemonicParsing="false" onAction="#onFilterClot" prefHeight="42.0" prefWidth="102.0" text="Cloturée" />
+      <Button fx:id="filterTraitBtn" layoutX="1123.0" layoutY="146.0" mnemonicParsing="false" onAction="#onFilterTrait" prefHeight="42.0" prefWidth="102.0" text="traitement" />
+>>>>>>> Stashed changes:src/main/resources/mesReclamations.fxml
    </children>
 </AnchorPane>

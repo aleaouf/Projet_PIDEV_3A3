@@ -21,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import services.ReclamationServices;
@@ -144,9 +145,45 @@ public class Affichage {
                                 throw new RuntimeException(e);
                             }
                         });
-//remember to set the created button to cell
-                        setGraphic(editButton);
+
+                        //Now we can create the action button
+                        final Button repButton = new Button("->Reponses");
+//attach listener on button, what to do when clicked
+
+                        Reclamation Rec = getTableView().getItems().get(getIndex());
+                        MesReponses repo = new MesReponses();
+                        if (!repo.getAllData(Rec.getId_reclamation()).isEmpty()) {
+                        repButton.setOnAction(event -> {
+
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/mesReponsesAdmin.fxml"));
+                                try {
+                                    System.out.println("aaa");
+                                    Parent root2 = loader.load();
+                                    MesReponses repControl = loader.getController();
+                                    repControl.setReponses(Rec.getId_reclamation());
+                                    Stage stage = new Stage();
+                                    stage.setScene(new Scene(root2));
+                                    stage.showAndWait();
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+
+                        });
+                        repButton.setTranslateX(5);
+                        final HBox buttonsPane = new HBox(editButton,repButton);
+                        setGraphic(buttonsPane);
                         setText(null);
+                    }
+                        else {
+                            repButton.setTranslateX(5);
+                            final HBox buttonsPane = new HBox(editButton,repButton);
+                            repButton.setVisible(false);
+                            setGraphic(buttonsPane);
+                            setText(null);
+                        }
+//remember to set the created button to cell
+
+
                     }
                 }
 

@@ -62,7 +62,11 @@ public class AjouterR {
             ReponseServices rs = new ReponseServices();
             try {
                 rs.addEntity(R);
+<<<<<<< Updated upstream
                 RS.updateStatus(reclamation);
+=======
+                RS.updateStatus(reclamation,"en cours de traitement");
+>>>>>>> Stashed changes
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Reponse envoyée avec succés");
                 alert.show();

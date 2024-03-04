@@ -1,3 +1,22 @@
+#labelAtt {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 18px;
+    -fx-text-fill: #ffffff; /* Text color */
+    -fx-padding: 8px 12px; /* Padding around the text */
+    -fx-background-color: transparent; /* Transparent background */
+    -fx-border-width: 1px; /* Border width */
+    -fx-border-color: #ffffff; /* Border color */
+    -fx-border-radius: 5px; /* Rounded corners */
+}
+#labelTitre {
+    -fx-font-size: 28px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff; /* Text color */
+    -fx-background-color: #2f46c7; /* Background color */
+    -fx-padding: 10px 16px; /* Padding around the text */
+    -fx-background-radius: 5px; /* Background radius */
+}
 /* Style for the form */
 .form {
     -fx-background-color: #f0f2f5; /* Background color */
@@ -31,7 +50,7 @@
     -fx-font-family: "Helvetica"; /* Font family */
     -fx-font-size: 20px; /* Font size */
     -fx-font-style: italic; /* Font style */
-    -fx-background-color: #007aee; /* Background color */
+    -fx-background-color: #000000; /* Background color */
     -fx-text-fill: white; /* Text color */
     -fx-padding: 12px 24px; /* Padding */
     -fx-background-radius: 30px; /* Border radius */

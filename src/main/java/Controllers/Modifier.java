@@ -13,6 +13,10 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+import services.FilterService;
+>>>>>>> Stashed changes
 =======
 import services.FilterService;
 >>>>>>> Stashed changes
@@ -63,6 +67,11 @@ public class Modifier {
             ReclamationServices RS = new ReclamationServices();
             try {
                 RS.updateEntity(R);
+
+                // Assuming you have a reference to the current stage
+                Stage stage = (Stage) modBtn.getScene().getWindow();
+// Closing the current stage
+                stage.close();
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Reclamation modifiée avec succés");
                 alert.show();
@@ -96,6 +105,13 @@ public class Modifier {
     void initialize() {
         reclamation.setWrapText(true);
         id_user.setEditable(false);
+<<<<<<< Updated upstream
+=======
+        id_user.setVisible(false);
+        idLabel.setVisible(false);
+
+
+>>>>>>> Stashed changes
 
 
     }

@@ -97,17 +97,32 @@ public class Statistiques {
                                 nbr++;
 }
                         }
+<<<<<<< Updated upstream
+=======
+                        else {
+                            sommeDays +=0;
+                            nbr++;
+                        }
+>>>>>>> Stashed changes
                     }
 
             }
                 System.out.println("***"+sommeDays/nbr);
                 TM += sommeDays/nbr;
+<<<<<<< Updated upstream
                 series.getData().add(new XYChart.Data<>(type, sommeDays/nbr));
+=======
+                series.getData().add(new XYChart.Data<>(type, 2+sommeDays/nbr));
+>>>>>>> Stashed changes
             }
 
             idBar.getYAxis().setLabel("jours");
             idBar.getData().add(series);
+<<<<<<< Updated upstream
             labelTM.setText(Float.toString(TM/3));
+=======
+            labelTM.setText(Float.toString(TM/3)+" jours");
+>>>>>>> Stashed changes
         }
         catch (SQLException e) {
             throw new RuntimeException(e);

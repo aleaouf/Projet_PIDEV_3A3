@@ -80,7 +80,11 @@
     -fx-font-family: "Helvetica"; /* Font family */
     -fx-font-size: 20px; /* Font size */
     -fx-font-style: italic; /* Font style */
+<<<<<<< Updated upstream
     -fx-background-color: #007aee; /* Background color */
+=======
+    -fx-background-color: #000000; /* Background color */
+>>>>>>> Stashed changes
     -fx-text-fill: white; /* Text color */
     -fx-padding: 12px 24px; /* Padding */
     -fx-background-radius: 30px; /* Border radius */

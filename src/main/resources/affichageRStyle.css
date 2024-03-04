@@ -28,11 +28,17 @@
 }
 
 /* Style for the Table column headers */
+<<<<<<< Updated upstream
 .table-view .column-header-background {
     -fx-background-color: linear-gradient(to bottom, #1a69ff, #2c3e50); /* Blue gradient background color */
     -fx-text-fill: white; /* Text color */
     -fx-font-weight: bold; /* Font weight */
     -fx-padding: 10px 20px; /* Padding */
+=======
+
+.table-view .column-header-background {
+    -fx-background-color: blue;
+>>>>>>> Stashed changes
 }
 
 /* Style for the Table cells */
@@ -42,11 +48,24 @@
     -fx-border-width: 0 0 1 0; /* Border width (bottom only) */
 }
 
+<<<<<<< Updated upstream
 /* Hover effect for the Table cells */
 .table-view .table-row-cell:hover {
     -fx-background-color: #f0f0f0; /* Lighter background color on hover */
 }
 
+=======
+
+.table-view .column-header-background {
+
+    -fx-background-color: linear-gradient(to bottom, #1a69ff, #2c3e50); /* Blue gradient background color */
+    -fx-text-fill: white; /* Text color */
+    -fx-font-weight: bold; /* Font weight */
+    -fx-padding: 10px 20px; /* Padding */
+}
+
+
+>>>>>>> Stashed changes
 /* Style for the selected Table cells */
 .table-view .table-row-cell:selected {
     -fx-background-color: #1976D2 !important; /* Dark blue background color of the selected cell */
@@ -55,6 +74,12 @@
     -fx-border-width: 1px; /* Border width */
     -fx-border-radius: 5px; /* Border radius */
 }
+<<<<<<< Updated upstream
+=======
+.table-view .table-row-cell:hover{
+    -fx-background-color: #b6b6b6;
+}
+>>>>>>> Stashed changes
 
 /* Style for the odd rows */
 .table-view .table-row-cell:odd {
@@ -72,7 +97,11 @@
     -fx-font-weight: bold; /* Font weight */
     -fx-background-color: #1a69ff; /* Blue background color */
     -fx-text-fill: white; /* Text color */
+<<<<<<< Updated upstream
     -fx-padding: 12px 24px; /* Padding */
+=======
+    -fx-padding: 10px 20px; /* Padding */
+>>>>>>> Stashed changes
     -fx-background-radius: 5px; /* Border radius */
     -fx-cursor: pointer; /* Cursor style */
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 5,0,0,2 ); /* Drop shadow effect */

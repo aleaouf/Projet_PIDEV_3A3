@@ -17,6 +17,7 @@ public class FilterService {
         StringBuilder filteredText = new StringBuilder();
 
         for (String word : words) {
+<<<<<<< Updated upstream
             boolean isProfane = false;
             for (String profaneWord : profaneWords) {
                 if (isSimilar(word, profaneWord)) {
@@ -25,6 +26,9 @@ public class FilterService {
                 }
             }
             if (isProfane) {
+=======
+            if (isProfane(word)) {
+>>>>>>> Stashed changes
                 filteredText.append("*".repeat(word.length())).append(" ");
             } else {
                 filteredText.append(word).append(" ");
@@ -34,6 +38,18 @@ public class FilterService {
         return filteredText.toString().trim();
     }
 
+<<<<<<< Updated upstream
+=======
+    private static boolean isProfane(String word) {
+        for (String profaneWord : profaneWords) {
+            if (isSimilar(word, profaneWord)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+>>>>>>> Stashed changes
     private static boolean isSimilar(String word1, String word2) {
         return soundex.encode(word1).equals(soundex.encode(word2))
                 || levenshteinDistance.apply(word1, word2) <= 2; // Adjust the threshold as needed

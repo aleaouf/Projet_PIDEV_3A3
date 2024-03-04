@@ -72,7 +72,7 @@
     -fx-font-weight: bold; /* Font weight */
     -fx-background-color: #1a69ff; /* Blue background color */
     -fx-text-fill: white; /* Text color */
-    -fx-padding: 12px 24px; /* Padding */
+    -fx-padding: 8px 18px; /* Padding */
     -fx-background-radius: 5px; /* Border radius */
     -fx-cursor: pointer; /* Cursor style */
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 5,0,0,2 ); /* Drop shadow effect */

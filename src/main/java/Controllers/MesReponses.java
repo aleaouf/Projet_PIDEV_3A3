@@ -12,12 +12,14 @@ import entities.Reclamation;
 import entities.Reponse;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 =======
@@ -29,6 +31,12 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 >>>>>>> Stashed changes
 import javafx.stage.Stage;
+=======
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
+import javafx.stage.Stage;
+import services.ReclamationServices;
+>>>>>>> Stashed changes
 import utils.MyConnection;
 
 public class MesReponses {
@@ -41,7 +49,16 @@ public class MesReponses {
 
     @FXML
     private ListView<Reponse> myList;
+    @FXML
+    private Button cloturerBtn;
 
+    @FXML
+    private Label labelTitre;
+
+    @FXML
+    private Label idLabel;
+
+    ReclamationServices RS = new ReclamationServices();
     public ObservableList<Reponse> getAllData(int id_reclamation) {
         ObservableList<Reponse> reponses = FXCollections.observableArrayList();
         String requete = "SELECT * FROM reponse WHERE id_reclamation=" + id_reclamation;
@@ -60,8 +77,39 @@ public class MesReponses {
         return reponses;
     }
 
+    public void setReclamation(Reclamation R){
+
+        idLabel.setText(String.valueOf(R.getId_reclamation()));
+        idLabel.setText(String.valueOf(R.getId_reclamation()));
+    }
+
+    @FXML
+    void onClickCloturer(ActionEvent event) {
+        try {
+            ObservableList<Reponse> reponses = myList.getItems();
+            Reponse rep = reponses.get(0);
+            Reclamation Rec = RS.getReclamationById(rep.getId_reclamation());
+            RS.updateStatus(Rec,"Cloturée");
+            // Assuming you have a reference to the current stage
+            Stage stage = (Stage) cloturerBtn.getScene().getWindow();
+// Closing the current stage
+            stage.close();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Reclamation cloturée avec succés");
+            alert.show();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        Reponse R = this.myList.getSelectionModel().getSelectedItem();
+
+
+
+    }
+
     @FXML
     void initialize() {
+        assert cloturerBtn != null : "fx:id=\"cloturerBtn\" was not injected: check your FXML file 'mesReponses.fxml'.";
+        assert labelTitre != null : "fx:id=\"labelTitre\" was not injected: check your FXML file 'mesReponses.fxml'.";
         assert myList != null : "fx:id=\"myList\" was not injected: check your FXML file 'mesReponses.fxml'.";
 
     }
@@ -76,7 +124,11 @@ public class MesReponses {
             {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 hbox.setSpacing(16); // Set spacing between attributes
+=======
+                hbox.setSpacing(10); // Set horizontal spacing between attributes
+>>>>>>> Stashed changes
 =======
                 hbox.setSpacing(10); // Set horizontal spacing between attributes
 >>>>>>> Stashed changes
@@ -100,7 +152,11 @@ public class MesReponses {
                     TextArea c = new TextArea(rep.getContenu());
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     c.setLayoutX(100);
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -115,10 +171,13 @@ public class MesReponses {
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     HBox hbox = new HBox(t, c);
                     hbox.setSpacing(25);
                     setGraphic(hbox);
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
                     hbox.getChildren().clear(); // Clear existing content
@@ -137,6 +196,9 @@ public class MesReponses {
 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
