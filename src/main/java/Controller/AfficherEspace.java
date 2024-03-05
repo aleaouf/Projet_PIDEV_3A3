@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.beans.property.ReadOnlyStringWrapper;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,7 +27,7 @@ import entities.Categorie;
 import entities.EspacePartenaire;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.util.Callback;
+
 public class AfficherEspace {
 
     @FXML
@@ -104,12 +104,12 @@ public class AfficherEspace {
 
 
         // Pass the selected EspacePartenaire object to the Modifier controller
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Modifier.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierEspace.fxml"));
 
         Parent root;
         try {
             root = loader.load();
-            Modifier modifierController = loader.getController();
+            ModifierEspace modifierController = loader.getController();
             modifierController.setEspacePartenaireToUpdate(espacePartenaire);
 
             Stage stage = new Stage();

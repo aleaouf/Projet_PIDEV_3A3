@@ -8,35 +8,29 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
 import entities.Categorie;
-import entities.EspacePartenaire;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import netscape.javascript.JSObject;
 import org.json.JSONObject;
 import services.CategorieServices;
 import services.EspaceServices;
 import utils.MyConnection;
 
-public class Modifier {
+public class ModifierEspace {
 
     @FXML
     private ResourceBundle resources;
@@ -87,7 +81,7 @@ public class Modifier {
     // Méthode pour initialiser le contrôleur après l'injection des éléments FXML
     @FXML
     void initialize() {
-        assert idType != null : "fx:id=\"idType\" was not injected: check your FXML file 'Modifier.fxml'.";
+        assert idType != null : "fx:id=\"idType\" was not injected: check your FXML file 'ModifierEspace.fxml'.";
         idType.getItems().addAll("Salon de thé","Restaurant","Resto Bar","Espace ouvert","Cafeteria","Terrain Foot","Salle de jeux","Café Lounge");
         WebEngine webEngine = mapView.getEngine();
         webEngine.load(getClass().getResource("/googlemaps.html").toExternalForm());
