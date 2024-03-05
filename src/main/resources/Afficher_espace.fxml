@@ -12,7 +12,7 @@
     <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2350d9" height="779.0" layoutX="-384.0" layoutY="-350.0" rotate="140.0" stroke="BLACK" strokeType="INSIDE" width="1128.0" />
       <Circle layoutX="65.0" layoutY="48.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
-        <ListView fx:id="listViewEspace" editable="true" layoutX="134.0" layoutY="116.0" prefHeight="433.0" prefWidth="712.0" stylesheets="@styles.css" />
+        <ListView fx:id="listViewEspace" editable="true" layoutX="134.0" layoutY="116.0" prefHeight="434.0" prefWidth="766.0" stylesheets="@styles.css" />
         <Button fx:id="buttonConsulter" layoutX="740.0" layoutY="571.0" onAction="#Consulter" prefHeight="42.0" prefWidth="115.0" text="Consulter">
          <font>
             <Font size="14.0" />
@@ -39,5 +39,6 @@
             <Font name="System Bold" size="34.0" />
          </font>
       </Text>
+      <Button layoutX="837.0" layoutY="70.0" mnemonicParsing="false" onAction="#home" text="Home" />
     </children>
 </AnchorPane>

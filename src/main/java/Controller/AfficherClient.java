@@ -4,6 +4,7 @@ import entities.Categorie;
 import entities.EspacePartenaire;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -326,6 +327,11 @@ public class AfficherClient {
         }
         return data;
     }
-
+    @FXML
+    void partenaire(ActionEvent event) {
+        StageManager stageManager = StageManager.getInstance();
+        stageManager.closeCurrentStage();
+        stageManager.switchScene("/Afficher_espace.fxml");
+    }
 
 }

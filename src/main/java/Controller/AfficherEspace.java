@@ -263,4 +263,12 @@ public class AfficherEspace {
         }
         return data;
     }
+
+    @FXML
+    void home(ActionEvent event) {
+        StageManager stageManager = StageManager.getInstance();
+        stageManager.closeCurrentStage();
+        stageManager.switchScene("/AfficherClient.fxml");
+
+    }
 }
