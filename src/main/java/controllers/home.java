@@ -9,13 +9,18 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class home extends Application {
-
+    public static int userID;
+    public static String email ;
+    public static int id_role ;
+    public static String imagee;
+    public static String codeConfirmation;
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) {
+
         FXMLLoader loader=new FXMLLoader(getClass().getResource("/seconnecter.fxml"));
         try {
             Parent root=loader.load();

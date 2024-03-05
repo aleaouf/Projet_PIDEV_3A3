@@ -3,77 +3,25 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="607.0" prefWidth="890.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.seconnecter">
+<AnchorPane id="AnchorPane" prefHeight="482.0" prefWidth="716.0" stylesheets="@affarietstyleuser.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SeconnecterController">
    <children>
-      <SplitPane dividerPositions="0.4977334542157751" layoutX="3.0" layoutY="2.0" prefHeight="607.0" prefWidth="884.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: white;">
-               <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2359d9" height="606.0" stroke="BLACK" strokeType="INSIDE" width="436.0" />
-                  <Label layoutX="14.0" layoutY="41.0" prefHeight="30.0" prefWidth="221.0" text="Welcome to ">
-                     <font>
-                        <Font name="System Bold" size="36.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="225.0" layoutY="42.0" text="Virage" textFill="#e6e6ec">
-                     <font>
-                        <Font size="35.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="324.0" layoutY="41.0" text="com" textFill="#ec2d2d">
-                     <font>
-                        <Font name="System Italic" size="36.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="25.0" layoutY="136.0" text="E-mail">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="emailtextfield2" layoutX="14.0" layoutY="182.0" prefHeight="35.0" prefWidth="349.0" />
-                  <Label layoutX="25.0" layoutY="237.0" text="Password">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="51.0" layoutY="391.0" mnemonicParsing="false" onAction="#seconnecter" stylesheets="@style.css" text="Se connecter">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="236.0" layoutY="387.0" mnemonicParsing="false" onAction="#inscrire" prefHeight="43.0" prefWidth="134.0" stylesheets="@style.css" text="s'incrire">
-                     <font>
-                        <Font name="System Bold" size="25.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="14.0" layoutY="320.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-border-color: white;" text="mot de passe oublié ?" textFill="#211994" />
-                  <Button layoutX="81.0" layoutY="463.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="273.0" stylesheets="@style.css" text="Se connecter avec GOOGLE" textFill="#dc1717">
-                     <font>
-                        <Font name="System Bold" size="19.0" />
-                     </font>
-                  </Button>
-                  <PasswordField fx:id="passwordtextfield2" layoutX="14.0" layoutY="272.0" prefHeight="35.0" prefWidth="338.0" />
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <ImageView fitHeight="606.0" fitWidth="440.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="711.0" fitWidth="995.0" layoutX="-297.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@istockphoto-469569148-612x612.jpg" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
+      <TextField fx:id="text_email" layoutX="392.0" layoutY="167.0" prefHeight="27.0" prefWidth="270.0" promptText="enter E-mail" />
+      <Button fx:id="button_connecter" layoutX="535.0" layoutY="287.0" mnemonicParsing="false" onAction="#seconnecter" prefHeight="25.0" prefWidth="154.0" styleClass="my-button" stylesheets="@affichageStyle.css" text="Sign In" />
+      <Button fx:id="button_sinscrire" layoutX="348.0" layoutY="358.0" mnemonicParsing="false" onAction="#sinscrire" prefHeight="30.0" prefWidth="349.0" styleClass="my-button" stylesheets="@affichageStyle.css" text="dont have an account ? Sign Up" />
+      <PasswordField fx:id="text_mdp" layoutX="392.0" layoutY="214.0" prefHeight="27.0" prefWidth="270.0" promptText="enter mot de passe " />
+      <Button layoutX="355.0" layoutY="287.0" mnemonicParsing="false" onAction="#mdp_oubliers" styleClass="my-button" stylesheets="@affichageStyle.css" text="forget password" />
+      <Label layoutX="456.0" layoutY="68.0" prefHeight="64.0" prefWidth="142.0" styleClass="titleLabel" text="Sign In " />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2350d9" height="482.0" stroke="BLACK" strokeType="INSIDE" width="340.0" />
+      <ImageView fitHeight="273.0" fitWidth="270.0" layoutX="40.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@LOGOFII-removebg-preview.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
